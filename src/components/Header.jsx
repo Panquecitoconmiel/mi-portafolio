@@ -27,54 +27,41 @@ const Header = () => {
     }}>
       <div style={{
         background: 'rgba(255, 250, 227, 0.15)',
-        padding: '1rem 0',
+        padding: '1.5rem 0 1rem 0',
         borderBottom: '1px solid rgba(193, 219, 232, 0.18)',
         width: '100%'
       }}>
         <div className="container" style={{ 
           display: 'flex', 
+          flexDirection: 'column', 
           alignItems: 'center',
-          justifyContent: 'space-between'
+          gap: '1.2rem'
         }}>
-          {/* Logo */}
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+          {/* --- LOGO GRANDE Y CENTRADO --- */}
+          <a href="/" style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '1rem'
+          }}>
             <img 
               src="/assets/lolosdev.svg" 
               alt="Logo Michelle Mora" 
-              style={{ height: '60px', width: 'auto' }}
+              style={{ 
+                height: '160px',
+                width: 'auto',
+                filter: 'drop-shadow(0 4px 8px rgba(67, 48, 46, 0.15))'
+              }}
             />
           </a>
 
-          {/* Botón hamburguesa (solo móvil) */}
-          <button 
-            onClick={toggleMenu}
-            style={{
-              display: 'none',
-              background: 'rgba(255,255,255,0.9)',
-              border: 'none',
-              borderRadius: '50%',
-              width: '48px',
-              height: '48px',
-              fontSize: '1.5rem',
-              cursor: 'pointer',
-              color: '#43302E',
-              boxShadow: '0 4px 15px rgba(67,48,46,0.1)',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            className="menu-toggle"
-            aria-label="Menú"
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </button>
-
-          {/* Navegación (escritorio) */}
+          {/* --- NAVEGACIÓN: BOTONES EN UNA FILA --- */}
           <nav style={{ 
             display: 'flex', 
-            gap: '1.5rem',
+            gap: '1.2rem',
             flexWrap: 'wrap',
-            justifyContent: 'center'
-          }} className="nav-desktop">
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
             {navItems.map(item => (
               <a 
                 key={item.id}
@@ -83,7 +70,7 @@ const Header = () => {
                   fontWeight: '600', 
                   color: '#43302E',
                   background: 'rgba(255, 255, 255, 0.9)',
-                  padding: '0.6rem 1.5rem',
+                  padding: '0.6rem 1.8rem',
                   borderRadius: '50px',
                   border: '1px solid rgba(255, 255, 255, 0.6)',
                   boxShadow: '0 4px 15px rgba(67, 48, 46, 0.08)',
@@ -105,9 +92,35 @@ const Header = () => {
               </a>
             ))}
           </nav>
+
+          {/* --- BOTÓN HAMBURGUESA (solo visible en móvil) --- */}
+          <button 
+            onClick={toggleMenu}
+            style={{
+              display: 'none',
+              background: 'rgba(255,255,255,0.9)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '48px',
+              height: '48px',
+              fontSize: '1.5rem',
+              cursor: 'pointer',
+              color: '#43302E',
+              boxShadow: '0 4px 15px rgba(67,48,46,0.1)',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'absolute',
+              top: '1.5rem',
+              right: '2rem'
+            }}
+            className="menu-toggle"
+            aria-label="Menú"
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
 
-        {/* Menú móvil (desplegable) */}
+        {/* --- MENÚ MÓVIL DESPLEGABLE --- */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -151,12 +164,9 @@ const Header = () => {
         </AnimatePresence>
       </div>
 
-      {/* Estilos responsive embebidos (solo para este componente) */}
+      {/* --- ESTILOS RESPONSIVE --- */}
       <style>{`
         @media (max-width: 768px) {
-          .nav-desktop {
-            display: none !important;
-          }
           .menu-toggle {
             display: flex !important;
           }
