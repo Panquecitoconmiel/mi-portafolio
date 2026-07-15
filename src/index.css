@@ -1,0 +1,148 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: #FFF1B5; /* Buttermilk */
+  color: #43302E;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* --- FORMAS DECORATIVAS CON BLUR (Glassmorphism) --- */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #C1DBE8, transparent 70%);
+  top: -150px;
+  right: -100px;
+}
+
+.shape-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #FFF1B5, transparent 70%);
+  bottom: 50px;
+  left: -120px;
+}
+
+.shape-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #43302E, transparent 70%);
+  top: 30%;
+  right: 5%;
+  opacity: 0.15;
+}
+
+.shape-4 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #C1DBE8, transparent 70%);
+  bottom: -80px;
+  right: -80px;
+  opacity: 0.3;
+}
+
+/* --- BOTONES CON GRADIENTE --- */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #43302E, #5a4542);
+  color: #FFF1B5;
+  padding: 0.9rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  border: none;
+  box-shadow: 0 8px 25px rgba(67, 48, 46, 0.25);
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(67, 48, 46, 0.35);
+  background: linear-gradient(135deg, #5a4542, #43302E);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: #43302E;
+  padding: 0.9rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  border: 2px solid #43302E;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: #43302E;
+  color: #FFF1B5;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(67, 48, 46, 0.2);
+}
+
+/* --- TARJETAS DE PROYECTOS (Glassmorphism) --- */
+.project-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(67, 48, 46, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px rgba(67, 48, 46, 0.12);
+  border-color: rgba(193, 219, 232, 0.5);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* --- TIPOGRAFÍA LLAMATIVA --- */
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #43302E, #C1DBE8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
