@@ -48,7 +48,7 @@ const experiences = [
   {
     id: 5,
     title: 'Vendedora',
-    company: 'Venta de Ropa',
+    company: 'Zuky el Kamikaze',
     date: 'Enero 2025 – Diciembre 2025',
     description: `• Atención a clientes y venta de ropa.
 • Gestión de cobros, control de inventario de mercancía y organización del punto de venta.`,
