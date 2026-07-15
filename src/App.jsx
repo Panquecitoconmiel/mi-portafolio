@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './index.css';
+import Resume from './components/Resume';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Hero />
         <Experience />
         <Skills />
+          <Resume />   
         <Projects />
         <Contact />
       </main>
