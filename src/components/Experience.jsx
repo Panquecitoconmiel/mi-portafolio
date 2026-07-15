@@ -5,7 +5,7 @@ import { FaBriefcase, FaCalendarAlt, FaBuilding } from 'react-icons/fa';
 const experiences = [
   {
     id: 1,
-    title: 'Desarrolladora Web Jr. / Practicante',
+    title: 'Desarrolladora Web Jr. / Practicante de Desarrollo',
     company: 'IOMPAR',
     date: 'Enero 2026 – Abril 2026',
     description: `• Desarrollé plataformas web para gestión y monitoreo de operaciones.
@@ -38,12 +38,31 @@ const experiences = [
   {
     id: 4,
     title: 'Freelancer Independiente',
-    company: 'Papantla de Olarte',
-    date: 'Julio 2013 – Enero 2026',
-    description: `• Atendí clientes y gestioné efectivo, cobros y cortes de caja.
+    company: 'Desarrolladora Web / Documentación Técnica',
+    date: 'Julio 2022 – Actualidad',
+    description: `• Desarrollo web freelance para la construcción de páginas web.
+• Documentación técnica de proyectos y desarrollo de software.
+• Atención a clientes y gestión de proyectos autónomos.`,
+    tech: ['React', 'Laravel', 'Firebase', 'Git']
+  },
+  {
+    id: 5,
+    title: 'Vendedora',
+    company: 'Venta de Ropa',
+    date: 'Enero 2025 – Diciembre 2025',
+    description: `• Atención a clientes y venta de ropa.
+• Gestión de cobros, control de inventario de mercancía y organización del punto de venta.`,
+    tech: ['Atención al Cliente', 'Gestión de Inventarios', 'Cobros']
+  },
+  {
+    id: 6,
+    title: 'Vendedora',
+    company: 'Esquites Miele',
+    date: 'Enero 2013 – Marzo 2026',
+    description: `• Atendí clientes y gestioné efectivo, cobros y cortes de caja en la venta de esquites.
 • Controlé inventarios e insumos, y coordiné con proveedores.
 • Organicé y supervisé actividades operativas del negocio, resolviendo problemas de forma autónoma.`,
-    tech: ['Gestión', 'Coordinación', 'Resolución de Problemas']
+    tech: ['Gestión', 'Coordinación', 'Atención al Cliente', 'Resolución de Problemas']
   }
 ];
 
@@ -54,6 +73,7 @@ const Experience = () => {
       padding: '5rem 0',
       background: 'linear-gradient(135deg, #FFF1B5 0%, #C1DBE8 100%)',
     }}>
+      {/* Formas decorativas con blur */}
       <div style={{
         position: 'absolute',
         width: '350px',
@@ -117,6 +137,7 @@ const Experience = () => {
                 e.currentTarget.style.boxShadow = '0 15px 40px rgba(67, 48, 46, 0.08)';
               }}
             >
+              {/* Columna izquierda: Icono y fecha */}
               <div style={{ 
                 display: 'flex', 
                 flexDirection: 'column', 
@@ -154,6 +175,7 @@ const Experience = () => {
                 </div>
               </div>
 
+              {/* Columna derecha: Contenido */}
               <div style={{ flex: 1 }}>
                 <h3 style={{ fontSize: '1.6rem', fontWeight: '700', color: '#43302E', marginBottom: '0.2rem' }}>
                   {exp.title}
