@@ -1,21 +1,7 @@
 // src/components/Header.jsx
-import React, { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
-
-  const navItems = [
-    { id: 'sobre-mi', label: 'Sobre mí' },
-    { id: 'experiencia', label: 'Experiencia' },
-    { id: 'proyectos', label: 'Proyectos' },
-    { id: 'contacto', label: 'Contacto' }
-  ];
-
   return (
     <header style={{ 
       padding: '0', 
@@ -25,6 +11,7 @@ const Header = () => {
       position: 'relative',
       zIndex: 100
     }}>
+      {/* Overlay sin blur */}
       <div style={{
         background: 'rgba(255, 250, 227, 0.15)',
         padding: '1.5rem 0 1rem 0',
@@ -37,15 +24,15 @@ const Header = () => {
           alignItems: 'center',
           gap: '1.2rem'
         }}>
-          {/* --- LOGO GRANDE Y CENTRADO --- */}
+          {/* Logo grande y centrado (SOLO LOGO, sin texto) */}
           <a href="/" style={{ 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '1rem'
+            justifyContent: 'center'
           }}>
             <img 
               src="/assets/lolosdev.svg" 
-              alt="Logo Michelle Mora" 
+              alt="Logo Lolos Dev" 
               style={{ 
                 height: '160px',
                 width: 'auto',
@@ -54,132 +41,119 @@ const Header = () => {
             />
           </a>
 
-          {/* --- NAVEGACIÓN: BOTONES EN UNA FILA --- */}
+          {/* Navegación con botones de fondo blanco */}
           <nav style={{ 
             display: 'flex', 
             gap: '1.2rem',
             flexWrap: 'wrap',
-            justifyContent: 'center',
-            alignItems: 'center'
+            justifyContent: 'center'
           }}>
-            {navItems.map(item => (
-              <a 
-                key={item.id}
-                href={`#${item.id}`} 
-                style={{ 
-                  fontWeight: '600', 
-                  color: '#43302E',
-                  background: 'rgba(255, 255, 255, 0.9)',
-                  padding: '0.6rem 1.8rem',
-                  borderRadius: '50px',
-                  border: '1px solid rgba(255, 255, 255, 0.6)',
-                  boxShadow: '0 4px 15px rgba(67, 48, 46, 0.08)',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={e => {
-                  e.target.style.background = 'rgba(255, 255, 255, 1)';
-                  e.target.style.boxShadow = '0 8px 25px rgba(67, 48, 46, 0.15)';
-                  e.target.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={e => {
-                  e.target.style.background = 'rgba(255, 255, 255, 0.9)';
-                  e.target.style.boxShadow = '0 4px 15px rgba(67, 48, 46, 0.08)';
-                  e.target.style.transform = 'translateY(0)';
-                }}
-                onClick={closeMenu}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* --- BOTÓN HAMBURGUESA (solo visible en móvil) --- */}
-          <button 
-            onClick={toggleMenu}
-            style={{
-              display: 'none',
-              background: 'rgba(255,255,255,0.9)',
-              border: 'none',
-              borderRadius: '50%',
-              width: '48px',
-              height: '48px',
-              fontSize: '1.5rem',
-              cursor: 'pointer',
-              color: '#43302E',
-              boxShadow: '0 4px 15px rgba(67,48,46,0.1)',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'absolute',
-              top: '1.5rem',
-              right: '2rem'
-            }}
-            className="menu-toggle"
-            aria-label="Menú"
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
-
-        {/* --- MENÚ MÓVIL DESPLEGABLE --- */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                background: 'rgba(255, 250, 227, 0.95)',
-                backdropFilter: 'blur(10px)',
-                padding: '1.5rem 2rem',
-                borderTop: '1px solid rgba(193, 219, 232, 0.3)',
-                display: 'none',
-                flexDirection: 'column',
-                gap: '1rem'
+            <a 
+              href="#sobre-mi" 
+              style={{ 
+                fontWeight: '600', 
+                color: '#43302E',
+                background: 'rgba(255, 255, 255, 0.9)',
+                padding: '0.6rem 1.8rem',
+                borderRadius: '50px',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                boxShadow: '0 4px 15px rgba(67, 48, 46, 0.08)',
+                transition: 'all 0.3s ease'
               }}
-              className="menu-mobile"
+              onMouseEnter={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 1)';
+                e.target.style.boxShadow = '0 8px 25px rgba(67, 48, 46, 0.15)';
+                e.target.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                e.target.style.boxShadow = '0 4px 15px rgba(67, 48, 46, 0.08)';
+                e.target.style.transform = 'translateY(0)';
+              }}
             >
-              {navItems.map(item => (
-                <a 
-                  key={item.id}
-                  href={`#${item.id}`} 
-                  style={{
-                    fontWeight: '600',
-                    color: '#43302E',
-                    padding: '0.8rem',
-                    borderRadius: '12px',
-                    background: 'rgba(255,255,255,0.7)',
-                    textAlign: 'center',
-                    transition: '0.3s'
-                  }}
-                  onClick={closeMenu}
-                  onMouseEnter={e => e.target.style.background = 'rgba(255,255,255,1)'}
-                  onMouseLeave={e => e.target.style.background = 'rgba(255,255,255,0.7)'}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+              Sobre mí
+            </a>
+            
+            <a 
+              href="#experiencia" 
+              style={{ 
+                fontWeight: '600', 
+                color: '#43302E',
+                background: 'rgba(255, 255, 255, 0.9)',
+                padding: '0.6rem 1.8rem',
+                borderRadius: '50px',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                boxShadow: '0 4px 15px rgba(67, 48, 46, 0.08)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 1)';
+                e.target.style.boxShadow = '0 8px 25px rgba(67, 48, 46, 0.15)';
+                e.target.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                e.target.style.boxShadow = '0 4px 15px rgba(67, 48, 46, 0.08)';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
+              Experiencia
+            </a>
+            
+            <a 
+              href="#proyectos" 
+              style={{ 
+                fontWeight: '600', 
+                color: '#43302E',
+                background: 'rgba(255, 255, 255, 0.9)',
+                padding: '0.6rem 1.8rem',
+                borderRadius: '50px',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                boxShadow: '0 4px 15px rgba(67, 48, 46, 0.08)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 1)';
+                e.target.style.boxShadow = '0 8px 25px rgba(67, 48, 46, 0.15)';
+                e.target.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                e.target.style.boxShadow = '0 4px 15px rgba(67, 48, 46, 0.08)';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
+              Proyectos
+            </a>
+            
+            <a 
+              href="#contacto" 
+              style={{ 
+                fontWeight: '600', 
+                color: '#43302E',
+                background: 'rgba(255, 255, 255, 0.9)',
+                padding: '0.6rem 1.8rem',
+                borderRadius: '50px',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                boxShadow: '0 4px 15px rgba(67, 48, 46, 0.08)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 1)';
+                e.target.style.boxShadow = '0 8px 25px rgba(67, 48, 46, 0.15)';
+                e.target.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                e.target.style.boxShadow = '0 4px 15px rgba(67, 48, 46, 0.08)';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
+              Contacto
+            </a>
+          </nav>
+        </div>
       </div>
-
-      {/* --- ESTILOS RESPONSIVE --- */}
-      <style>{`
-        @media (max-width: 768px) {
-          .menu-toggle {
-            display: flex !important;
-          }
-          .menu-mobile {
-            display: flex !important;
-          }
-        }
-        @media (min-width: 769px) {
-          .menu-mobile {
-            display: none !important;
-          }
-        }
-      `}</style>
     </header>
   );
 };
