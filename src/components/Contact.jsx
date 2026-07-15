@@ -16,7 +16,6 @@ const Contact = () => {
     setMessageStatus('');
     setStatusType('');
 
-    // Tus credenciales actualizadas
     const serviceID = 'service_b688zfe';
     const templateID = 'template_e4o4bid';
     const publicKey = 'SXN0-kx2b9qIMXOLQ';
@@ -41,7 +40,6 @@ const Contact = () => {
       background: 'linear-gradient(135deg, #FFF1B5 0%, #C1DBE8 100%)',
       position: 'relative'
     }}>
-      {/* Formas decorativas */}
       <div style={{
         position: 'absolute',
         width: '350px',
@@ -68,11 +66,11 @@ const Contact = () => {
       }}></div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <h2 style={{ fontSize: '3rem', fontWeight: '700', textAlign: 'center', marginBottom: '0.5rem' }}>
+        <h2 style={{ fontSize: '3rem', fontWeight: '700', textAlign: 'center', marginBottom: '0.5rem' }} data-aos="fade-up">
           <FaRegEnvelope style={{ marginRight: '0.8rem', color: '#43302E' }} />
           Contáctame
         </h2>
-        <p style={{ textAlign: 'center', color: '#43302E', opacity: 0.8, marginBottom: '2.5rem', fontSize: '1.1rem' }}>
+        <p style={{ textAlign: 'center', color: '#43302E', opacity: 0.8, marginBottom: '2.5rem', fontSize: '1.1rem' }} data-aos="fade-up" data-aos-delay="100">
           ¿Tienes un proyecto en mente? Escríbeme y hablemos
         </p>
 
@@ -85,7 +83,7 @@ const Contact = () => {
           borderRadius: '28px',
           boxShadow: '0 20px 50px rgba(67, 48, 46, 0.1)',
           border: '1px solid rgba(255, 255, 255, 0.4)'
-        }}>
+        }} data-aos="fade-up" data-aos-delay="200">
           <form ref={form} onSubmit={sendEmail}>
             <div style={{ marginBottom: '1.5rem' }}>
               <label htmlFor="user_name" style={{ display: 'block', fontWeight: '600', color: '#43302E', marginBottom: '0.5rem' }}>

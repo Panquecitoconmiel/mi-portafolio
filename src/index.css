@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Space Grotesk', system-ui, sans-serif;
   background: #FFF1B5; /* Buttermilk */
@@ -145,4 +149,12 @@ h1, h2, h3 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* --- AOS SOBRESCRIBIR --- */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
 }

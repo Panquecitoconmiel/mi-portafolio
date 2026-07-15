@@ -1,5 +1,6 @@
 // src/components/Hero.jsx
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
@@ -10,13 +11,17 @@ const Hero = () => {
       position: 'relative',
       background: 'linear-gradient(135deg, #FFF1B5 0%, #C1DBE8 100%)',
     }}>
-      {/* Formas decorativas con blur */}
       <div className="shape shape-1"></div>
       <div className="shape shape-2"></div>
       
       <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-        {/* Texto */}
-        <div style={{ flex: '1', minWidth: '300px' }}>
+        <motion.div 
+          style={{ flex: '1', minWidth: '300px' }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          data-aos="fade-right"
+        >
           <p style={{ color: '#43302E', fontWeight: '600', fontSize: '1.2rem', opacity: 0.8 }}>
             Hola, soy
           </p>
@@ -35,10 +40,15 @@ const Hero = () => {
             <a href="#proyectos" className="btn-primary">Ver proyectos</a>
             <a href="#contacto" className="btn-secondary">Contáctame</a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Foto con efecto de vidrio y sombra */}
-        <div style={{ flex: '0 0 auto' }}>
+        <motion.div 
+          style={{ flex: '0 0 auto' }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          data-aos="fade-left"
+        >
           <div style={{
             background: 'rgba(255, 255, 255, 0.3)',
             backdropFilter: 'blur(10px)',
@@ -58,7 +68,7 @@ const Hero = () => {
               }}
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

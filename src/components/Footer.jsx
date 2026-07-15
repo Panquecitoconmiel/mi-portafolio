@@ -1,6 +1,6 @@
 // src/components/Footer.jsx
 import React from 'react';
-import { FaLinkedin, FaGithub, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaInstagram, FaFacebook, FaPinterest } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -11,9 +11,8 @@ const Footer = () => {
       textAlign: 'center'
     }}>
       <div className="container">
-        {/* Redes sociales */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-          <a href="https://www.instagram.com/strawb.js" target="_blank" rel="noreferrer" style={{ 
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+          <a href="https://www.instagram.com/strawb.js/" target="_blank" rel="noreferrer" style={{ 
             color: '#FFF1B5', 
             display: 'flex', 
             alignItems: 'center', 
@@ -26,7 +25,7 @@ const Footer = () => {
           onMouseLeave={e => e.target.style.opacity = '0.8'}>
             <FaInstagram size={24} /> Instagram
           </a>
-          <a href="https://www.facebook.com/share/184oC9Kwp7/" target="_blank" rel="noreferrer" style={{ 
+          <a href="https://www.facebook.com/mijwi.tsx/" target="_blank" rel="noreferrer" style={{ 
             color: '#FFF1B5', 
             display: 'flex', 
             alignItems: 'center', 
@@ -38,6 +37,32 @@ const Footer = () => {
           onMouseEnter={e => e.target.style.opacity = '1'} 
           onMouseLeave={e => e.target.style.opacity = '0.8'}>
             <FaFacebook size={24} /> Facebook
+          </a>
+          <a href="https://www.linkedin.com/in/adriana-mora-6316a341b" target="_blank" rel="noreferrer" style={{ 
+            color: '#FFF1B5', 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.6rem', 
+            opacity: 0.8, 
+            transition: '0.3s',
+            fontSize: '1rem'
+          }}
+          onMouseEnter={e => e.target.style.opacity = '1'} 
+          onMouseLeave={e => e.target.style.opacity = '0.8'}>
+            <FaLinkedin size={24} /> LinkedIn
+          </a>
+          <a href="https://mx.pinterest.com/panquecitoconmiel1949/" target="_blank" rel="noreferrer" style={{ 
+            color: '#FFF1B5', 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.6rem', 
+            opacity: 0.8, 
+            transition: '0.3s',
+            fontSize: '1rem'
+          }}
+          onMouseEnter={e => e.target.style.opacity = '1'} 
+          onMouseLeave={e => e.target.style.opacity = '0.8'}>
+            <FaPinterest size={24} /> Pinterest
           </a>
           <a href="https://github.com/Panquecitoconmiel" target="_blank" rel="noreferrer" style={{ 
             color: '#FFF1B5', 
@@ -52,23 +77,10 @@ const Footer = () => {
           onMouseLeave={e => e.target.style.opacity = '0.8'}>
             <FaGithub size={24} /> GitHub
           </a>
-          <a href="#" target="_blank" rel="noreferrer" style={{ 
-            color: '#FFF1B5', 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '0.6rem', 
-            opacity: 0.8, 
-            transition: '0.3s',
-            fontSize: '1rem'
-          }}
-          onMouseEnter={e => e.target.style.opacity = '1'} 
-          onMouseLeave={e => e.target.style.opacity = '0.8'}>
-            <FaLinkedin size={24} /> LinkedIn
-          </a>
         </div>
 
         <p style={{ fontSize: '0.95rem', opacity: 0.6, letterSpacing: '0.5px' }}>
-          © 2025 Michelle Mora · Hecho con React y mucha creatividad
+          © 2025 Michelle Mora · Hecho con React, amor y mucho café ☕
         </p>
       </div>
     </footer>

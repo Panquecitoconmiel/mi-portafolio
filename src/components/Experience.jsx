@@ -54,7 +54,6 @@ const Experience = () => {
       padding: '5rem 0',
       background: 'linear-gradient(135deg, #FFF1B5 0%, #C1DBE8 100%)',
     }}>
-      {/* Formas decorativas con blur */}
       <div style={{
         position: 'absolute',
         width: '350px',
@@ -83,38 +82,41 @@ const Experience = () => {
       }}></div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <h2 style={{ fontSize: '3rem', fontWeight: '700', textAlign: 'center', marginBottom: '0.5rem' }}>
+        <h2 style={{ fontSize: '3rem', fontWeight: '700', textAlign: 'center', marginBottom: '0.5rem' }} data-aos="fade-up">
           Mi <span className="gradient-text">Trayectoria</span>
         </h2>
-        <p style={{ textAlign: 'center', color: '#43302E', opacity: 0.8, marginBottom: '3rem', fontSize: '1.1rem' }}>
+        <p style={{ textAlign: 'center', color: '#43302E', opacity: 0.8, marginBottom: '3rem', fontSize: '1.1rem' }} data-aos="fade-up" data-aos-delay="100">
           Experiencia profesional y prácticas que respaldan mi pasión por el desarrollo
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {experiences.map((exp, index) => (
-            <div key={exp.id} style={{
-              display: 'flex',
-              gap: '2rem',
-              flexWrap: 'wrap',
-              background: 'rgba(255, 255, 255, 0.6)',
-              backdropFilter: 'blur(15px)',
-              padding: '2rem 2.5rem',
-              borderRadius: '28px',
-              boxShadow: '0 15px 40px rgba(67, 48, 46, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.4)',
-              transition: 'all 0.4s ease',
-              alignItems: 'flex-start'
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateX(12px)';
-              e.currentTarget.style.boxShadow = '0 25px 50px rgba(67, 48, 46, 0.15)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'translateX(0)';
-              e.currentTarget.style.boxShadow = '0 15px 40px rgba(67, 48, 46, 0.08)';
-            }}>
-              
-              {/* Columna izquierda: Icono y fecha */}
+            <div 
+              key={exp.id} 
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              style={{
+                display: 'flex',
+                gap: '2rem',
+                flexWrap: 'wrap',
+                background: 'rgba(255, 255, 255, 0.6)',
+                backdropFilter: 'blur(15px)',
+                padding: '2rem 2.5rem',
+                borderRadius: '28px',
+                boxShadow: '0 15px 40px rgba(67, 48, 46, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.4)',
+                transition: 'all 0.4s ease',
+                alignItems: 'flex-start'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateX(12px)';
+                e.currentTarget.style.boxShadow = '0 25px 50px rgba(67, 48, 46, 0.15)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateX(0)';
+                e.currentTarget.style.boxShadow = '0 15px 40px rgba(67, 48, 46, 0.08)';
+              }}
+            >
               <div style={{ 
                 display: 'flex', 
                 flexDirection: 'column', 
@@ -152,7 +154,6 @@ const Experience = () => {
                 </div>
               </div>
 
-              {/* Columna derecha: Contenido */}
               <div style={{ flex: 1 }}>
                 <h3 style={{ fontSize: '1.6rem', fontWeight: '700', color: '#43302E', marginBottom: '0.2rem' }}>
                   {exp.title}
