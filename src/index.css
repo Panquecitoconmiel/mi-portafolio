@@ -13,7 +13,7 @@ html {
 
 body {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  background: #FFF1B5; /* Buttermilk */
+  background: #FFF1B5; 
   color: #43302E;
   line-height: 1.6;
   overflow-x: hidden;
@@ -37,7 +37,6 @@ section {
   position: relative;
 }
 
-/* --- FORMAS DECORATIVAS CON BLUR (Glassmorphism) --- */
 .shape {
   position: absolute;
   border-radius: 50%;
@@ -81,7 +80,6 @@ section {
   opacity: 0.3;
 }
 
-/* --- BOTONES CON GRADIENTE --- */
 .btn-primary {
   display: inline-block;
   background: linear-gradient(135deg, #43302E, #5a4542);
@@ -120,7 +118,6 @@ section {
   box-shadow: 0 8px 25px rgba(67, 48, 46, 0.2);
 }
 
-/* --- TARJETAS DE PROYECTOS (Glassmorphism) --- */
 .project-card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(15px);
@@ -138,7 +135,6 @@ section {
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* --- TIPOGRAFÍA LLAMATIVA --- */
 h1, h2, h3 {
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -151,7 +147,6 @@ h1, h2, h3 {
   background-clip: text;
 }
 
-/* --- AOS SOBRESCRIBIR --- */
 [data-aos] {
   pointer-events: none;
 }

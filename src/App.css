@@ -37,7 +37,6 @@ section {
   position: relative;
 }
 
-/* --- FORMAS DECORATIVAS CON BLUR --- */
 .shape {
   position: absolute;
   border-radius: 50%;
@@ -81,7 +80,6 @@ section {
   opacity: 0.3;
 }
 
-/* --- BOTONES --- */
 .btn-primary {
   display: inline-block;
   background: linear-gradient(135deg, #43302E, #5a4542);
@@ -122,7 +120,6 @@ section {
   box-shadow: 0 8px 25px rgba(67, 48, 46, 0.2);
 }
 
-/* --- TARJETAS DE PROYECTOS --- */
 .project-card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(15px);
@@ -140,7 +137,6 @@ section {
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* --- TIPOGRAFÍA --- */
 h1, h2, h3 {
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -153,7 +149,6 @@ h1, h2, h3 {
   background-clip: text;
 }
 
-/* --- MENÚ HAMBURGUESA --- */
 .hamburger {
   display: none;
   flex-direction: column;
