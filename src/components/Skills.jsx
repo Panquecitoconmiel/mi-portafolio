@@ -1,11 +1,11 @@
 // src/components/Skills.jsx
 import React from 'react';
 import { 
-  FaReact, FaLaravel, FaGitAlt, FaAndroid, FaHtml5, FaCss3Alt, FaPhp 
+  FaReact, FaLaravel, FaGitAlt, FaAndroid, FaHtml5, FaCss3Alt, FaPhp, FaPalette 
 } from 'react-icons/fa';
 import { 
   SiFirebase, SiIonic, SiAngular, SiMysql, SiSqlite, SiJavascript, 
-  SiTypescript, SiFigma, SiNotion, SiCanva, SiWix, SiTailwindcss 
+  SiTypescript, SiFigma, SiNotion, SiWix, SiTailwindcss 
 } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
@@ -51,7 +51,7 @@ const skillCategories = [
   {
     title: 'Diseño en Canva',
     skills: [
-      { name: 'Canva', icon: <SiCanva size={40} color="#00C4CC" /> },
+      { name: 'Canva', icon: <FaPalette size={40} color="#00C4CC" /> },
     ]
   },
   {
