@@ -16,11 +16,11 @@ const projectsData = [
   },
   {
     id: 2,
-    title: 'Control Escolar',
-    description: 'Sistema web y móvil para administración académica. Digitalización de planeaciones, asistencias, permisos y proyectos. Implementación de autenticación y gestión de roles con Firebase.',
-    tech: ['Ionic', 'Angular', 'Firebase', 'TypeScript'],
-    demo: '#', 
-    repo: 'https://github.com/Panquecitoconmiel'
+    title: 'Lolos Acarde',
+    description: 'Videojuegos clásicos en HTML, CSS y JS con estilo pastel y enfoque MVC.',
+    tech: ['JavaScript', 'HTML', 'CSS'],
+    demo: 'https://lolos-arcade.vercel.app/', 
+    repo: 'https://github.com/Panquecitoconmiel/lolos-arcade.git'
   },
   {
     id: 3,
