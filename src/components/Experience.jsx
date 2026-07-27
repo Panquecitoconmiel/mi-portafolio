@@ -9,10 +9,10 @@ const experiences = [
     company: 'IOMPAR',
     date: 'Enero 2026 – Abril 2026',
     description: `• Desarrollé plataformas web para gestión y monitoreo de operaciones.
-• Implementé autenticación segura con JWT y diseño de roles y permisos para control de acceso.
-• Consumí e integré APIs REST para conectar servicios de backend y frontend.
-• Construí servicios y consultas de backend orientados a la generación de reportes.
-• Realicé modelado de datos, tipado de interfaces, documentación técnica y mejora continua de procesos.`,
+- Implementé autenticación segura con JWT y diseño de roles y permisos para control de acceso.
+- Consumí e integré APIs REST para conectar servicios de backend y frontend.
+- Construí servicios y consultas de backend orientados a la generación de reportes.
+- Realicé modelado de datos, tipado de interfaces, documentación técnica y mejora continua de procesos.`,
     tech: ['React', 'Laravel', 'JWT', 'SQL', 'Git']
   },
   {
@@ -21,47 +21,58 @@ const experiences = [
     company: 'Colegio Agustín de Hipona',
     date: 'Mayo 2023',
     description: `• Desarrollé sistemas web y móviles para la administración escolar.
-• Digitalicé procesos académicos: planeaciones, asistencias, permisos y proyectos.
-• Implementé autenticación de usuarios y gestión de roles con Ionic, Angular y Firebase.
-• Desplegué aplicaciones web y móviles para uso institucional.`,
+- Digitalicé procesos académicos: planeaciones, asistencias, permisos y proyectos.
+- Implementé autenticación de usuarios y gestión de roles con Ionic, Angular y Firebase.
+- Desplegué aplicaciones web y móviles para uso institucional.`,
     tech: ['Ionic', 'Angular', 'Firebase', 'TypeScript']
   },
-  {
+{
     id: 3,
+    title: 'Diseñadora y Desarrolladora Web Freelance',
+    company: 'Mendoza Alcuadrado Consultoría Ambiental — Cliente: Roberto Agustín Mendoza Mendoza',
+    date: 'Mayo 2026 – Julio 2026',
+    description: `• Desarrollé el sitio web completo en Wix para una consultoría ambiental, desde cero hasta su publicación.
+- Diseñé la identidad visual de la marca: logo y tarjetas de presentación.
+- Trabajé de forma directa y presencial con el cliente para levantar requerimientos, iterar sobre el diseño y entregar un producto final funcional.
+- Gestioné el proyecto de manera autónoma, cubriendo diseño, desarrollo y atención al cliente.`,
+    tech: ['Wix', 'Diseño de marca', 'Figma', 'Branding', 'Trato con cliente']
+  },
+  {
+    id: 4,
     title: 'Encargada',
     company: 'La Condesa',
     date: 'Marzo 2024 – Abril 2026',
     description: `• Gestioné caja registradora, cortes de caja y recargas electrónicas.
-• Atendí al cliente y controlé inventarios y mercancía.`,
+- Atendí al cliente y controlé inventarios y mercancía.`,
     tech: ['Gestión', 'Atención al Cliente', 'Inventarios']
   },
   {
-    id: 4,
+    id: 5,
     title: 'Freelancer Independiente',
     company: 'Desarrolladora Web / Documentación Técnica',
     date: 'Julio 2022 – Actualidad',
     description: `• Desarrollo web freelance para la construcción de páginas web.
-• Documentación técnica de proyectos y desarrollo de software.
-• Atención a clientes y gestión de proyectos autónomos.`,
+- Documentación técnica de proyectos y desarrollo de software.
+- Atención a clientes y gestión de proyectos autónomos.`,
     tech: ['React', 'Laravel', 'Firebase', 'Git']
-  },
-  {
-    id: 5,
-    title: 'Vendedora',
-    company: 'Zuky el Kamikaze',
-    date: 'Enero 2025 – Diciembre 2025',
-    description: `• Atención a clientes y venta de ropa.
-• Gestión de cobros, control de inventario de mercancía y organización del punto de venta.`,
-    tech: ['Atención al Cliente', 'Gestión de Inventarios', 'Cobros']
   },
   {
     id: 6,
     title: 'Vendedora',
+    company: 'Zuky el Kamikaze',
+    date: 'Enero 2025 – Diciembre 2025',
+    description: `• Atención a clientes y venta de ropa.
+- Gestión de cobros, control de inventario de mercancía y organización del punto de venta.`,
+    tech: ['Atención al Cliente', 'Gestión de Inventarios', 'Cobros']
+  },
+  {
+    id: 7,
+    title: 'Vendedora',
     company: 'Esquites Miele',
     date: 'Enero 2013 – Marzo 2026',
     description: `• Atendí clientes y gestioné efectivo, cobros y cortes de caja en la venta de esquites.
-• Controlé inventarios e insumos, y coordiné con proveedores.
-• Organicé y supervisé actividades operativas del negocio, resolviendo problemas de forma autónoma.`,
+- Controlé inventarios e insumos, y coordiné con proveedores.
+- Organicé y supervisé actividades operativas del negocio, resolviendo problemas de forma autónoma.`,
     tech: ['Gestión', 'Coordinación', 'Atención al Cliente', 'Resolución de Problemas']
   }
 ];
