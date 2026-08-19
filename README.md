@@ -1,16 +1,72 @@
-# React + Vite
+# Mi Portafolio — Michelle Mora
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portafolio personal construido con **React + Vite**, con navegación real entre páginas mediante **React Router** (no es un link page de una sola sección: cada apartado vive en su propia ruta, con URL propia, botón atrás/adelante del navegador funcional y estado de carga independiente).
 
-Currently, two official plugins are available:
+🔗 Demo: https://mi-portafolio.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Rutas / Páginas
 
-## React Compiler
+| Ruta            | Página                                   |
+|-----------------|-------------------------------------------|
+| `/`             | Inicio (Hero + accesos rápidos)           |
+| `/experiencia`  | Trayectoria profesional                   |
+| `/habilidades`  | Tecnologías y herramientas                |
+| `/proyectos`    | Proyectos desarrollados                   |
+| `/cv`           | Currículum descargable                    |
+| `/contacto`     | Formulario de contacto (EmailJS)          |
+| `*`             | Página 404                                |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estructura del proyecto
 
-## Expanding the Oxlint configuration
+```
+src/
+├── components/       # Piezas reutilizables (Header, Footer, secciones, etc.)
+│   ├── Header.jsx         # Nav con React Router + menú hamburguesa en móvil
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── Experience.jsx
+│   ├── Skills.jsx
+│   ├── Projects.jsx
+│   ├── Resume.jsx
+│   ├── Contact.jsx
+│   ├── ScrollToTop.jsx    # Sube el scroll y refresca AOS al cambiar de ruta
+│   └── PageTransition.jsx # Animación de entrada/salida entre páginas
+├── pages/             # Una página por ruta, arma los componentes de arriba
+│   ├── Home.jsx
+│   ├── ExperienciaPage.jsx
+│   ├── HabilidadesPage.jsx
+│   ├── ProyectosPage.jsx
+│   ├── CVPage.jsx
+│   ├── ContactoPage.jsx
+│   └── NotFound.jsx
+├── App.jsx            # Define las rutas (React Router)
+├── main.jsx           # Punto de entrada, envuelve la app en BrowserRouter
+└── index.css          # Estilos globales
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Cómo correrlo localmente
+
+```bash
+npm install
+npm run dev
+```
+
+## Build de producción
+
+```bash
+npm run build
+npm run preview
+```
+
+## Despliegue
+
+El proyecto incluye `vercel.json` con un rewrite a `index.html` para que las rutas de React Router (como `/proyectos` o `/contacto`) funcionen correctamente al recargar la página o entrar directo por URL — necesario en cualquier Single Page Application con rutas del lado del cliente.
+
+## Stack
+
+- React 19 + Vite
+- React Router (navegación entre páginas)
+- Framer Motion (transiciones y animaciones)
+- AOS (animaciones al hacer scroll)
+- EmailJS (formulario de contacto)
+- React Icons

@@ -1,6 +1,6 @@
 // src/components/Projects.jsx
 import React from 'react';
-import { FaExternalLinkAlt, FaGithub, FaDownload } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaDownload, FaPaintBrush } from 'react-icons/fa';
 
 const projectsData = [
   {
@@ -12,21 +12,31 @@ const projectsData = [
     tech: ['Java', 'Android Studio', 'Firebase Auth', 'Firestore', 'XML'],
     demo: 'https://github.com/Panquecitoconmiel/Totomo.git',
     repo: 'https://github.com/Panquecitoconmiel/Totomo.git',
-    download: 'https://appdistribution.firebase.dev/i/bb81d10689b05e9e' // Enlace de Firebase App Distribution
+    download: 'https://appdistribution.firebase.dev/i/bb81d10689b05e9e'
   },
   {
     id: 2,
-    title: 'Control Escolar',
-    description: 'Sistema web y móvil para administración académica. Digitalización de planeaciones, asistencias, permisos y proyectos. Implementación de autenticación y gestión de roles con Firebase.',
-    tech: ['Ionic', 'Angular', 'Firebase', 'TypeScript'],
-    demo: '#', 
-    repo: 'https://github.com/Panquecitoconmiel'
+    title: 'Lolos Acarde',
+    description: 'Videojuegos clásicos en HTML, CSS y JS con estilo pastel y enfoque MVC.',
+    tech: ['JavaScript', 'HTML', 'CSS'],
+    demo: 'https://lolos-arcade.vercel.app/', 
+    repo: 'https://github.com/Panquecitoconmiel/lolos-arcade.git'
+  },
+  {
+    id: 3,
+    title: 'Mendoza Alcuadrado - Consultoría Ambiental',
+    description: `Proyecto freelance para un cliente real: desarrollo completo de sitio web en Wix para una 
+    consultoría ambiental. Incluyó diseño de identidad visual (logo y tarjetas de presentación) y trabajo 
+    directo con el cliente para entender sus necesidades, desde la propuesta de diseño hasta la publicación final.`,
+    tech: ['Wix', 'Diseño de marca', 'Figma', 'Branding', 'Trato con cliente'],
+    demo: 'https://www.mendozaalcuadradoconsulambiental.com/',
+    isExternal: true
   }
 ];
 
 const Projects = () => {
   return (
-    <section id="proyectos" style={{ 
+    <section style={{ 
       position: 'relative',
       background: 'linear-gradient(135deg, #FFF1B5 0%, #C1DBE8 100%)',
     }}>
@@ -34,10 +44,14 @@ const Projects = () => {
       <div className="shape shape-4"></div>
       
       <div className="container">
-        <h2 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '2.5rem', textAlign: 'center' }} data-aos="fade-up">
-          Mis <span className="gradient-text">Proyectos</span>
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+        <div className="eyebrow" data-aos="fade-up">Lo que he construido</div>
+        <div className="section-head" data-aos="fade-up">
+          <span className="index-num">03</span>
+          <h2 style={{ fontSize: '2.8rem', fontWeight: '700' }}>
+            Mis <span className="gradient-text">Proyectos</span>
+          </h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', marginTop: '2.5rem' }}>
           {projectsData.map((project, index) => (
             <div 
               key={project.id} 
@@ -68,32 +82,50 @@ const Projects = () => {
                 ))}
               </div>
               <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                <a href={project.demo} target="_blank" rel="noreferrer" style={{ 
-                  color: '#43302E', 
-                  fontWeight: '600', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '0.6rem',
-                  transition: '0.3s',
-                  borderBottom: '2px solid transparent'
-                }} 
-                onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
-                onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
-                  <FaExternalLinkAlt size={14} /> Demo
-                </a>
-                <a href={project.repo} target="_blank" rel="noreferrer" style={{ 
-                  color: '#43302E', 
-                  fontWeight: '600', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '0.6rem',
-                  transition: '0.3s',
-                  borderBottom: '2px solid transparent'
-                }}
-                onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
-                onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
-                  <FaGithub size={14} /> Código
-                </a>
+                {project.isExternal ? (
+                  <a href={project.demo} target="_blank" rel="noreferrer" style={{ 
+                    color: '#43302E', 
+                    fontWeight: '600', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '0.6rem',
+                    transition: '0.3s',
+                    borderBottom: '2px solid transparent'
+                  }} 
+                  onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
+                  onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
+                    <FaPaintBrush size={14} /> Ver sitio publicado
+                  </a>
+                ) : (
+                  <>
+                    <a href={project.demo} target="_blank" rel="noreferrer" style={{ 
+                      color: '#43302E', 
+                      fontWeight: '600', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '0.6rem',
+                      transition: '0.3s',
+                      borderBottom: '2px solid transparent'
+                    }} 
+                    onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
+                    onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
+                      <FaExternalLinkAlt size={14} /> Demo
+                    </a>
+                    <a href={project.repo} target="_blank" rel="noreferrer" style={{ 
+                      color: '#43302E', 
+                      fontWeight: '600', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '0.6rem',
+                      transition: '0.3s',
+                      borderBottom: '2px solid transparent'
+                    }}
+                    onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
+                    onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
+                      <FaGithub size={14} /> Código
+                    </a>
+                  </>
+                )}
                 {project.download && (
                   <a href={project.download} target="_blank" rel="noreferrer" style={{ 
                     color: '#43302E', 

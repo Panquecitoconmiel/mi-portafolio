@@ -1,10 +1,11 @@
 // src/components/Hero.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section id="sobre-mi" style={{ 
+    <section style={{ 
       minHeight: '80vh', 
       display: 'flex', 
       alignItems: 'center', 
@@ -22,9 +23,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           data-aos="fade-right"
         >
-          <p style={{ color: '#43302E', fontWeight: '600', fontSize: '1.2rem', opacity: 0.8 }}>
-            Hola, soy
-          </p>
+          <div className="eyebrow">Hola, soy Michelle ✦</div>
           <h1 style={{ fontSize: '4.2rem', fontWeight: '800', margin: '0.5rem 0', color: '#43302E', lineHeight: '1.1' }}>
             Michelle <span className="gradient-text">Mora</span>
           </h1>
@@ -37,13 +36,13 @@ const Hero = () => {
             Transformo ideas en código limpio, funcional y visualmente atractivo.
           </p>
           <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-            <a href="#proyectos" className="btn-primary">Ver proyectos</a>
-            <a href="#contacto" className="btn-secondary">Contáctame</a>
+            <Link to="/proyectos" className="btn-primary">Ver proyectos</Link>
+            <Link to="/contacto" className="btn-secondary">Contáctame</Link>
           </div>
         </motion.div>
 
         <motion.div 
-          style={{ flex: '0 0 auto' }}
+          style={{ flex: '0 0 auto', position: 'relative' }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
@@ -54,7 +53,9 @@ const Hero = () => {
             backdropFilter: 'blur(10px)',
             borderRadius: '50%',
             padding: '8px',
-            boxShadow: '0 30px 60px rgba(67, 48, 46, 0.2)'
+            boxShadow: '0 30px 60px rgba(67, 48, 46, 0.2)',
+            border: '3px dashed rgba(67, 48, 46, 0.25)',
+            position: 'relative',
           }}>
             <img 
               src="/assets/yo.svg" 
@@ -68,6 +69,15 @@ const Hero = () => {
               }}
             />
           </div>
+          <motion.span
+            className="sticker-badge"
+            style={{ bottom: '-4px', left: '-40px', transform: 'rotate(-8deg)' }}
+            initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
+            animate={{ opacity: 1, scale: 1, rotate: -8 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            ✦ Disponible para proyectos
+          </motion.span>
         </motion.div>
       </div>
     </section>

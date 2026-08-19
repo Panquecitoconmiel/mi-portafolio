@@ -1,34 +1,44 @@
 // src/App.jsx
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import PageTransition from './components/PageTransition';
+import Home from './pages/Home';
+import ExperienciaPage from './pages/ExperienciaPage';
+import HabilidadesPage from './pages/HabilidadesPage';
+import ProyectosPage from './pages/ProyectosPage';
+import CVPage from './pages/CVPage';
+import ContactoPage from './pages/ContactoPage';
+import NotFound from './pages/NotFound';
 import './index.css';
-import Resume from './components/Resume';
 
 function App() {
+  const location = useLocation();
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
+    <>
+      <ScrollToTop />
       <Header />
       <main>
-        <Hero />
-        <Experience />
-        <Skills />
-          <Resume />   
-        <Projects />
-        <Contact />
+        <AnimatePresence mode="wait">
+          <PageTransition key={location.pathname}>
+            <Routes location={location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/experiencia" element={<ExperienciaPage />} />
+              <Route path="/habilidades" element={<HabilidadesPage />} />
+              <Route path="/proyectos" element={<ProyectosPage />} />
+              <Route path="/cv" element={<CVPage />} />
+              <Route path="/contacto" element={<ContactoPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </PageTransition>
+        </AnimatePresence>
       </main>
       <Footer />
-    </motion.div>
+    </>
   );
 }
 

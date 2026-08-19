@@ -35,7 +35,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" style={{ 
+    <section style={{ 
       padding: '5rem 0',
       background: 'linear-gradient(135deg, #FFF1B5 0%, #C1DBE8 100%)',
       position: 'relative'
@@ -66,11 +66,15 @@ const Contact = () => {
       }}></div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <h2 style={{ fontSize: '3rem', fontWeight: '700', textAlign: 'center', marginBottom: '0.5rem' }} data-aos="fade-up">
-          <FaRegEnvelope style={{ marginRight: '0.8rem', color: '#43302E' }} />
-          Contáctame
-        </h2>
-        <p style={{ textAlign: 'center', color: '#43302E', opacity: 0.8, marginBottom: '2.5rem', fontSize: '1.1rem' }} data-aos="fade-up" data-aos-delay="100">
+        <div className="eyebrow" data-aos="fade-up">Hablemos</div>
+        <div className="section-head" data-aos="fade-up">
+          <span className="index-num">05</span>
+          <h2 style={{ fontSize: '2.8rem', fontWeight: '700' }}>
+            <FaRegEnvelope style={{ marginRight: '0.6rem', color: '#43302E' }} />
+            Contáctame
+          </h2>
+        </div>
+        <p style={{ color: '#43302E', opacity: 0.8, marginBottom: '2.5rem', fontSize: '1.1rem' }} data-aos="fade-up" data-aos-delay="100">
           ¿Tienes un proyecto en mente? Escríbeme y hablemos
         </p>
 

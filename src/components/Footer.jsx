@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
 
         <p style={{ fontSize: '0.95rem', opacity: 0.6, letterSpacing: '0.5px' }}>
-          © 2025 Michelle Mora · Hecho con React, amor y mucho café ☕
+          © 2025 Michelle Mora · Hecho con React y mucho café con leche. Todos los derechos reservados.
         </p>
       </div>
     </footer>

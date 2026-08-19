@@ -1,5 +1,5 @@
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Space+Mono:wght@400;700&display=swap');
 
 * {
   margin: 0;
@@ -13,10 +13,12 @@ html {
 
 body {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  background: #FFF1B5; /* Buttermilk */
+  background: #FFF1B5; 
   color: #43302E;
   line-height: 1.6;
   overflow-x: hidden;
+  background-image: radial-gradient(rgba(67, 48, 46, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 a {
@@ -37,7 +39,6 @@ section {
   position: relative;
 }
 
-/* --- FORMAS DECORATIVAS CON BLUR (Glassmorphism) --- */
 .shape {
   position: absolute;
   border-radius: 50%;
@@ -81,7 +82,6 @@ section {
   opacity: 0.3;
 }
 
-/* --- BOTONES CON GRADIENTE --- */
 .btn-primary {
   display: inline-block;
   background: linear-gradient(135deg, #43302E, #5a4542);
@@ -120,12 +120,11 @@ section {
   box-shadow: 0 8px 25px rgba(67, 48, 46, 0.2);
 }
 
-/* --- TARJETAS DE PROYECTOS (Glassmorphism) --- */
 .project-card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(15px);
   padding: 2rem;
-  border-radius: 28px;
+  border-radius: 32px 10px 32px 10px;
   box-shadow: 0 20px 50px rgba(67, 48, 46, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.4s ease;
@@ -138,8 +137,8 @@ section {
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* --- TIPOGRAFÍA LLAMATIVA --- */
 h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -151,10 +150,251 @@ h1, h2, h3 {
   background-clip: text;
 }
 
-/* --- AOS SOBRESCRIBIR --- */
 [data-aos] {
   pointer-events: none;
 }
 [data-aos].aos-animate {
   pointer-events: auto;
+}
+
+/* ---- Navegación / menú móvil ---- */
+.nav-links {
+  display: flex;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #43302E;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+@media (max-width: 768px) {
+  .header-spacer {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem !important;
+    padding: 0.5rem 0 0.2rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  section {
+    padding: 3rem 0;
+  }
+}
+
+/* ---- Página 404 ---- */
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 4rem 0;
+}
+
+/* ---- Tarjetas de navegación rápida (Home) ---- */
+.quick-link-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  box-shadow: 0 10px 30px rgba(67, 48, 46, 0.08);
+  transition: all 0.35s ease;
+}
+
+.quick-link-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(67, 48, 46, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================================
+   ACENTOS ESTILO EDITORIAL (inspirado en portafolios JP/KR)
+   ========================================================== */
+
+/* Etiqueta pequeña tipo "eyebrow" arriba de los títulos de sección */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #43302E;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(67, 48, 46, 0.15);
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #43302E;
+  display: inline-block;
+}
+
+/* Cabecera de sección: número + título + línea decorativa */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.section-head .index-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(67, 48, 46, 0.35);
+  border: 1px solid rgba(67, 48, 46, 0.25);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dotted-divider {
+  border: none;
+  border-top: 2px dashed rgba(67, 48, 46, 0.25);
+  margin: 3rem 0;
+}
+
+/* Insignia tipo sticker, ligeramente rotada */
+.sticker-badge {
+  position: absolute;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: #43302E;
+  color: #FFF1B5;
+  padding: 0.55rem 1.1rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(67, 48, 46, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 2px solid #FFF1B5;
+}
+
+/* Tarjetas con esquinas asimétricas ("recorte" tipo sticker) */
+.sticker-card {
+  border-radius: 36px 12px 36px 12px;
+}
+
+/* Franja de texto en movimiento continuo (marquee) */
+.marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+  background: #43302E;
+  padding: 1rem 0;
+  transform: rotate(-1.2deg);
+  box-shadow: 0 10px 30px rgba(67, 48, 46, 0.2);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track span {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFF1B5;
+  white-space: nowrap;
+  padding: 0 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.marquee-track span::after {
+  content: '✦';
+  margin-left: 1.5rem;
+  opacity: 0.5;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Chips de etiquetas (tecnologías, tags) */
+.tag-chip {
+  background: rgba(193, 219, 232, 0.5);
+  backdrop-filter: blur(5px);
+  color: #43302E;
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.3);
+  display: inline-block;
 }
