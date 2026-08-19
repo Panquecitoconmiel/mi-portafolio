@@ -1,6 +1,6 @@
 // src/components/Resume.jsx
 import React from 'react';
-import { FaDownload, FaFilePdf } from 'react-icons/fa';
+import { FaDownload, FaGraduationCap, FaMapMarkerAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const cvPdf = '/assets/Michelle_Mora_CV.pdf';
@@ -41,10 +41,6 @@ const education = [
 ];
 
 const Resume = () => {
-  // Ruta a la imagen de tu CV en la carpeta public
-  const cvImage = '/assets/cv-preview.jpg'; // Cambia por el nombre de tu archivo
-  const cvPdf = '/assets/Michelle_Mora_CV.pdf'; 
-
   return (
     <section
       style={{
@@ -64,148 +60,182 @@ const Resume = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 style={{ 
-            fontSize: '3rem', 
-            fontWeight: '700', 
-            textAlign: 'center', 
-            marginBottom: '0.5rem' 
-          }}>
-            Mi <span className="gradient-text">Currículum</span>
-          </h2>
-          <p style={{ 
-            textAlign: 'center', 
-            color: '#43302E', 
-            opacity: 0.8, 
-            marginBottom: '3rem', 
-            fontSize: '1.1rem' 
-          }}>
-            Conoce mi trayectoria profesional y descarga mi CV completo
+          <div className="eyebrow">Descarga mi CV</div>
+          <div className="section-head">
+            <span className="index-num">04</span>
+            <h2 style={{ fontSize: '2.8rem', fontWeight: '700' }}>
+              Mi <span className="gradient-text">Currículum</span>
+            </h2>
+          </div>
+          <p style={{ color: '#43302E', opacity: 0.85, marginBottom: '2.5rem', fontSize: '1.05rem', maxWidth: '650px', lineHeight: '1.7' }}>
+            Egresada de Ingeniería en Desarrollo y Gestión de Software (promedio 9.7) y Técnica en Programación,
+            con experiencia práctica en desarrollo web, captura y administración de información, control de
+            inventarios y atención directa a clientes. Me adapto con rapidez a nuevos sistemas y tecnologías.
           </p>
         </motion.div>
 
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '2.5rem'
-        }}>
-          {/* Vista previa del CV */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            style={{
-              width: '100%',
-              maxWidth: '700px',
-              background: 'rgba(255, 255, 255, 0.6)',
-              backdropFilter: 'blur(15px)',
-              borderRadius: '28px',
-              padding: '1.5rem',
-              boxShadow: '0 20px 50px rgba(67, 48, 46, 0.12)',
-              border: '1px solid rgba(255, 255, 255, 0.4)',
-              transition: '0.3s'
-            }}
-            whileHover={{
-              boxShadow: '0 30px 60px rgba(67, 48, 46, 0.18)',
-              y: -5
-            }}
-          >
-            <div style={{
-              borderRadius: '16px',
-              overflow: 'hidden',
-              boxShadow: '0 8px 25px rgba(67, 48, 46, 0.1)'
-            }}>
-              <img 
-                src={cvImage} 
-                alt="Vista previa del CV de Michelle Mora" 
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block',
-                  aspectRatio: '1 / 1.4',
-                  objectFit: 'cover'
-                }}
-              />
-            </div>
-          </motion.div>
+        {/* Botón de descarga destacado */}
+        <motion.a
+          href={cvPdf}
+          download="CV_Michelle_Mora.pdf"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1.5rem',
+            flexWrap: 'wrap',
+            background: 'linear-gradient(135deg, #43302E, #5a4542)',
+            color: '#FFF1B5',
+            padding: '1.8rem 2.5rem',
+            borderRadius: '32px 10px 32px 10px',
+            textDecoration: 'none',
+            boxShadow: '0 20px 45px rgba(67, 48, 46, 0.3)',
+            marginBottom: '3rem',
+            transition: '0.3s',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-4px)';
+            e.currentTarget.style.boxShadow = '0 26px 55px rgba(67, 48, 46, 0.4)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 20px 45px rgba(67, 48, 46, 0.3)';
+          }}
+        >
+          <div>
+            <p style={{ fontSize: '0.8rem', opacity: 0.7, fontWeight: '600', letterSpacing: '0.05em', marginBottom: '0.3rem' }}>
+              PDF · ACTUALIZADO
+            </p>
+            <p style={{ fontSize: '1.4rem', fontWeight: '700' }}>Descargar CV completo</p>
+          </div>
+          <div style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '50%',
+            background: '#FFF1B5',
+            color: '#43302E',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.4rem',
+            flexShrink: 0,
+          }}>
+            <FaDownload />
+          </div>
+        </motion.a>
 
-          {/* Botones de descarga */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '1.2rem'
-            }}
-          >
-            <a 
-              href={cvPdf} 
-              download 
-              className="btn-primary"
+        {/* Stats */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '3rem',
+          }}
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -4 }}
+              className="sticker-card"
               style={{
+                background: 'rgba(255, 255, 255, 0.6)',
+                backdropFilter: 'blur(15px)',
+                padding: '1.5rem',
+                boxShadow: '0 10px 30px rgba(67, 48, 46, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.4)',
                 display: 'flex',
-                alignItems: 'center',
-                gap: '0.8rem',
-                padding: '0.9rem 2.5rem',
-                background: 'linear-gradient(135deg, #43302E, #5a4542)',
-                color: '#FFF1B5',
-                borderRadius: '50px',
-                fontWeight: '600',
-                textDecoration: 'none',
-                transition: '0.3s',
-                boxShadow: '0 8px 25px rgba(67, 48, 46, 0.25)'
-              }}
-              onMouseEnter={e => {
-                e.target.style.transform = 'translateY(-3px)';
-                e.target.style.boxShadow = '0 12px 35px rgba(67, 48, 46, 0.35)';
-              }}
-              onMouseLeave={e => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 8px 25px rgba(67, 48, 46, 0.25)';
+                flexDirection: 'column',
+                justifyContent: 'center',
+                minHeight: '130px',
               }}
             >
-              <FaDownload /> Descargar PDF
-            </a>
-            
-            <a 
-              href={cvImage} 
-              download="CV_Michelle_Mora.jpg"
-              className="btn-secondary"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.8rem',
-                padding: '0.9rem 2.5rem',
-                background: 'transparent',
-                color: '#43302E',
-                borderRadius: '50px',
-                fontWeight: '600',
-                border: '2px solid #43302E',
-                textDecoration: 'none',
-                transition: '0.3s'
-              }}
-              onMouseEnter={e => {
-                e.target.style.background = '#43302E';
-                e.target.style.color = '#FFF1B5';
-                e.target.style.transform = 'translateY(-3px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(67, 48, 46, 0.2)';
-              }}
-              onMouseLeave={e => {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#43302E';
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
-              }}
-            >
-              <FaFilePdf /> Ver imagen
-            </a>
-          </motion.div>
+              <span style={{ fontSize: '2.2rem', fontWeight: '700', color: '#43302E', fontFamily: "'Fraunces', serif" }}>
+                {stat.value}
+              </span>
+              <span style={{ fontSize: '0.9rem', color: '#43302E', opacity: 0.7, fontWeight: '500' }}>
+                {stat.label}
+              </span>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Highlights */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '0.8rem',
+            marginBottom: '3.5rem',
+          }}
+        >
+          {highlights.map((item, i) => (
+            <span key={i} className="tag-chip" style={{ fontSize: '0.9rem', padding: '0.5rem 1.3rem' }}>
+              {item}
+            </span>
+          ))}
+        </div>
+
+        <hr className="dotted-divider" />
+
+        {/* Educación */}
+        <div className="eyebrow">Educación</div>
+        <div className="section-head">
+          <span className="index-num">
+            <FaGraduationCap />
+          </span>
+          <h3 style={{ fontSize: '1.8rem', fontWeight: '700' }}>Formación académica</h3>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+          {education.map((edu, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              viewport={{ once: true }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.45)',
+                backdropFilter: 'blur(10px)',
+                padding: '1.5rem 2rem',
+                borderRadius: '20px',
+                border: '1px dashed rgba(67, 48, 46, 0.25)',
+              }}
+            >
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '0.5rem', marginBottom: '0.3rem' }}>
+                <h4 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#43302E' }}>{edu.title}</h4>
+                <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#43302E', opacity: 0.55 }}>{edu.date}</span>
+              </div>
+              <p style={{ color: '#43302E', opacity: 0.75, fontSize: '0.95rem', marginBottom: edu.detail ? '0.3rem' : 0 }}>
+                {edu.school}
+              </p>
+              {edu.detail && (
+                <p style={{ color: '#43302E', opacity: 0.65, fontSize: '0.9rem' }}>{edu.detail}</p>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        <p style={{
+          marginTop: '2.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.6rem',
+          color: '#43302E',
+          opacity: 0.7,
+          fontSize: '0.95rem',
+        }}>
+          <FaMapMarkerAlt /> Iztapalapa, Ciudad de México · Disponibilidad de tiempo completo, presencial
+        </p>
       </div>
     </section>
   );
