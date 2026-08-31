@@ -13,25 +13,25 @@ const marqueeItems = [
 const quickLinks = [
   {
     to: '/experiencia',
-    icon: <FaBriefcase size={28} color="#43302E" />,
+    icon: <FaBriefcase size={28} color="#1a1a1a" />,
     title: 'Experiencia',
     text: 'Mi trayectoria en desarrollo y otros roles profesionales.',
   },
   {
     to: '/habilidades',
-    icon: <FaCode size={28} color="#43302E" />,
+    icon: <FaCode size={28} color="#1a1a1a" />,
     title: 'Habilidades',
     text: 'Tecnologías y herramientas que domino.',
   },
   {
     to: '/proyectos',
-    icon: <FaFolderOpen size={28} color="#43302E" />,
+    icon: <FaFolderOpen size={28} color="#1a1a1a" />,
     title: 'Proyectos',
     text: 'Aplicaciones y sitios que he desarrollado.',
   },
   {
     to: '/cv',
-    icon: <FaFileAlt size={28} color="#43302E" />,
+    icon: <FaFileAlt size={28} color="#1a1a1a" />,
     title: 'CV',
     text: 'Descarga mi currículum actualizado en PDF.',
   },
@@ -68,10 +68,10 @@ const Home = () => {
                 data-aos-delay={index * 100}
               >
                 {item.icon}
-                <h3 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#43302E' }}>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#1a1a1a' }}>
                   {item.title}
                 </h3>
-                <p style={{ color: '#43302E', opacity: 0.75, fontSize: '0.95rem' }}>
+                <p style={{ color: '#1a1a1a', opacity: 0.75, fontSize: '0.95rem' }}>
                   {item.text}
                 </p>
               </Link>

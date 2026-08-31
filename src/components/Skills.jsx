@@ -49,11 +49,11 @@ const skillCategories = [
     title: 'Administración & Ofimática',
     skills: [
       { name: 'Excel avanzado', icon: <FaFileExcel size={38} color="#207245" /> },
-      { name: 'Bases de datos', icon: <FaDatabase size={38} color="#43302E" /> },
+      { name: 'Bases de datos', icon: <FaDatabase size={38} color="#1a1a1a" /> },
       { name: 'Windows', icon: <FaWindows size={38} color="#0078D4" /> },
-      { name: 'Seguridad informática', icon: <FaShieldAlt size={38} color="#43302E" /> },
-      { name: 'Sistemas POS / ERP', icon: <FaCashRegister size={38} color="#43302E" /> },
-      { name: 'Informes e inventarios', icon: <FaClipboardList size={38} color="#43302E" /> },
+      { name: 'Seguridad informática', icon: <FaShieldAlt size={38} color="#1a1a1a" /> },
+      { name: 'Sistemas POS / ERP', icon: <FaCashRegister size={38} color="#1a1a1a" /> },
+      { name: 'Informes e inventarios', icon: <FaClipboardList size={38} color="#1a1a1a" /> },
     ]
   },
   {
@@ -77,7 +77,7 @@ const Skills = () => {
   };
 
   return (
-    <section style={{ padding: '4rem 0', background: 'rgba(255, 241, 181, 0.3)' }}>
+    <section style={{ padding: '4rem 0', background: 'rgba(245, 245, 244, 0.3)' }}>
       <div className="container">
         <div className="eyebrow" data-aos="fade-up">Lo que sé usar</div>
         <div className="section-head" data-aos="fade-up">
@@ -97,7 +97,7 @@ const Skills = () => {
                   background: 'rgba(255,255,255,0.6)',
                   backdropFilter: 'blur(10px)',
                   borderRadius: '20px',
-                  boxShadow: '0 10px 30px rgba(67,48,46,0.08)',
+                  boxShadow: '0 10px 30px rgba(26,26,26,0.08)',
                   overflow: 'hidden',
                   border: '1px solid rgba(255,255,255,0.4)'
                 }}
@@ -117,7 +117,7 @@ const Skills = () => {
                     cursor: 'pointer',
                     fontSize: '1.3rem',
                     fontWeight: '700',
-                    color: '#43302E',
+                    color: '#1a1a1a',
                     fontFamily: 'inherit'
                   }}
                 >
@@ -126,7 +126,7 @@ const Skills = () => {
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <FaChevronDown color="#43302E" />
+                    <FaChevronDown color="#1a1a1a" />
                   </motion.div>
                 </button>
 
@@ -161,19 +161,19 @@ const Skills = () => {
                               background: 'rgba(255,255,255,0.7)',
                               padding: '1.2rem 1.6rem',
                               borderRadius: '16px',
-                              boxShadow: '0 6px 18px rgba(67,48,46,0.06)',
+                              boxShadow: '0 6px 18px rgba(26,26,26,0.06)',
                               transition: '0.3s',
                               minWidth: '90px',
                               cursor: 'default'
                             }}
                             whileHover={{ 
                               y: -6,
-                              boxShadow: '0 15px 30px rgba(67,48,46,0.15)',
+                              boxShadow: '0 15px 30px rgba(26,26,26,0.15)',
                               background: 'rgba(255,255,255,1)'
                             }}
                           >
                             {skill.icon}
-                            <span style={{ fontWeight: '600', color: '#43302E', fontSize: '0.9rem' }}>
+                            <span style={{ fontWeight: '600', color: '#1a1a1a', fontSize: '0.9rem' }}>
                               {skill.name}
                             </span>
                           </motion.div>
