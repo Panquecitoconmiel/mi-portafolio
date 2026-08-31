@@ -49,11 +49,11 @@ const skillCategories = [
     title: 'Administración & Ofimática',
     skills: [
       { name: 'Excel avanzado', icon: <FaFileExcel size={38} color="#207245" /> },
-      { name: 'Bases de datos', icon: <FaDatabase size={38} color="#1a1a1a" /> },
+      { name: 'Bases de datos', icon: <FaDatabase size={38} color="#a61e4d" /> },
       { name: 'Windows', icon: <FaWindows size={38} color="#0078D4" /> },
-      { name: 'Seguridad informática', icon: <FaShieldAlt size={38} color="#1a1a1a" /> },
-      { name: 'Sistemas POS / ERP', icon: <FaCashRegister size={38} color="#1a1a1a" /> },
-      { name: 'Informes e inventarios', icon: <FaClipboardList size={38} color="#1a1a1a" /> },
+      { name: 'Seguridad informática', icon: <FaShieldAlt size={38} color="#a61e4d" /> },
+      { name: 'Sistemas POS / ERP', icon: <FaCashRegister size={38} color="#a61e4d" /> },
+      { name: 'Informes e inventarios', icon: <FaClipboardList size={38} color="#a61e4d" /> },
     ]
   },
   {
@@ -77,7 +77,7 @@ const Skills = () => {
   };
 
   return (
-    <section style={{ padding: '4rem 0', background: 'rgba(245, 245, 244, 0.3)' }}>
+    <section style={{ padding: '4rem 0', background: 'rgba(255, 240, 246, 0.3)' }}>
       <div className="container">
         <div className="eyebrow" data-aos="fade-up">Lo que sé usar</div>
         <div className="section-head" data-aos="fade-up">
@@ -117,7 +117,7 @@ const Skills = () => {
                     cursor: 'pointer',
                     fontSize: '1.3rem',
                     fontWeight: '700',
-                    color: '#1a1a1a',
+                    color: '#a61e4d',
                     fontFamily: 'inherit'
                   }}
                 >
@@ -126,7 +126,7 @@ const Skills = () => {
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <FaChevronDown color="#1a1a1a" />
+                    <FaChevronDown color="#a61e4d" />
                   </motion.div>
                 </button>
 
@@ -173,7 +173,7 @@ const Skills = () => {
                             }}
                           >
                             {skill.icon}
-                            <span style={{ fontWeight: '600', color: '#1a1a1a', fontSize: '0.9rem' }}>
+                            <span style={{ fontWeight: '600', color: '#a61e4d', fontSize: '0.9rem' }}>
                               {skill.name}
                             </span>
                           </motion.div>

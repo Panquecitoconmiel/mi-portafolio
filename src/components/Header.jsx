@@ -13,20 +13,20 @@ const navItems = [
 
 const linkBaseStyle = {
   fontWeight: '600',
-  color: '#1a1a1a',
+  color: '#a61e4d',
   background: 'rgba(255, 255, 255, 0.9)',
   padding: '0.6rem 1.8rem',
   borderRadius: '50px',
   border: '1px solid rgba(255, 255, 255, 0.6)',
-  boxShadow: '0 4px 15px rgba(26, 26, 26, 0.08)',
+  boxShadow: '0 4px 15px rgba(166, 30, 77, 0.08)',
   transition: 'all 0.3s ease',
   display: 'inline-block',
 };
 
 const linkActiveStyle = {
-  background: '#f5f5f4',
-  color: '#1a1a1a',
-  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.35)',
+  background: '#a61e4d',
+  color: '#fff0f6',
+  boxShadow: '0 8px 25px rgba(166, 30, 77, 0.35)',
 };
 
 const Header = () => {
@@ -42,10 +42,10 @@ const Header = () => {
     <header
       style={{
         padding: '0',
-        background: '#1a1a1a',
-        backgroundImage:
-          'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
-        backgroundSize: '26px 26px',
+        backgroundImage: 'url(/assets/kawaii-header-strip.jpg)',
+        backgroundRepeat: 'repeat-x',
+        backgroundSize: 'auto 100%',
+        backgroundPosition: 'top left',
         position: 'sticky',
         top: 0,
         zIndex: 100,
@@ -53,9 +53,9 @@ const Header = () => {
     >
       <div
         style={{
-          background: 'rgba(26, 26, 26, 0.85)',
+          background: 'rgba(255, 240, 246, 0.88)',
           padding: '1.2rem 0 1rem 0',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          borderBottom: '2px solid rgba(166, 30, 77, 0.15)',
           width: '100%',
           backdropFilter: 'blur(6px)',
         }}
@@ -80,7 +80,7 @@ const Header = () => {
             <div style={{ width: '40px' }} className="header-spacer" />
 
             {/* Logo grande y centrado, sobre una base blanca para que resalte
-                sobre el fondo oscuro del header */}
+                sobre el fondo de cuadros rosa del header */}
             <Link
               to="/"
               style={{
@@ -90,17 +90,17 @@ const Header = () => {
                 background: '#ffffff',
                 borderRadius: '28px',
                 padding: '0.6rem 1.4rem',
-                boxShadow: '0 10px 30px rgba(26, 26, 26, 0.18)',
-                border: '2px solid rgba(26, 26, 26, 0.1)',
+                boxShadow: '0 10px 30px rgba(166, 30, 77, 0.18)',
+                border: '2px solid rgba(166, 30, 77, 0.1)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px) rotate(-1deg)';
-                e.currentTarget.style.boxShadow = '0 16px 36px rgba(26, 26, 26, 0.25)';
+                e.currentTarget.style.boxShadow = '0 16px 36px rgba(166, 30, 77, 0.25)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0) rotate(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(26, 26, 26, 0.18)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(166, 30, 77, 0.18)';
               }}
               aria-label="Ir al inicio"
             >
