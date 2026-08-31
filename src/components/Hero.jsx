@@ -15,42 +15,54 @@ const Hero = () => {
       <div className="shape shape-1"></div>
       <div className="shape shape-2"></div>
       
-      <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-        <motion.div 
-          style={{ flex: '1', minWidth: '300px' }}
+      <div className="container hero-grid">
+        <div className="hero-eyebrow-area">
+          <div className="eyebrow">{'</> '}Hola, soy Michelle</div>
+        </div>
+
+        <motion.div
+          className="hero-name-area"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          data-aos="fade-right"
         >
-          <div className="eyebrow">{'</> '}Hola, soy Michelle</div>
           <h1 style={{ fontSize: '4.2rem', fontWeight: '800', margin: '0.5rem 0', color: '#a61e4d', lineHeight: '1.1' }}>
             Michelle <span className="gradient-text">Mora</span>
             <span className="blink-cursor" aria-hidden="true">_</span>
           </h1>
-          <h2 style={{ fontSize: '1.3rem', fontWeight: '500', color: '#a61e4d', opacity: 0.85, marginBottom: '1.5rem', fontFamily: "'Space Mono', monospace", lineHeight: '1.8' }}>
+        </motion.div>
+
+        <div className="hero-role-area">
+          <h2 className="hero-role-code" style={{ fontSize: '1.3rem', fontWeight: '500', color: '#a61e4d', opacity: 0.85, marginBottom: '1.5rem', fontFamily: "'Space Mono', monospace", lineHeight: '1.8' }}>
             <span style={{ opacity: 0.5 }}>const</span> rol <span style={{ opacity: 0.5 }}>=</span>{' '}
             <span style={{ fontWeight: '700' }}>'Desarrolladora Frontend React'</span>;
             <br />
             <span style={{ opacity: 0.5 }}>{'// '}Ingeniera en Desarrollo de Software</span>
           </h2>
+          <p className="hero-role-plain" style={{ fontSize: '1.05rem', fontWeight: '600', color: '#a61e4d', opacity: 0.85, marginBottom: '1.5rem' }}>
+            Desarrolladora Frontend React · Ingeniera en Desarrollo de Software
+          </p>
+        </div>
+
+        <div className="hero-desc-area">
           <p style={{ fontSize: '1.2rem', color: '#a61e4d', opacity: 0.8, marginBottom: '2.5rem' }}>
-            Apasionada por crear interfaces intuitivas y experiencias web memorables. 
-            Con experiencia en <strong>React, Laravel, Ionic, Angular, Firebase y JWT</strong>. 
+            Apasionada por crear interfaces intuitivas y experiencias web memorables.
+            Con experiencia en <strong>React, Laravel, Ionic, Angular, Firebase y JWT</strong>.
             Transformo ideas en código limpio, funcional y visualmente atractivo.
           </p>
-          <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-            <Link to="/proyectos" className="btn-primary">Ver proyectos</Link>
-            <Link to="/contacto" className="btn-secondary">Contáctame</Link>
-          </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          style={{ flex: '0 0 auto', position: 'relative' }}
+        <div className="hero-actions-area" style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
+          <Link to="/proyectos" className="btn-primary">Ver proyectos</Link>
+          <Link to="/contacto" className="btn-secondary">Contáctame</Link>
+        </div>
+
+        <motion.div
+          className="hero-photo-area"
+          style={{ position: 'relative' }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          data-aos="fade-left"
         >
           <div style={{
             background: 'rgba(255, 255, 255, 0.3)',

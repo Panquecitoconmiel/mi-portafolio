@@ -478,3 +478,60 @@ h1, h2, h3 {
     animation: none;
   }
 }
+
+/* ---- Hero: distribución en grid para poder reordenar en móvil ---- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'eyebrow photo'
+    'name    photo'
+    'role    photo'
+    'desc    photo'
+    'actions photo';
+  column-gap: 4rem;
+  align-items: center;
+}
+
+.hero-eyebrow-area { grid-area: eyebrow; }
+.hero-name-area { grid-area: name; }
+.hero-role-area { grid-area: role; }
+.hero-desc-area { grid-area: desc; }
+.hero-actions-area { grid-area: actions; }
+.hero-photo-area { grid-area: photo; justify-self: center; }
+
+/* En escritorio se ve el estilo "código"; la versión en texto normal
+   queda oculta y solo se muestra en móvil */
+.hero-role-plain {
+  display: none;
+}
+
+/* Hero en móvil: primero el nombre, luego la foto, y después el resto.
+   También se cambia la línea de "rol" a texto normal, sin apariencia de código.
+   Este bloque va después de las reglas base de arriba para ganar la cascada. */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'name'
+      'photo'
+      'eyebrow'
+      'role'
+      'desc'
+      'actions';
+    row-gap: 1.25rem;
+    text-align: center;
+  }
+
+  .hero-actions-area {
+    justify-content: center;
+  }
+
+  .hero-role-code {
+    display: none;
+  }
+
+  .hero-role-plain {
+    display: block;
+  }
+}
