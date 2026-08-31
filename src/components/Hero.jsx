@@ -62,7 +62,7 @@ const Hero = () => {
             position: 'relative',
           }}>
             <img
-              src="/assets/yo.svg"
+              src="/assets/yo.jpg"
               alt="Michelle Mora"
               className="hero-photo"
               style={{
