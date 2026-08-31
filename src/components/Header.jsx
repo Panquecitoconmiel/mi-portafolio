@@ -79,8 +79,8 @@ const Header = () => {
           >
             <div style={{ width: '40px' }} className="header-spacer" />
 
-            {/* Logo grande y centrado, sobre una base blanca para que resalte
-                sobre el fondo de cuadros rosa del header */}
+            {/* Logo compacto, sin tarjeta ni efectos llamativos, para una
+                presentación más sobria sobre el header */}
             <Link
               to="/"
               style={{
@@ -88,19 +88,17 @@ const Header = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 background: '#ffffff',
-                borderRadius: '28px',
-                padding: '0.6rem 1.4rem',
-                boxShadow: '0 10px 30px rgba(166, 30, 77, 0.18)',
-                border: '2px solid rgba(166, 30, 77, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                borderRadius: '14px',
+                padding: '0.3rem 0.7rem',
+                boxShadow: '0 4px 14px rgba(166, 30, 77, 0.12)',
+                border: '1px solid rgba(166, 30, 77, 0.1)',
+                transition: 'box-shadow 0.3s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px) rotate(-1deg)';
-                e.currentTarget.style.boxShadow = '0 16px 36px rgba(166, 30, 77, 0.25)';
+                e.currentTarget.style.boxShadow = '0 6px 18px rgba(166, 30, 77, 0.18)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) rotate(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(166, 30, 77, 0.18)';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(166, 30, 77, 0.12)';
               }}
               aria-label="Ir al inicio"
             >
@@ -108,7 +106,7 @@ const Header = () => {
                 src="/assets/lolosdev.svg"
                 alt="Logo Lolos Dev"
                 style={{
-                  height: '92px',
+                  height: '52px',
                   width: 'auto',
                   display: 'block',
                 }}

@@ -75,23 +75,6 @@ const Hero = () => {
               }}
             />
           </div>
-          <motion.img
-            src="/assets/kawaii-bear.gif"
-            alt=""
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              top: '-42px',
-              right: '-52px',
-              width: '112px',
-              height: 'auto',
-              filter: 'drop-shadow(0 12px 20px rgba(166, 30, 77, 0.3))',
-              pointerEvents: 'none',
-            }}
-            initial={{ opacity: 0, scale: 0.6, rotate: 20 }}
-            animate={{ opacity: 1, scale: 1, rotate: 8 }}
-            transition={{ duration: 0.6, delay: 0.65 }}
-          />
           <motion.span
             className="sticker-badge"
             style={{ bottom: '-4px', left: '-40px', transform: 'rotate(-8deg)' }}

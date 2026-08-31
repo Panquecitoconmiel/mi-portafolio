@@ -12,7 +12,7 @@ const Footer = () => {
     }}>
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-          <a href="https://www.instagram.com/strawb.js/" target="_blank" rel="noreferrer" style={{ 
+          <a href="https://www.instagram.com/lolosdev.xyz" target="_blank" rel="noreferrer" style={{ 
             color: '#fff0f6', 
             display: 'flex', 
             alignItems: 'center', 
