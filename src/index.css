@@ -11,9 +11,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ---- Cursor personalizado (solo en este sitio) ---- */
+/* ---- Cursor personalizado (solo en este sitio): el conejito con moño ---- */
 body {
-  cursor: url('/assets/cursor-default.svg') 3 2, auto;
+  cursor: url('/assets/cursor-default.png') 4 4, auto;
 }
 
 a,
@@ -22,7 +22,7 @@ button,
 [role='button'],
 input[type='submit'],
 label[for] {
-  cursor: url('/assets/cursor-pointer.svg') 16 16, pointer;
+  cursor: url('/assets/cursor-pointer.png') 4 4, pointer;
 }
 
 @media (pointer: coarse) {
