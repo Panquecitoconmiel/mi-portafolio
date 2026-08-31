@@ -60,6 +60,7 @@ const Hero = () => {
             boxShadow: '0 30px 60px rgba(26, 26, 26, 0.2)',
             border: '3px dashed rgba(26, 26, 26, 0.25)',
             position: 'relative',
+            overflow: 'hidden',
           }}>
             <img
               src="/assets/yo.jpg"

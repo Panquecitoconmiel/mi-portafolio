@@ -452,14 +452,14 @@ h1, h2, h3 {
   display: inline-block;
 }
 
-/* Foto de perfil en escala de grises, revela color al pasar el cursor */
+/* Foto de perfil a color, con un realce sutil de contraste */
 .hero-photo {
-  filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.5s ease;
+  filter: contrast(1.05);
+  transition: transform 0.4s ease;
 }
 
 .hero-photo:hover {
-  filter: grayscale(0%) contrast(1.05);
+  transform: scale(1.04);
 }
 
 /* Cursor de terminal parpadeante, acento "frontend" junto al nombre en el Hero */

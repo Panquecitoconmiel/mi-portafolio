@@ -7,7 +7,8 @@ const cvPdf = '/assets/Michelle_Mora_CV.pdf';
 
 const stats = [
   { label: 'Promedio de egreso', value: '9.7' },
-  { label: 'Años de experiencia', value: '4+' },
+  { label: 'Año como desarrolladora', value: '1' },
+  { label: 'Años en otros roles profesionales', value: '3' },
   { label: 'Idiomas', value: '2' },
   { label: 'Tecnologías y herramientas', value: '15+' },
 ];
