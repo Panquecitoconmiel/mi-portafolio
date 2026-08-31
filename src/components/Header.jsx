@@ -42,10 +42,7 @@ const Header = () => {
     <header
       style={{
         padding: '0',
-        backgroundImage: 'url(/assets/kawaii-header-strip.jpg)',
-        backgroundRepeat: 'repeat-x',
-        backgroundSize: 'auto 100%',
-        backgroundPosition: 'top left',
+        background: '#faf7f5',
         position: 'sticky',
         top: 0,
         zIndex: 100,
@@ -53,7 +50,7 @@ const Header = () => {
     >
       <div
         style={{
-          background: 'rgba(255, 240, 246, 0.88)',
+          background: 'rgba(250, 247, 245, 0.9)',
           padding: '1.2rem 0 1rem 0',
           borderBottom: '2px solid rgba(166, 30, 77, 0.15)',
           width: '100%',

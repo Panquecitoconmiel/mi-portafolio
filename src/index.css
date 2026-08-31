@@ -39,13 +39,10 @@ label[for] {
 
 body {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  background-color: #fff0f6;
+  background-color: #faf7f5;
   color: #a61e4d;
   line-height: 1.6;
   overflow-x: hidden;
-  background-image: url('/assets/kawaii-body-bg.jpg');
-  background-repeat: repeat;
-  background-size: 368px 207px;
 }
 
 ::selection {
