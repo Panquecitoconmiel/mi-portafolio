@@ -38,7 +38,7 @@ const Projects = () => {
   return (
     <section style={{ 
       position: 'relative',
-      background: 'linear-gradient(135deg, #FFF1B5 0%, #C1DBE8 100%)',
+      background: 'linear-gradient(135deg, #fff0f6 0%, #ffb3d1 100%)',
     }}>
       <div className="shape shape-3"></div>
       <div className="shape shape-4"></div>
@@ -59,18 +59,18 @@ const Projects = () => {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: '#43302E', marginBottom: '0.8rem' }}>
+              <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: '#a61e4d', marginBottom: '0.8rem' }}>
                 {project.title}
               </h3>
-              <p style={{ color: '#43302E', opacity: 0.8, marginBottom: '1.2rem', whiteSpace: 'pre-line' }}>
+              <p style={{ color: '#a61e4d', opacity: 0.8, marginBottom: '1.2rem', whiteSpace: 'pre-line' }}>
                 {project.description}
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.8rem' }}>
                 {project.tech.map((tech, idx) => (
                   <span key={idx} style={{ 
-                    background: 'rgba(193, 219, 232, 0.5)', 
+                    background: 'rgba(255, 179, 209, 0.5)', 
                     backdropFilter: 'blur(5px)',
-                    color: '#43302E', 
+                    color: '#a61e4d', 
                     padding: '0.3rem 1rem', 
                     borderRadius: '50px', 
                     fontSize: '0.8rem', 
@@ -84,7 +84,7 @@ const Projects = () => {
               <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
                 {project.isExternal ? (
                   <a href={project.demo} target="_blank" rel="noreferrer" style={{ 
-                    color: '#43302E', 
+                    color: '#a61e4d', 
                     fontWeight: '600', 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -92,14 +92,14 @@ const Projects = () => {
                     transition: '0.3s',
                     borderBottom: '2px solid transparent'
                   }} 
-                  onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
+                  onMouseEnter={e => e.target.style.borderBottom = '2px solid #ffb3d1'} 
                   onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
                     <FaPaintBrush size={14} /> Ver sitio publicado
                   </a>
                 ) : (
                   <>
                     <a href={project.demo} target="_blank" rel="noreferrer" style={{ 
-                      color: '#43302E', 
+                      color: '#a61e4d', 
                       fontWeight: '600', 
                       display: 'flex', 
                       alignItems: 'center', 
@@ -107,12 +107,12 @@ const Projects = () => {
                       transition: '0.3s',
                       borderBottom: '2px solid transparent'
                     }} 
-                    onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
+                    onMouseEnter={e => e.target.style.borderBottom = '2px solid #ffb3d1'} 
                     onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
                       <FaExternalLinkAlt size={14} /> Demo
                     </a>
                     <a href={project.repo} target="_blank" rel="noreferrer" style={{ 
-                      color: '#43302E', 
+                      color: '#a61e4d', 
                       fontWeight: '600', 
                       display: 'flex', 
                       alignItems: 'center', 
@@ -120,7 +120,7 @@ const Projects = () => {
                       transition: '0.3s',
                       borderBottom: '2px solid transparent'
                     }}
-                    onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
+                    onMouseEnter={e => e.target.style.borderBottom = '2px solid #ffb3d1'} 
                     onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
                       <FaGithub size={14} /> Código
                     </a>
@@ -128,7 +128,7 @@ const Projects = () => {
                 )}
                 {project.download && (
                   <a href={project.download} target="_blank" rel="noreferrer" style={{ 
-                    color: '#43302E', 
+                    color: '#a61e4d', 
                     fontWeight: '600', 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -136,7 +136,7 @@ const Projects = () => {
                     transition: '0.3s',
                     borderBottom: '2px solid transparent'
                   }}
-                  onMouseEnter={e => e.target.style.borderBottom = '2px solid #C1DBE8'} 
+                  onMouseEnter={e => e.target.style.borderBottom = '2px solid #ffb3d1'} 
                   onMouseLeave={e => e.target.style.borderBottom = '2px solid transparent'}>
                     <FaDownload size={14} /> APK
                   </a>

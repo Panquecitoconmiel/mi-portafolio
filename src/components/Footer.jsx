@@ -5,15 +5,15 @@ import { FaLinkedin, FaGithub, FaInstagram, FaFacebook, FaPinterest } from 'reac
 const Footer = () => {
   return (
     <footer style={{ 
-      background: 'linear-gradient(135deg, #43302E, #5a4542)',
-      color: '#FFF1B5', 
+      background: 'linear-gradient(135deg, #a61e4d, #6b1439)',
+      color: '#fff0f6', 
       padding: '2.5rem 0',
       textAlign: 'center'
     }}>
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-          <a href="https://www.instagram.com/strawb.js/" target="_blank" rel="noreferrer" style={{ 
-            color: '#FFF1B5', 
+          <a href="https://www.instagram.com/lolosdev.xyz" target="_blank" rel="noreferrer" style={{ 
+            color: '#fff0f6', 
             display: 'flex', 
             alignItems: 'center', 
             gap: '0.6rem', 
@@ -26,7 +26,7 @@ const Footer = () => {
             <FaInstagram size={24} /> Instagram
           </a>
           <a href="https://www.facebook.com/mijwi.tsx/" target="_blank" rel="noreferrer" style={{ 
-            color: '#FFF1B5', 
+            color: '#fff0f6', 
             display: 'flex', 
             alignItems: 'center', 
             gap: '0.6rem', 
@@ -39,7 +39,7 @@ const Footer = () => {
             <FaFacebook size={24} /> Facebook
           </a>
           <a href="https://www.linkedin.com/in/adriana-mora-6316a341b" target="_blank" rel="noreferrer" style={{ 
-            color: '#FFF1B5', 
+            color: '#fff0f6', 
             display: 'flex', 
             alignItems: 'center', 
             gap: '0.6rem', 
@@ -52,7 +52,7 @@ const Footer = () => {
             <FaLinkedin size={24} /> LinkedIn
           </a>
           <a href="https://mx.pinterest.com/panquecitoconmiel1949/" target="_blank" rel="noreferrer" style={{ 
-            color: '#FFF1B5', 
+            color: '#fff0f6', 
             display: 'flex', 
             alignItems: 'center', 
             gap: '0.6rem', 
@@ -65,7 +65,7 @@ const Footer = () => {
             <FaPinterest size={24} /> Pinterest
           </a>
           <a href="https://github.com/Panquecitoconmiel" target="_blank" rel="noreferrer" style={{ 
-            color: '#FFF1B5', 
+            color: '#fff0f6', 
             display: 'flex', 
             alignItems: 'center', 
             gap: '0.6rem', 

@@ -13,20 +13,20 @@ const navItems = [
 
 const linkBaseStyle = {
   fontWeight: '600',
-  color: '#43302E',
+  color: '#a61e4d',
   background: 'rgba(255, 255, 255, 0.9)',
   padding: '0.6rem 1.8rem',
   borderRadius: '50px',
   border: '1px solid rgba(255, 255, 255, 0.6)',
-  boxShadow: '0 4px 15px rgba(67, 48, 46, 0.08)',
+  boxShadow: '0 4px 15px rgba(166, 30, 77, 0.08)',
   transition: 'all 0.3s ease',
   display: 'inline-block',
 };
 
 const linkActiveStyle = {
-  background: '#43302E',
-  color: '#FFF1B5',
-  boxShadow: '0 8px 25px rgba(67, 48, 46, 0.25)',
+  background: '#a61e4d',
+  color: '#fff0f6',
+  boxShadow: '0 8px 25px rgba(166, 30, 77, 0.35)',
 };
 
 const Header = () => {
@@ -42,9 +42,7 @@ const Header = () => {
     <header
       style={{
         padding: '0',
-        backgroundImage: 'url(/assets/header-bg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        background: '#faf7f5',
         position: 'sticky',
         top: 0,
         zIndex: 100,
@@ -52,9 +50,9 @@ const Header = () => {
     >
       <div
         style={{
-          background: 'rgba(255, 250, 227, 0.92)',
+          background: 'rgba(250, 247, 245, 0.9)',
           padding: '1.2rem 0 1rem 0',
-          borderBottom: '1px solid rgba(193, 219, 232, 0.4)',
+          borderBottom: '2px solid rgba(166, 30, 77, 0.15)',
           width: '100%',
           backdropFilter: 'blur(6px)',
         }}
@@ -78,28 +76,26 @@ const Header = () => {
           >
             <div style={{ width: '40px' }} className="header-spacer" />
 
-            {/* Logo grande y centrado, sobre una base blanca para que resalte
-                sobre el fondo de cuadros del header */}
+            {/* Logo compacto, sin tarjeta ni efectos llamativos, para una
+                presentación más sobria sobre el header */}
             <Link
               to="/"
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: '#FFFDF6',
-                borderRadius: '28px',
-                padding: '0.6rem 1.4rem',
-                boxShadow: '0 10px 30px rgba(67, 48, 46, 0.18)',
-                border: '2px solid rgba(67, 48, 46, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                background: '#ffffff',
+                borderRadius: '14px',
+                padding: '0.3rem 0.7rem',
+                boxShadow: '0 4px 14px rgba(166, 30, 77, 0.12)',
+                border: '1px solid rgba(166, 30, 77, 0.1)',
+                transition: 'box-shadow 0.3s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px) rotate(-1deg)';
-                e.currentTarget.style.boxShadow = '0 16px 36px rgba(67, 48, 46, 0.25)';
+                e.currentTarget.style.boxShadow = '0 6px 18px rgba(166, 30, 77, 0.18)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) rotate(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(67, 48, 46, 0.18)';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(166, 30, 77, 0.12)';
               }}
               aria-label="Ir al inicio"
             >
@@ -107,7 +103,7 @@ const Header = () => {
                 src="/assets/lolosdev.svg"
                 alt="Logo Lolos Dev"
                 style={{
-                  height: '92px',
+                  height: '52px',
                   width: 'auto',
                   display: 'block',
                 }}
