@@ -42,7 +42,7 @@ const Footer = () => {
                 </a>
               )}
             </div>
-            <Link to="/contacto" className="btn-light" style={{ padding: '0.7rem 1.6rem', fontSize: '0.9rem' }}>
+            <Link to="/contacto" className="btn-light" style={{ fontSize: '0.92rem' }}>
               Cotiza tu página web
             </Link>
           </div>

@@ -53,7 +53,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-actions-area" style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-          <Link to="/precios" className="btn-primary">Ver precios ✦</Link>
+          <Link to="/precios" className="btn-primary">Ver precios</Link>
           <Link to="/proyectos" className="btn-secondary">Ver proyectos</Link>
         </div>
 
