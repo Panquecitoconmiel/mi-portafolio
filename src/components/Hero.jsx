@@ -64,16 +64,21 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.55)',
-            backdropFilter: 'blur(10px)',
-            borderRadius: '50%',
-            padding: '8px',
-            boxShadow: '0 30px 60px rgba(214, 51, 108, 0.2)',
-            border: '3px dashed rgba(236, 72, 153, 0.45)',
-            position: 'relative',
-            overflow: 'hidden',
-          }}>
+          <svg className="photo-bow" viewBox="0 0 120 70" aria-hidden="true">
+            <defs>
+              <pattern id="bow-gingham" width="10" height="10" patternUnits="userSpaceOnUse">
+                <rect width="10" height="10" fill="#fff" />
+                <rect width="5" height="10" fill="#e11d48" opacity="0.6" />
+                <rect width="10" height="5" fill="#e11d48" opacity="0.6" />
+              </pattern>
+            </defs>
+            <path d="M54 34 L22 50 L30 68 L50 44 Z" fill="#e11d48" stroke="#9f1239" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M66 34 L98 50 L90 68 L70 44 Z" fill="#e11d48" stroke="#9f1239" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M58 32 C40 4 6 4 8 26 C10 46 40 44 58 36 Z" fill="url(#bow-gingham)" stroke="#9f1239" strokeWidth="2.5" strokeLinejoin="round" />
+            <path d="M62 32 C80 4 114 4 112 26 C110 46 80 44 62 36 Z" fill="url(#bow-gingham)" stroke="#9f1239" strokeWidth="2.5" strokeLinejoin="round" />
+            <rect x="50" y="24" width="20" height="20" rx="7" fill="#e11d48" stroke="#9f1239" strokeWidth="2.5" />
+          </svg>
+          <div className="photo-frame">
             <img
               src="/assets/yo.jpg"
               alt="Michelle Mora"

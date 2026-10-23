@@ -17,6 +17,7 @@
   --grad-primary: linear-gradient(135deg, #f0609e 0%, #d6336c 55%, #b0175a 100%);
   --grad-text: linear-gradient(120deg, #ec4899 0%, #d6336c 50%, #ff8fc0 100%);
   --section-bg:
+    radial-gradient(rgba(236, 72, 153, 0.13) 2px, transparent 2.5px) 0 0 / 26px 26px,
     radial-gradient(1200px 500px at 85% -10%, rgba(255, 196, 221, 0.75), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, rgba(255, 143, 192, 0.35), transparent 60%),
     linear-gradient(180deg, #fff1f7 0%, #ffe3ef 100%);
@@ -1302,4 +1303,487 @@ a.contact-method:hover {
   * {
     transition: none !important;
   }
+}
+
+/* ==========================================================
+   ESTILO PICNIC: PARCHES, COSTURAS Y CUADRITOS EN TODO EL SITIO
+   ========================================================== */
+:root {
+  --gingham-band:
+    repeating-linear-gradient(90deg, rgba(225, 29, 72, 0.6) 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(0deg, rgba(225, 29, 72, 0.6) 0 6px, transparent 6px 12px),
+    #fff;
+  --gingham-white:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.45) 0 6px, transparent 6px 12px);
+  --stitch: 1.5px dashed rgba(225, 29, 72, 0.4);
+  --polka: radial-gradient(rgba(236, 72, 153, 0.13) 2px, transparent 2.5px) 0 0 / 26px 26px;
+}
+
+/* Lunares suaves en los fondos de sección */
+section {
+  background-image: var(--polka);
+}
+
+/* ---- Parche: tarjeta blanca con franja de cuadritos y costura ---- */
+.patch,
+.project-card,
+.quick-link-card,
+.price-card:not(.featured),
+.form-card {
+  position: relative;
+  background: #fff !important;
+  border: 1.5px solid rgba(225, 29, 72, 0.18) !important;
+  border-radius: 26px !important;
+  box-shadow: 0 6px 0 #ffd5e5, 0 22px 45px rgba(214, 51, 108, 0.12) !important;
+  outline: var(--stitch);
+  outline-offset: -9px;
+  overflow: hidden;
+  backdrop-filter: none !important;
+}
+
+.patch::before,
+.project-card::before,
+.quick-link-card::before,
+.price-card::before,
+.form-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 14px;
+  background: var(--gingham-band);
+  pointer-events: none;
+}
+
+.patch,
+.project-card,
+.quick-link-card,
+.price-card,
+.form-card {
+  padding-top: calc(14px + 1.8rem) !important;
+}
+
+.patch:hover,
+.project-card:hover,
+.quick-link-card:hover,
+.price-card:not(.featured):hover {
+  box-shadow: 0 8px 0 #ffc4dd, 0 28px 55px rgba(214, 51, 108, 0.2) !important;
+}
+
+/* Parche suave (sin franja), para listas secundarias */
+.patch-soft {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1.5px solid rgba(225, 29, 72, 0.15) !important;
+  border-radius: 22px !important;
+  outline: var(--stitch);
+  outline-offset: -7px;
+  box-shadow: 0 4px 0 #ffe0ec !important;
+}
+
+/* La tarjeta destacada de precios: rojo/rosa con cuadritos blancos arriba */
+.price-card.featured {
+  overflow: visible;
+  outline: 1.5px dashed rgba(255, 255, 255, 0.6);
+  outline-offset: -9px;
+  box-shadow: 0 7px 0 var(--red-deep), 0 30px 70px rgba(225, 29, 72, 0.35) !important;
+}
+
+.price-card.featured::before {
+  background: var(--gingham-white), transparent;
+  border-radius: 28px 28px 0 0;
+}
+
+.price-badge {
+  top: -16px;
+  background: #fff;
+  color: var(--red);
+  border: 1.5px dashed var(--red);
+  outline: 4px solid #fff;
+  z-index: 2;
+}
+
+/* Íconos en cuadritos */
+.price-icon,
+.quick-link-icon {
+  background: var(--red) !important;
+  color: #fff !important;
+  border-radius: 16px;
+  outline: 1.5px dashed rgba(255, 255, 255, 0.7);
+  outline-offset: -5px;
+  box-shadow: 0 4px 0 var(--red-deep);
+}
+
+.price-card.featured .price-icon {
+  background: #fff !important;
+  color: var(--red) !important;
+  outline-color: rgba(225, 29, 72, 0.5);
+  box-shadow: 0 4px 0 rgba(110, 15, 58, 0.4);
+}
+
+.price-features li svg {
+  color: var(--red);
+}
+
+.price-amount {
+  color: var(--red-deep);
+}
+
+.price-note {
+  color: var(--red);
+}
+
+/* ---- Menú: la página activa queda como un parchecito ---- */
+.nav-link.active {
+  background: #fff;
+  color: var(--red-deep);
+  box-shadow: inset 0 0 0 1.5px rgba(225, 29, 72, 0.35), 0 3px 0 #ffd5e5;
+  outline: 1.5px dashed rgba(225, 29, 72, 0.35);
+  outline-offset: -5px;
+}
+
+.nav-link:hover {
+  background: rgba(255, 213, 229, 0.6);
+}
+
+.site-header {
+  border-bottom: none;
+}
+
+.site-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 6px;
+  background: var(--gingham-band);
+  background-size: 12px 12px;
+  opacity: 0.9;
+}
+
+.brand-logo {
+  outline: 1.5px dashed rgba(225, 29, 72, 0.4);
+  outline-offset: -5px;
+  box-shadow: 0 4px 0 #ffd5e5;
+}
+
+/* ---- Etiquetas pequeñas (eyebrow) ---- */
+.eyebrow {
+  color: var(--red);
+  background: #fff;
+  border: 1.5px solid rgba(225, 29, 72, 0.3);
+  outline: 1px dashed rgba(225, 29, 72, 0.4);
+  outline-offset: -5px;
+  padding: 0.45rem 1.1rem;
+  box-shadow: 0 3px 0 #ffd5e5;
+}
+
+.eyebrow::before {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--gingham-band);
+  background-size: 6px 6px;
+  box-shadow: 0 0 0 1.5px var(--red);
+}
+
+/* Número de sección: botón de costura */
+.section-head .index-num {
+  color: #fff;
+  background: var(--red);
+  border: none;
+  outline: 1.5px dashed rgba(255, 255, 255, 0.7);
+  outline-offset: -5px;
+  box-shadow: 0 4px 0 var(--red-deep);
+  font-weight: 500;
+}
+
+.dotted-divider {
+  border-top: 2px dashed rgba(225, 29, 72, 0.35);
+  position: relative;
+  overflow: visible;
+}
+
+.dotted-divider::after {
+  content: '❤';
+  position: absolute;
+  left: 50%;
+  top: -0.85rem;
+  transform: translateX(-50%);
+  color: var(--red);
+  background: var(--cream);
+  padding: 0 0.8rem;
+  font-size: 1.1rem;
+}
+
+/* ---- Chips ---- */
+.tag-chip {
+  background: #fff;
+  color: var(--red-deep);
+  border: 1.5px solid rgba(225, 29, 72, 0.3);
+  outline: 1px dashed rgba(225, 29, 72, 0.35);
+  outline-offset: -4px;
+  padding: 0.35rem 0.95rem;
+}
+
+/* ---- Foto del hero: marco de cuadritos ---- */
+.photo-frame {
+  padding: 14px;
+  border-radius: 50%;
+  background: var(--gingham-band);
+  background-size: 14px 14px;
+  box-shadow: 0 8px 0 var(--red-deep), 0 30px 60px rgba(225, 29, 72, 0.3);
+  position: relative;
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  border: 2px dashed #fff;
+  pointer-events: none;
+}
+
+.photo-frame img {
+  border: 5px solid #fff;
+}
+
+.photo-bow {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  z-index: 3;
+  width: 124px;
+  height: auto;
+  transform: translateX(-50%) rotate(-6deg);
+  filter: drop-shadow(0 4px 0 rgba(110, 15, 58, 0.25));
+  pointer-events: none;
+}
+
+.sticker-badge {
+  background: var(--red);
+  outline: 1.5px dashed rgba(255, 255, 255, 0.75);
+  outline-offset: -5px;
+  border: 3px solid #fff;
+  box-shadow: 0 5px 0 var(--red-deep), 0 14px 25px rgba(225, 29, 72, 0.35);
+  padding: 0.65rem 1.2rem;
+}
+
+.blink-cursor {
+  color: var(--red);
+}
+
+/* ---- Franja en movimiento: listón rojo con orillas de cuadritos ---- */
+.marquee-wrap {
+  background: var(--red);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-image: repeating-linear-gradient(90deg, #fff 0 8px, #ffc1d0 8px 16px) 8;
+  box-shadow: 0 10px 30px rgba(225, 29, 72, 0.3);
+}
+
+.marquee-track span::after {
+  content: '❤';
+  font-size: 0.85em;
+}
+
+/* ---- Habilidades ---- */
+.skill-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 100px;
+  padding: 1.1rem 1.3rem;
+  border-radius: 18px;
+  background: #fff;
+  border: 1.5px solid rgba(225, 29, 72, 0.15);
+  outline: 1px dashed rgba(225, 29, 72, 0.3);
+  outline-offset: -6px;
+  box-shadow: 0 4px 0 #ffe0ec;
+  cursor: default;
+}
+
+.skill-tile span {
+  font-weight: 700;
+  color: var(--red-deep);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.skill-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 2rem 1.2rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--red-deep);
+}
+
+.skill-toggle .chev {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 3px 0 var(--red-deep);
+  flex-shrink: 0;
+}
+
+/* ---- Experiencia ---- */
+.exp-icon {
+  background: var(--red) !important;
+  outline: 1.5px dashed rgba(255, 255, 255, 0.7);
+  outline-offset: -6px;
+  box-shadow: 0 5px 0 var(--red-deep) !important;
+}
+
+/* ---- Banner de descarga del CV ---- */
+.cv-banner {
+  border: 10px solid transparent !important;
+  background:
+    linear-gradient(135deg, #f0609e, var(--red)) padding-box,
+    var(--gingham-band) border-box !important;
+  background-size: auto, 12px 12px !important;
+  outline: 1.5px dashed rgba(255, 255, 255, 0.7);
+  outline-offset: -8px;
+  box-shadow: 0 7px 0 var(--red-deep), 0 25px 50px rgba(225, 29, 72, 0.3) !important;
+}
+
+/* ---- Precios: extras y banda de llamado ---- */
+.extra-item {
+  background: #fff;
+  border: 1.5px solid rgba(225, 29, 72, 0.18);
+  outline: 1px dashed rgba(225, 29, 72, 0.35);
+  outline-offset: -6px;
+  box-shadow: 0 4px 0 #ffe0ec;
+}
+
+.extra-item span:last-child {
+  color: var(--red);
+}
+
+.cta-band {
+  border: 12px solid transparent;
+  background:
+    linear-gradient(135deg, #f0609e 0%, var(--red) 70%, var(--red-deep) 100%) padding-box,
+    var(--gingham-band) border-box;
+  background-size: auto, 12px 12px;
+  outline: 2px dashed rgba(255, 255, 255, 0.6);
+  outline-offset: -22px;
+  box-shadow: 0 8px 0 var(--red-deep), 0 30px 70px rgba(225, 29, 72, 0.35);
+}
+
+.cta-band::after {
+  display: none;
+}
+
+/* ---- Contacto ---- */
+.contact-method {
+  background: #fff;
+  border: 1.5px solid rgba(225, 29, 72, 0.18);
+  outline: 1px dashed rgba(225, 29, 72, 0.35);
+  outline-offset: -6px;
+  box-shadow: 0 4px 0 #ffe0ec;
+}
+
+.contact-method .cm-icon {
+  background: var(--red);
+  box-shadow: 0 3px 0 var(--red-deep);
+}
+
+.contact-method .cm-label {
+  color: var(--red);
+}
+
+.field input,
+.field select,
+.field textarea {
+  border: 1.5px solid rgba(225, 29, 72, 0.25);
+  background: #fffafc;
+  box-shadow: inset 0 2px 0 rgba(255, 213, 229, 0.6);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--red);
+  border-style: dashed;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.12);
+}
+
+.field label svg {
+  color: var(--red);
+}
+
+/* ---- Pie de página: orilla de mantel ---- */
+.site-footer {
+  position: relative;
+  background: var(--red-deep);
+  padding-top: 4.5rem;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 22px;
+  background: var(--gingham-band);
+  background-size: 22px 22px;
+}
+
+.site-footer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 22px;
+  height: 12px;
+  background: radial-gradient(circle at 11px 0, #fff 10px, transparent 10.5px) 0 0 / 22px 12px repeat-x;
+  opacity: 0.9;
+}
+
+.footer-social a {
+  border: 1.5px dashed rgba(255, 255, 255, 0.5);
+}
+
+/* ---- Selección, scrollbar y botón de WhatsApp ---- */
+::selection {
+  background: var(--red);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border: 2px dashed #fff;
+}
+
+.whatsapp-float {
+  outline: 2px dashed rgba(255, 255, 255, 0.8);
+  outline-offset: -7px;
+  box-shadow: 0 5px 0 #128c4a, 0 14px 30px rgba(37, 211, 102, 0.4);
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, var(--red) 0%, #ec4899 60%, #ff8fc0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.cv-banner p {
+  color: #fff;
 }

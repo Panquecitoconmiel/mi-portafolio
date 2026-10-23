@@ -77,13 +77,8 @@ const cardStyle = {
   display: 'flex',
   gap: '2rem',
   flexWrap: 'wrap',
-  background: 'rgba(255, 255, 255, 0.6)',
-  backdropFilter: 'blur(15px)',
   padding: '2rem 2.5rem',
-  borderRadius: '28px 8px 28px 8px',
-  boxShadow: '0 15px 40px rgba(214, 51, 108, 0.08)',
-  border: '1px solid rgba(255, 255, 255, 0.4)',
-  transition: 'all 0.4s ease',
+  transition: 'transform 0.4s ease, box-shadow 0.4s ease',
   alignItems: 'flex-start',
 };
 
@@ -91,19 +86,17 @@ const DevCard = ({ exp, index }) => (
   <div
     data-aos="fade-up"
     data-aos-delay={index * 100}
+    className="patch"
     style={cardStyle}
     onMouseEnter={(e) => {
-      e.currentTarget.style.transform = 'translateX(12px)';
-      e.currentTarget.style.boxShadow = '0 25px 50px rgba(214, 51, 108, 0.15)';
+      e.currentTarget.style.transform = 'translateY(-6px)';
     }}
     onMouseLeave={(e) => {
-      e.currentTarget.style.transform = 'translateX(0)';
-      e.currentTarget.style.boxShadow = '0 15px 40px rgba(214, 51, 108, 0.08)';
+      e.currentTarget.style.transform = 'translateY(0)';
     }}
   >
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '100px', gap: '0.5rem' }}>
-      <div style={{
-        background: 'var(--grad-primary)',
+      <div className="exp-icon" style={{
         color: 'var(--blush)',
         width: '60px',
         height: '60px',
@@ -116,17 +109,7 @@ const DevCard = ({ exp, index }) => (
       }}>
         <FaCode />
       </div>
-      <div style={{
-        background: 'rgba(255, 179, 209, 0.5)',
-        padding: '0.3rem 1.2rem',
-        borderRadius: '50px',
-        fontSize: '0.85rem',
-        fontWeight: '600',
-        color: 'var(--berry)',
-        border: '1px solid rgba(255,255,255,0.3)',
-        backdropFilter: 'blur(5px)',
-        textAlign: 'center',
-      }}>
+      <div className="tag-chip" style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>
         <FaCalendarAlt style={{ marginRight: '6px', fontSize: '0.7rem' }} />
         {exp.date}
       </div>
@@ -155,20 +138,18 @@ const OtherCard = ({ exp, index }) => (
   <div
     data-aos="fade-up"
     data-aos-delay={index * 80}
+    className="patch-soft"
     style={{
       display: 'flex',
       gap: '1.5rem',
-      background: 'rgba(255, 255, 255, 0.45)',
-      backdropFilter: 'blur(10px)',
       padding: '1.5rem 2rem',
-      borderRadius: '20px',
-      border: '1px dashed rgba(214, 51, 108, 0.25)',
       alignItems: 'flex-start',
     }}
   >
     <div style={{
-      background: 'rgba(214, 51, 108, 0.08)',
-      color: 'var(--berry)',
+      background: 'var(--red)',
+      color: '#fff',
+      boxShadow: '0 3px 0 var(--red-deep)',
       width: '46px',
       height: '46px',
       borderRadius: '50%',

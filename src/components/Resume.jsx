@@ -83,13 +83,13 @@ const Resume = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
+          className="cv-banner"
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '1.5rem',
             flexWrap: 'wrap',
-            background: 'var(--grad-primary)',
             color: 'var(--blush)',
             padding: '1.8rem 2.5rem',
             borderRadius: '32px 10px 32px 10px',
@@ -146,20 +146,16 @@ const Resume = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
-              className="sticker-card"
+              className="patch"
               style={{
-                background: 'rgba(255, 255, 255, 0.6)',
-                backdropFilter: 'blur(15px)',
                 padding: '1.5rem',
-                boxShadow: '0 10px 30px rgba(214, 51, 108, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.4)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 minHeight: '130px',
               }}
             >
-              <span style={{ fontSize: '2.2rem', fontWeight: '700', color: 'var(--berry)', fontFamily: "var(--font-display)" }}>
+              <span style={{ fontSize: '2.2rem', fontWeight: '700', color: 'var(--red)', fontFamily: 'var(--font-display)' }}>
                 {stat.value}
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--berry)', opacity: 0.7, fontWeight: '500' }}>
@@ -204,13 +200,8 @@ const Resume = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
               viewport={{ once: true }}
-              style={{
-                background: 'rgba(255, 255, 255, 0.45)',
-                backdropFilter: 'blur(10px)',
-                padding: '1.5rem 2rem',
-                borderRadius: '20px',
-                border: '1px dashed rgba(214, 51, 108, 0.25)',
-              }}
+              className="patch-soft"
+              style={{ padding: '1.5rem 2rem' }}
             >
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '0.5rem', marginBottom: '0.3rem' }}>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--berry)' }}>{edu.title}</h4>

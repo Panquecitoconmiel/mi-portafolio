@@ -67,16 +67,7 @@ const Projects = () => {
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.8rem' }}>
                 {project.tech.map((tech, idx) => (
-                  <span key={idx} style={{ 
-                    background: 'rgba(255, 179, 209, 0.5)', 
-                    backdropFilter: 'blur(5px)',
-                    color: 'var(--berry)', 
-                    padding: '0.3rem 1rem', 
-                    borderRadius: '50px', 
-                    fontSize: '0.8rem', 
-                    fontWeight: '600',
-                    border: '1px solid rgba(255,255,255,0.2)'
-                  }}>
+                  <span key={idx} className="tag-chip">
                     {tech}
                   </span>
                 ))}
