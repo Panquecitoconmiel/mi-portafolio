@@ -42,6 +42,7 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <div className="star-band" aria-hidden="true" />
       <Marquee items={marqueeItems} />
       <section style={{ padding: '4rem 0 5rem' }}>
         <div className="container">

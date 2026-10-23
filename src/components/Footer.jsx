@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaInstagram, FaFacebook, FaPinterest, FaWhatsapp } from 'react-icons/fa';
 import { whatsappLink } from '../data/contacto';
+import { Flower, Daisy } from './Decor';
 
 const socials = [
   { href: 'https://www.instagram.com/lolosdev.xyz', label: 'Instagram', icon: <FaInstagram size={19} /> },
@@ -17,7 +18,9 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" style={{ overflow: 'hidden' }}>
+      <Flower size={120} className="footer-flower spin" style={{ right: '-30px', bottom: '-30px', opacity: 0.9 }} />
+      <Daisy size={60} className="footer-flower float" style={{ left: '46%', top: '48px' }} />
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
@@ -49,7 +52,7 @@ const Footer = () => {
         </div>
         <div className="footer-bottom">
           <p>© {year} Michelle Mora · Todos los derechos reservados.</p>
-          <p>Hecho con React y mucho café con leche ☕</p>
+          <p className="footer-slogan">too cute to compute ✦</p>
         </div>
       </div>
     </footer>

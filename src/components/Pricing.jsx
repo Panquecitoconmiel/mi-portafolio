@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaCheck, FaRocket, FaGem, FaShoppingBag, FaCode, FaWhatsapp, FaPaperPlane } from 'react-icons/fa';
 import { plans, extras } from '../data/precios';
 import { whatsappLink } from '../data/contacto';
+import { Daisy, Sparkle } from './Decor';
 
 const icons = {
   rocket: <FaRocket size={20} />,
@@ -92,6 +93,9 @@ const Pricing = ({ compact = false, index = '06' }) => {
         )}
 
         <div className="cta-band" data-aos="zoom-in">
+          <Daisy size={74} className="cta-daisy spin" style={{ top: '-20px', right: '22%' }} />
+          <Daisy size={46} center="#dde874" className="cta-daisy spin" style={{ bottom: '-14px', left: '40%' }} />
+          <Sparkle size={26} className="cta-daisy twinkle" style={{ top: '18px', left: '46%' }} />
           <div style={{ position: 'relative', zIndex: 1, maxWidth: '560px' }}>
             <h2>¿Lista tu idea? Hagámosla realidad.</h2>
             <p>Cuéntame de tu proyecto y te respondo con una cotización sin compromiso en menos de 24 horas.</p>

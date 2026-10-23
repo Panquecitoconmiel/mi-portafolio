@@ -90,21 +90,21 @@ const Resume = () => {
             justifyContent: 'space-between',
             gap: '1.5rem',
             flexWrap: 'wrap',
-            color: 'var(--blush)',
+            color: 'var(--ink)',
             padding: '1.8rem 2.5rem',
             borderRadius: '32px 10px 32px 10px',
             textDecoration: 'none',
-            boxShadow: '0 20px 45px rgba(214, 51, 108, 0.3)',
+            boxShadow: '0 20px 45px rgba(240, 120, 160, 0.3)',
             marginBottom: '3rem',
             transition: '0.3s',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-4px)';
-            e.currentTarget.style.boxShadow = '0 26px 55px rgba(214, 51, 108, 0.4)';
+            e.currentTarget.style.boxShadow = '0 26px 55px rgba(240, 120, 160, 0.4)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 20px 45px rgba(214, 51, 108, 0.3)';
+            e.currentTarget.style.boxShadow = '0 20px 45px rgba(240, 120, 160, 0.3)';
           }}
         >
           <div>

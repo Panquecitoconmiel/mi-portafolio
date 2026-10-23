@@ -2,18 +2,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Sparkle, Daisy, Flower, Cassette, FlipPhone, Bow, C } from './Decor';
 
 const Hero = () => {
   return (
-    <section style={{ 
-      minHeight: '80vh', 
-      display: 'flex', 
-      alignItems: 'center', 
-      position: 'relative',
-      background: 'var(--section-bg)',
-    }}>
-      <div className="shape shape-1"></div>
-      <div className="shape shape-2"></div>
+    <section className="hero-section">
+      <div className="hero-decor" aria-hidden="true">
+        <Flower size={130} className="deco spin" style={{ top: '7%', left: '3%' }} />
+        <Daisy size={70} className="deco float" style={{ bottom: '12%', left: '6%' }} />
+        <Cassette size={150} className="deco float-slow hide-mobile" style={{ bottom: '5%', left: '47%', rotate: '-12deg' }} />
+        <FlipPhone size={120} className="deco float hide-mobile" style={{ top: '10%', right: '4%', rotate: '18deg' }} />
+        <Flower size={90} className="deco spin hide-mobile" style={{ bottom: '8%', right: '3%' }} />
+        <Sparkle size={28} className="deco twinkle" style={{ top: '18%', left: '30%' }} />
+        <Sparkle size={18} color={C.sky} className="deco twinkle" style={{ top: '62%', left: '48%' }} />
+        <Sparkle size={22} color={C.lime} className="deco twinkle hide-mobile" style={{ top: '30%', right: '28%' }} />
+      </div>
       
       <div className="container hero-grid">
         <div className="hero-eyebrow-area">
@@ -28,7 +31,10 @@ const Hero = () => {
         >
           <h1 className="hero-title">
             Michelle <span className="gradient-text">Mora</span>
-            <span className="blink-cursor" aria-hidden="true">_</span>
+            <span className="title-sparkles" aria-hidden="true">
+              <Sparkle size={34} />
+              <Sparkle size={20} />
+            </span>
           </h1>
         </motion.div>
 
@@ -64,20 +70,7 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <svg className="photo-bow" viewBox="0 0 120 70" aria-hidden="true">
-            <defs>
-              <pattern id="bow-gingham" width="10" height="10" patternUnits="userSpaceOnUse">
-                <rect width="10" height="10" fill="#fff" />
-                <rect width="5" height="10" fill="#e11d48" opacity="0.6" />
-                <rect width="10" height="5" fill="#e11d48" opacity="0.6" />
-              </pattern>
-            </defs>
-            <path d="M54 34 L22 50 L30 68 L50 44 Z" fill="#e11d48" stroke="#9f1239" strokeWidth="2" strokeLinejoin="round" />
-            <path d="M66 34 L98 50 L90 68 L70 44 Z" fill="#e11d48" stroke="#9f1239" strokeWidth="2" strokeLinejoin="round" />
-            <path d="M58 32 C40 4 6 4 8 26 C10 46 40 44 58 36 Z" fill="url(#bow-gingham)" stroke="#9f1239" strokeWidth="2.5" strokeLinejoin="round" />
-            <path d="M62 32 C80 4 114 4 112 26 C110 46 80 44 62 36 Z" fill="url(#bow-gingham)" stroke="#9f1239" strokeWidth="2.5" strokeLinejoin="round" />
-            <rect x="50" y="24" width="20" height="20" rx="7" fill="#e11d48" stroke="#9f1239" strokeWidth="2.5" />
-          </svg>
+          <Bow className="photo-bow" />
           <div className="photo-frame">
             <img
               src="/assets/yo.jpg"

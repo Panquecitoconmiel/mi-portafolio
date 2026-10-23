@@ -191,7 +191,7 @@ const Contact = () => {
                     background: '#fff',
                     padding: '0.8rem',
                     borderRadius: '16px',
-                    border: '1px solid rgba(236,72,153,0.2)',
+                    border: '1px solid rgba(255, 127, 163,0.2)',
                   }}
                 >
                   {statusType === 'success' ? <MdOutlineCheckCircle size={22} /> : <MdErrorOutline size={22} />}

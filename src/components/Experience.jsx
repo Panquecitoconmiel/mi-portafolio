@@ -105,7 +105,7 @@ const DevCard = ({ exp, index }) => (
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: '1.8rem',
-        boxShadow: '0 8px 20px rgba(214, 51, 108, 0.2)',
+        boxShadow: '0 8px 20px rgba(240, 120, 160, 0.2)',
       }}>
         <FaCode />
       </div>
@@ -147,8 +147,8 @@ const OtherCard = ({ exp, index }) => (
     }}
   >
     <div style={{
-      background: 'var(--red)',
-      color: '#fff',
+      background: 'var(--sky)',
+      color: 'var(--ink)',
       boxShadow: '0 3px 0 var(--red-deep)',
       width: '46px',
       height: '46px',
