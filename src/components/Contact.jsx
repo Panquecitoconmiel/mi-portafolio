@@ -1,14 +1,28 @@
 // src/components/Contact.jsx
 import React, { useRef, useState } from 'react';
-import { FaUser, FaEnvelope, FaPaperPlane, FaRegEnvelope } from 'react-icons/fa';
+import { useSearchParams } from 'react-router-dom';
+import { FaUser, FaEnvelope, FaPaperPlane, FaWhatsapp, FaClock, FaMapMarkerAlt, FaLayerGroup, FaPhone } from 'react-icons/fa';
 import { MdOutlineCheckCircle, MdErrorOutline } from 'react-icons/md';
 import emailjs from '@emailjs/browser';
+import { plans, planById } from '../data/precios';
+import { EMAIL, whatsappLink } from '../data/contacto';
 
 const Contact = () => {
   const form = useRef();
+  const [searchParams] = useSearchParams();
+  const initialPlan = planById(searchParams.get('plan'))?.id ?? '';
+
+  const [plan, setPlan] = useState(initialPlan);
   const [isSending, setIsSending] = useState(false);
   const [messageStatus, setMessageStatus] = useState('');
   const [statusType, setStatusType] = useState('');
+
+  const selected = planById(plan);
+  const wa = whatsappLink(
+    selected
+      ? `Hola Michelle, me interesa el paquete "${selected.name}" ✨`
+      : 'Hola Michelle, quiero cotizar una página web ✨'
+  );
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -16,216 +30,176 @@ const Contact = () => {
     setMessageStatus('');
     setStatusType('');
 
-    const serviceID = 'service_b688zfe';
-    const templateID = 'template_e4o4bid';
-    const publicKey = 'SXN0-kx2b9qIMXOLQ';
+    const data = new FormData(form.current);
+    const servicio = selected ? `${selected.name} (desde $${selected.price} MXN)` : 'Otro / no estoy segur@';
+    const telefono = data.get('user_phone') || 'No proporcionado';
 
-    emailjs.sendForm(serviceID, templateID, form.current, publicKey)
+    // El servicio y teléfono se agregan al mensaje para que lleguen
+    // aunque la plantilla de EmailJS solo tenga nombre, correo y mensaje.
+    const params = {
+      user_name: data.get('user_name'),
+      user_email: data.get('user_email'),
+      user_phone: telefono,
+      plan: servicio,
+      message: `Servicio de interés: ${servicio}\nTeléfono / WhatsApp: ${telefono}\n\n${data.get('message')}`,
+    };
+
+    emailjs
+      .send('service_b688zfe', 'template_e4o4bid', params, 'SXN0-kx2b9qIMXOLQ')
       .then(() => {
         setStatusType('success');
-        setMessageStatus('Mensaje enviado con éxito. Te responderé pronto.');
+        setMessageStatus('¡Mensaje enviado! Te responderé en menos de 24 horas.');
         form.current.reset();
+        setPlan('');
       })
       .catch((error) => {
         setStatusType('error');
         setMessageStatus('Error al enviar. Intenta de nuevo más tarde.');
-        console.error(error.text);
+        console.error(error?.text || error);
       })
       .finally(() => setIsSending(false));
   };
 
   return (
-    <section style={{ 
-      padding: '5rem 0',
-      background: 'linear-gradient(135deg, #fff0f6 0%, #ffb3d1 100%)',
-      position: 'relative'
-    }}>
-      <div style={{
-        position: 'absolute',
-        width: '350px',
-        height: '350px',
-        background: 'radial-gradient(circle, #ffb3d1, transparent 70%)',
-        borderRadius: '50%',
-        filter: 'blur(80px)',
-        top: '-80px',
-        right: '-80px',
-        opacity: 0.4,
-        pointerEvents: 'none'
-      }}></div>
-      <div style={{
-        position: 'absolute',
-        width: '250px',
-        height: '250px',
-        background: 'radial-gradient(circle, #a61e4d, transparent 70%)',
-        borderRadius: '50%',
-        filter: 'blur(80px)',
-        bottom: '-50px',
-        left: '-50px',
-        opacity: 0.1,
-        pointerEvents: 'none'
-      }}></div>
+    <section style={{ background: 'var(--section-bg)', overflow: 'hidden' }}>
+      <div className="shape shape-1"></div>
+      <div className="shape shape-2"></div>
 
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+      <div className="container">
         <div className="eyebrow" data-aos="fade-up">Hablemos</div>
         <div className="section-head" data-aos="fade-up">
-          <span className="index-num">05</span>
-          <h2 style={{ fontSize: '2.8rem', fontWeight: '700' }}>
-            <FaRegEnvelope style={{ marginRight: '0.6rem', color: '#a61e4d' }} />
-            Contáctame
+          <span className="index-num">06</span>
+          <h2>
+            Cotiza tu <span className="gradient-text">página web</span>
           </h2>
         </div>
-        <p style={{ color: '#a61e4d', opacity: 0.8, marginBottom: '2.5rem', fontSize: '1.1rem' }} data-aos="fade-up" data-aos-delay="100">
-          ¿Tienes un proyecto en mente? Escríbeme y hablemos
+        <p className="section-lead" data-aos="fade-up" data-aos-delay="100">
+          ¿Tienes un proyecto en mente? Cuéntame qué necesitas y te envío una propuesta
+          personalizada, sin compromiso.
         </p>
 
-        <div style={{
-          maxWidth: '700px',
-          margin: '0 auto',
-          background: 'rgba(255, 255, 255, 0.6)',
-          backdropFilter: 'blur(15px)',
-          padding: '2.5rem',
-          borderRadius: '28px',
-          boxShadow: '0 20px 50px rgba(166, 30, 77, 0.1)',
-          border: '1px solid rgba(255, 255, 255, 0.4)'
-        }} data-aos="fade-up" data-aos-delay="200">
-          <form ref={form} onSubmit={sendEmail}>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <label htmlFor="user_name" style={{ display: 'block', fontWeight: '600', color: '#a61e4d', marginBottom: '0.5rem' }}>
-                <FaUser style={{ marginRight: '0.5rem' }} /> Nombre
-              </label>
-              <input
-                type="text"
-                id="user_name"
-                name="user_name"
-                placeholder="Tu nombre completo"
-                required
-                style={{
-                  width: '100%',
-                  padding: '0.8rem 1.2rem',
-                  borderRadius: '50px',
-                  border: '1px solid rgba(255, 179, 209, 0.5)',
-                  background: 'rgba(255, 255, 255, 0.7)',
-                  fontSize: '1rem',
-                  color: '#a61e4d',
-                  transition: '0.3s',
-                  outline: 'none'
-                }}
-                onFocus={e => e.target.style.borderColor = '#ffb3d1'}
-                onBlur={e => e.target.style.borderColor = 'rgba(255, 179, 209, 0.5)'}
-              />
-            </div>
-
-            <div style={{ marginBottom: '1.5rem' }}>
-              <label htmlFor="user_email" style={{ display: 'block', fontWeight: '600', color: '#a61e4d', marginBottom: '0.5rem' }}>
-                <FaEnvelope style={{ marginRight: '0.5rem' }} /> Correo electrónico
-              </label>
-              <input
-                type="email"
-                id="user_email"
-                name="user_email"
-                placeholder="tucorreo@ejemplo.com"
-                required
-                style={{
-                  width: '100%',
-                  padding: '0.8rem 1.2rem',
-                  borderRadius: '50px',
-                  border: '1px solid rgba(255, 179, 209, 0.5)',
-                  background: 'rgba(255, 255, 255, 0.7)',
-                  fontSize: '1rem',
-                  color: '#a61e4d',
-                  transition: '0.3s',
-                  outline: 'none'
-                }}
-                onFocus={e => e.target.style.borderColor = '#ffb3d1'}
-                onBlur={e => e.target.style.borderColor = 'rgba(255, 179, 209, 0.5)'}
-              />
-            </div>
-
-            <div style={{ marginBottom: '1.8rem' }}>
-              <label htmlFor="message" style={{ display: 'block', fontWeight: '600', color: '#a61e4d', marginBottom: '0.5rem' }}>
-                Mensaje
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Cuéntame sobre tu proyecto, idea o duda..."
-                required
-                style={{
-                  width: '100%',
-                  padding: '0.8rem 1.2rem',
-                  borderRadius: '20px',
-                  border: '1px solid rgba(255, 179, 209, 0.5)',
-                  background: 'rgba(255, 255, 255, 0.7)',
-                  fontSize: '1rem',
-                  color: '#a61e4d',
-                  resize: 'vertical',
-                  transition: '0.3s',
-                  outline: 'none',
-                  fontFamily: 'inherit'
-                }}
-                onFocus={e => e.target.style.borderColor = '#ffb3d1'}
-                onBlur={e => e.target.style.borderColor = 'rgba(255, 179, 209, 0.5)'}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSending}
-              style={{
-                width: '100%',
-                padding: '0.9rem',
-                borderRadius: '50px',
-                background: 'linear-gradient(135deg, #a61e4d, #6b1439)',
-                color: '#fff0f6',
-                fontWeight: '700',
-                fontSize: '1.1rem',
-                border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.8rem',
-                cursor: isSending ? 'not-allowed' : 'pointer',
-                opacity: isSending ? 0.7 : 1,
-                transition: '0.3s',
-                boxShadow: '0 8px 25px rgba(166, 30, 77, 0.2)'
-              }}
-              onMouseEnter={e => {
-                if (!isSending) {
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 12px 35px rgba(166, 30, 77, 0.3)';
-                }
-              }}
-              onMouseLeave={e => {
-                if (!isSending) {
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = '0 8px 25px rgba(166, 30, 77, 0.2)';
-                }
-              }}
-            >
-              <FaPaperPlane /> {isSending ? 'Enviando...' : 'Enviar mensaje'}
-            </button>
-
-            {messageStatus && (
-              <p style={{
-                marginTop: '1.2rem',
-                textAlign: 'center',
-                fontWeight: '500',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.6rem',
-                color: statusType === 'success' ? '#2e7d32' : '#c62828',
-                background: 'rgba(255,255,255,0.8)',
-                padding: '0.8rem',
-                borderRadius: '50px',
-                border: '1px solid rgba(161,161,170,0.3)'
-              }}>
-                {statusType === 'success' ? <MdOutlineCheckCircle size={22} /> : <MdErrorOutline size={22} />}
-                {messageStatus}
-              </p>
+        <div className="contact-layout">
+          <aside className="contact-aside" data-aos="fade-up" data-aos-delay="150">
+            {wa && (
+              <a href={wa} target="_blank" rel="noreferrer" className="contact-method">
+                <span className="cm-icon" style={{ background: '#25d366' }}><FaWhatsapp size={22} /></span>
+                <span>
+                  <span className="cm-label">WhatsApp</span>
+                  <span className="cm-value" style={{ display: 'block' }}>Escríbeme directo</span>
+                </span>
+              </a>
             )}
-          </form>
+            {EMAIL && (
+              <a href={`mailto:${EMAIL}`} className="contact-method">
+                <span className="cm-icon"><FaEnvelope size={19} /></span>
+                <span>
+                  <span className="cm-label">Correo</span>
+                  <span className="cm-value" style={{ display: 'block' }}>{EMAIL}</span>
+                </span>
+              </a>
+            )}
+            <div className="contact-method">
+              <span className="cm-icon"><FaClock size={19} /></span>
+              <span>
+                <span className="cm-label">Tiempo de respuesta</span>
+                <span className="cm-value" style={{ display: 'block' }}>Menos de 24 horas</span>
+              </span>
+            </div>
+            <div className="contact-method">
+              <span className="cm-icon"><FaMapMarkerAlt size={19} /></span>
+              <span>
+                <span className="cm-label">Ubicación</span>
+                <span className="cm-value" style={{ display: 'block' }}>CDMX · Trabajo remoto en todo México</span>
+              </span>
+            </div>
+            {selected && (
+              <div className="contact-method" style={{ background: 'var(--grad-primary)', border: 'none' }}>
+                <span className="cm-icon" style={{ background: 'rgba(255,255,255,0.25)' }}><FaLayerGroup size={18} /></span>
+                <span>
+                  <span className="cm-label" style={{ color: '#fff', opacity: 0.85 }}>Paquete elegido</span>
+                  <span className="cm-value" style={{ display: 'block', color: '#fff' }}>
+                    {selected.name} · desde ${selected.price}
+                  </span>
+                </span>
+              </div>
+            )}
+          </aside>
+
+          <div className="form-card" data-aos="fade-up" data-aos-delay="200">
+            <form ref={form} onSubmit={sendEmail}>
+              <div className="form-row">
+                <div className="field">
+                  <label htmlFor="user_name"><FaUser size={12} /> Nombre</label>
+                  <input type="text" id="user_name" name="user_name" placeholder="Tu nombre completo" required />
+                </div>
+                <div className="field">
+                  <label htmlFor="user_email"><FaEnvelope size={12} /> Correo electrónico</label>
+                  <input type="email" id="user_email" name="user_email" placeholder="tucorreo@ejemplo.com" required />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="field">
+                  <label htmlFor="user_phone"><FaPhone size={12} /> Teléfono / WhatsApp <span style={{ opacity: 0.55, fontWeight: 500 }}>(opcional)</span></label>
+                  <input type="tel" id="user_phone" name="user_phone" placeholder="55 1234 5678" />
+                </div>
+                <div className="field">
+                  <label htmlFor="plan"><FaLayerGroup size={12} /> Servicio de interés</label>
+                  <select id="plan" name="plan" value={plan} onChange={(e) => setPlan(e.target.value)}>
+                    <option value="">Otro / no estoy segur@</option>
+                    {plans.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="field">
+                <label htmlFor="message">Cuéntame de tu proyecto</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="¿A qué se dedica tu negocio? ¿Qué te gustaría que tuviera tu página?"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSending}
+                className="btn-primary"
+                style={{ width: '100%', fontSize: '1.05rem', opacity: isSending ? 0.7 : 1 }}
+              >
+                <FaPaperPlane /> {isSending ? 'Enviando...' : 'Enviar mensaje'}
+              </button>
+
+              {messageStatus && (
+                <p
+                  role="status"
+                  style={{
+                    marginTop: '1.2rem',
+                    textAlign: 'center',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.6rem',
+                    color: statusType === 'success' ? '#2e7d32' : '#c62828',
+                    background: '#fff',
+                    padding: '0.8rem',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(236,72,153,0.2)',
+                  }}
+                >
+                  {statusType === 'success' ? <MdOutlineCheckCircle size={22} /> : <MdErrorOutline size={22} />}
+                  {messageStatus}
+                </p>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </section>

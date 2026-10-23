@@ -81,7 +81,7 @@ const cardStyle = {
   backdropFilter: 'blur(15px)',
   padding: '2rem 2.5rem',
   borderRadius: '28px 8px 28px 8px',
-  boxShadow: '0 15px 40px rgba(166, 30, 77, 0.08)',
+  boxShadow: '0 15px 40px rgba(214, 51, 108, 0.08)',
   border: '1px solid rgba(255, 255, 255, 0.4)',
   transition: 'all 0.4s ease',
   alignItems: 'flex-start',
@@ -94,17 +94,17 @@ const DevCard = ({ exp, index }) => (
     style={cardStyle}
     onMouseEnter={(e) => {
       e.currentTarget.style.transform = 'translateX(12px)';
-      e.currentTarget.style.boxShadow = '0 25px 50px rgba(166, 30, 77, 0.15)';
+      e.currentTarget.style.boxShadow = '0 25px 50px rgba(214, 51, 108, 0.15)';
     }}
     onMouseLeave={(e) => {
       e.currentTarget.style.transform = 'translateX(0)';
-      e.currentTarget.style.boxShadow = '0 15px 40px rgba(166, 30, 77, 0.08)';
+      e.currentTarget.style.boxShadow = '0 15px 40px rgba(214, 51, 108, 0.08)';
     }}
   >
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '100px', gap: '0.5rem' }}>
       <div style={{
-        background: 'linear-gradient(135deg, #a61e4d, #6b1439)',
-        color: '#fff0f6',
+        background: 'var(--grad-primary)',
+        color: 'var(--blush)',
         width: '60px',
         height: '60px',
         borderRadius: '50%',
@@ -112,7 +112,7 @@ const DevCard = ({ exp, index }) => (
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: '1.8rem',
-        boxShadow: '0 8px 20px rgba(166, 30, 77, 0.2)',
+        boxShadow: '0 8px 20px rgba(214, 51, 108, 0.2)',
       }}>
         <FaCode />
       </div>
@@ -122,7 +122,7 @@ const DevCard = ({ exp, index }) => (
         borderRadius: '50px',
         fontSize: '0.85rem',
         fontWeight: '600',
-        color: '#a61e4d',
+        color: 'var(--berry)',
         border: '1px solid rgba(255,255,255,0.3)',
         backdropFilter: 'blur(5px)',
         textAlign: 'center',
@@ -133,13 +133,13 @@ const DevCard = ({ exp, index }) => (
     </div>
 
     <div style={{ flex: 1 }}>
-      <h3 style={{ fontSize: '1.6rem', fontWeight: '700', color: '#a61e4d', marginBottom: '0.2rem' }}>
+      <h3 style={{ fontSize: '1.6rem', fontWeight: '700', color: 'var(--berry)', marginBottom: '0.2rem' }}>
         {exp.title}
       </h3>
-      <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#a61e4d', opacity: 0.7, marginBottom: '0.8rem', fontWeight: '500' }}>
+      <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--berry)', opacity: 0.7, marginBottom: '0.8rem', fontWeight: '500' }}>
         <FaBuilding /> {exp.company}
       </p>
-      <p style={{ color: '#a61e4d', opacity: 0.85, marginBottom: '1rem', whiteSpace: 'pre-line', lineHeight: '1.7' }}>
+      <p style={{ color: 'var(--berry)', opacity: 0.85, marginBottom: '1rem', whiteSpace: 'pre-line', lineHeight: '1.7' }}>
         {exp.description}
       </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
@@ -162,13 +162,13 @@ const OtherCard = ({ exp, index }) => (
       backdropFilter: 'blur(10px)',
       padding: '1.5rem 2rem',
       borderRadius: '20px',
-      border: '1px dashed rgba(166, 30, 77, 0.25)',
+      border: '1px dashed rgba(214, 51, 108, 0.25)',
       alignItems: 'flex-start',
     }}
   >
     <div style={{
-      background: 'rgba(166, 30, 77, 0.08)',
-      color: '#a61e4d',
+      background: 'rgba(214, 51, 108, 0.08)',
+      color: 'var(--berry)',
       width: '46px',
       height: '46px',
       borderRadius: '50%',
@@ -182,13 +182,13 @@ const OtherCard = ({ exp, index }) => (
     </div>
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'baseline', marginBottom: '0.3rem' }}>
-        <h4 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#a61e4d' }}>{exp.title}</h4>
-        <span style={{ color: '#a61e4d', opacity: 0.6, fontSize: '0.9rem' }}>· {exp.company}</span>
+        <h4 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--berry)' }}>{exp.title}</h4>
+        <span style={{ color: 'var(--berry)', opacity: 0.6, fontSize: '0.9rem' }}>· {exp.company}</span>
       </div>
-      <p style={{ fontSize: '0.85rem', fontWeight: '600', color: '#a61e4d', opacity: 0.55, marginBottom: '0.5rem' }}>
+      <p style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--berry)', opacity: 0.55, marginBottom: '0.5rem' }}>
         {exp.date}
       </p>
-      <p style={{ color: '#a61e4d', opacity: 0.8, fontSize: '0.95rem', lineHeight: '1.6' }}>
+      <p style={{ color: 'var(--berry)', opacity: 0.8, fontSize: '0.95rem', lineHeight: '1.6' }}>
         {exp.description}
       </p>
     </div>
@@ -200,17 +200,17 @@ const Experience = () => {
     <section style={{
       position: 'relative',
       padding: '5rem 0',
-      background: 'linear-gradient(135deg, #fff0f6 0%, #ffb3d1 100%)',
+      background: 'var(--section-bg)',
     }}>
       <div style={{
         position: 'absolute', width: '350px', height: '350px',
-        background: 'radial-gradient(circle, #ffb3d1, transparent 70%)',
+        background: 'radial-gradient(circle, var(--pink-soft), transparent 70%)',
         borderRadius: '50%', filter: 'blur(80px)', top: '-100px', left: '-100px',
         opacity: 0.4, pointerEvents: 'none', zIndex: 0,
       }}></div>
       <div style={{
         position: 'absolute', width: '300px', height: '300px',
-        background: 'radial-gradient(circle, #a61e4d, transparent 70%)',
+        background: 'radial-gradient(circle, var(--berry), transparent 70%)',
         borderRadius: '50%', filter: 'blur(80px)', bottom: '-50px', right: '-50px',
         opacity: 0.1, pointerEvents: 'none', zIndex: 0,
       }}></div>
@@ -223,7 +223,7 @@ const Experience = () => {
             Experiencia en <span className="gradient-text">Desarrollo</span>
           </h2>
         </div>
-        <p style={{ color: '#a61e4d', opacity: 0.8, marginBottom: '3rem', fontSize: '1.1rem', maxWidth: '650px' }} data-aos="fade-up" data-aos-delay="100">
+        <p style={{ color: 'var(--berry)', opacity: 0.8, marginBottom: '3rem', fontSize: '1.1rem', maxWidth: '650px' }} data-aos="fade-up" data-aos-delay="100">
           El área donde más me he enfocado: construcción de plataformas web, autenticación segura, integración de APIs y soporte técnico.
         </p>
 
@@ -242,7 +242,7 @@ const Experience = () => {
             Otra <span className="gradient-text">Experiencia</span> Profesional
           </h2>
         </div>
-        <p style={{ color: '#a61e4d', opacity: 0.8, marginBottom: '2.5rem', fontSize: '1.05rem', maxWidth: '650px' }} data-aos="fade-up" data-aos-delay="100">
+        <p style={{ color: 'var(--berry)', opacity: 0.8, marginBottom: '2.5rem', fontSize: '1.05rem', maxWidth: '650px' }} data-aos="fade-up" data-aos-delay="100">
           Roles en atención a clientes, manejo de caja y control de inventarios que reforzaron mi organización, responsabilidad y trato con las personas.
         </p>
 

@@ -4,34 +4,35 @@ import { Link } from 'react-router-dom';
 import { FaBriefcase, FaCode, FaFolderOpen, FaFileAlt } from 'react-icons/fa';
 import Hero from '../components/Hero';
 import Marquee from '../components/Marquee';
+import Pricing from '../components/Pricing';
 
 const marqueeItems = [
   'React', 'Laravel', 'JWT & Roles', 'Angular', 'Ionic', 'Firebase',
-  'APIs REST', 'Excel Avanzado', 'SQL', 'Figma', 'Git',
+  'APIs REST', 'Landing Pages', 'Tiendas en línea', 'Diseño UI', 'Figma', 'Git',
 ];
 
 const quickLinks = [
   {
     to: '/experiencia',
-    icon: <FaBriefcase size={28} color="#a61e4d" />,
+    icon: <FaBriefcase size={22} />,
     title: 'Experiencia',
     text: 'Mi trayectoria en desarrollo y otros roles profesionales.',
   },
   {
     to: '/habilidades',
-    icon: <FaCode size={28} color="#a61e4d" />,
+    icon: <FaCode size={22} />,
     title: 'Habilidades',
     text: 'Tecnologías y herramientas que domino.',
   },
   {
     to: '/proyectos',
-    icon: <FaFolderOpen size={28} color="#a61e4d" />,
+    icon: <FaFolderOpen size={22} />,
     title: 'Proyectos',
     text: 'Aplicaciones y sitios que he desarrollado.',
   },
   {
     to: '/cv',
-    icon: <FaFileAlt size={28} color="#a61e4d" />,
+    icon: <FaFileAlt size={22} />,
     title: 'CV',
     text: 'Descarga mi currículum actualizado en PDF.',
   },
@@ -47,7 +48,7 @@ const Home = () => {
           <div className="eyebrow" data-aos="fade-up">Un vistazo rápido</div>
           <div className="section-head" data-aos="fade-up">
             <span className="index-num">00</span>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: '700' }}>
+            <h2>
               Explora mi <span className="gradient-text">portafolio</span>
             </h2>
           </div>
@@ -67,11 +68,11 @@ const Home = () => {
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                {item.icon}
-                <h3 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#a61e4d' }}>
+                <span className="quick-link-icon">{item.icon}</span>
+                <h3 style={{ fontSize: '1.4rem' }}>
                   {item.title}
                 </h3>
-                <p style={{ color: '#a61e4d', opacity: 0.75, fontSize: '0.95rem' }}>
+                <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>
                   {item.text}
                 </p>
               </Link>
@@ -79,6 +80,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Pricing compact index="01" />
     </>
   );
 };

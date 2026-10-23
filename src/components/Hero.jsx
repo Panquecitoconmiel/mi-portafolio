@@ -10,7 +10,7 @@ const Hero = () => {
       display: 'flex', 
       alignItems: 'center', 
       position: 'relative',
-      background: 'linear-gradient(135deg, #fff0f6 0%, #ffb3d1 100%)',
+      background: 'var(--section-bg)',
     }}>
       <div className="shape shape-1"></div>
       <div className="shape shape-2"></div>
@@ -26,35 +26,35 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 style={{ fontSize: '4.2rem', fontWeight: '800', margin: '0.5rem 0', color: '#a61e4d', lineHeight: '1.1' }}>
+          <h1 className="hero-title">
             Michelle <span className="gradient-text">Mora</span>
             <span className="blink-cursor" aria-hidden="true">_</span>
           </h1>
         </motion.div>
 
         <div className="hero-role-area">
-          <h2 className="hero-role-code" style={{ fontSize: '1.3rem', fontWeight: '500', color: '#a61e4d', opacity: 0.85, marginBottom: '1.5rem', fontFamily: "'Space Mono', monospace", lineHeight: '1.8' }}>
+          <h2 className="hero-role-code" style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--berry)', opacity: 0.85, marginBottom: '1.5rem', fontFamily: 'var(--font-mono)', lineHeight: '1.8' }}>
             <span style={{ opacity: 0.5 }}>const</span> rol <span style={{ opacity: 0.5 }}>=</span>{' '}
             <span style={{ fontWeight: '700' }}>'Desarrolladora Frontend React'</span>;
             <br />
             <span style={{ opacity: 0.5 }}>{'// '}Ingeniera en Desarrollo de Software</span>
           </h2>
-          <p className="hero-role-plain" style={{ fontSize: '1.05rem', fontWeight: '600', color: '#a61e4d', opacity: 0.85, marginBottom: '1.5rem' }}>
+          <p className="hero-role-plain" style={{ fontSize: '1.05rem', fontWeight: '600', color: 'var(--berry)', opacity: 0.85, marginBottom: '1.5rem' }}>
             Desarrolladora Frontend React · Ingeniera en Desarrollo de Software
           </p>
         </div>
 
         <div className="hero-desc-area">
-          <p style={{ fontSize: '1.2rem', color: '#a61e4d', opacity: 0.8, marginBottom: '2.5rem' }}>
-            Apasionada por crear interfaces intuitivas y experiencias web memorables.
-            Con experiencia en <strong>React, Laravel, Ionic, Angular, Firebase y JWT</strong>.
-            Transformo ideas en código limpio, funcional y visualmente atractivo.
+          <p style={{ fontSize: '1.15rem', marginBottom: '2.5rem', maxWidth: '560px' }}>
+            Diseño y desarrollo páginas web y sistemas que se ven increíbles y funcionan
+            todavía mejor. Con experiencia en <strong>React, Laravel, Ionic, Angular, Firebase y JWT</strong>,
+            transformo ideas en experiencias digitales elegantes y profesionales.
           </p>
         </div>
 
         <div className="hero-actions-area" style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-          <Link to="/proyectos" className="btn-primary">Ver proyectos</Link>
-          <Link to="/contacto" className="btn-secondary">Contáctame</Link>
+          <Link to="/precios" className="btn-primary">Ver precios ✦</Link>
+          <Link to="/proyectos" className="btn-secondary">Ver proyectos</Link>
         </div>
 
         <motion.div
@@ -65,12 +65,12 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <div style={{
-            background: 'rgba(255, 255, 255, 0.3)',
+            background: 'rgba(255, 255, 255, 0.55)',
             backdropFilter: 'blur(10px)',
             borderRadius: '50%',
             padding: '8px',
-            boxShadow: '0 30px 60px rgba(166, 30, 77, 0.2)',
-            border: '3px dashed rgba(166, 30, 77, 0.25)',
+            boxShadow: '0 30px 60px rgba(214, 51, 108, 0.2)',
+            border: '3px dashed rgba(236, 72, 153, 0.45)',
             position: 'relative',
             overflow: 'hidden',
           }}>

@@ -46,7 +46,7 @@ const Resume = () => {
     <section
       style={{
         padding: '5rem 0',
-        background: 'linear-gradient(135deg, #fff0f6 0%, #ffb3d1 100%)',
+        background: 'var(--section-bg)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -68,7 +68,7 @@ const Resume = () => {
               Mi <span className="gradient-text">Currículum</span>
             </h2>
           </div>
-          <p style={{ color: '#a61e4d', opacity: 0.85, marginBottom: '2.5rem', fontSize: '1.05rem', maxWidth: '650px', lineHeight: '1.7' }}>
+          <p style={{ color: 'var(--berry)', opacity: 0.85, marginBottom: '2.5rem', fontSize: '1.05rem', maxWidth: '650px', lineHeight: '1.7' }}>
             Egresada de Ingeniería en Desarrollo y Gestión de Software (promedio 9.7) y Técnica en Programación,
             con experiencia práctica en desarrollo web, captura y administración de información, control de
             inventarios y atención directa a clientes. Me adapto con rapidez a nuevos sistemas y tecnologías.
@@ -89,22 +89,22 @@ const Resume = () => {
             justifyContent: 'space-between',
             gap: '1.5rem',
             flexWrap: 'wrap',
-            background: 'linear-gradient(135deg, #a61e4d, #6b1439)',
-            color: '#fff0f6',
+            background: 'var(--grad-primary)',
+            color: 'var(--blush)',
             padding: '1.8rem 2.5rem',
             borderRadius: '32px 10px 32px 10px',
             textDecoration: 'none',
-            boxShadow: '0 20px 45px rgba(166, 30, 77, 0.3)',
+            boxShadow: '0 20px 45px rgba(214, 51, 108, 0.3)',
             marginBottom: '3rem',
             transition: '0.3s',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-4px)';
-            e.currentTarget.style.boxShadow = '0 26px 55px rgba(166, 30, 77, 0.4)';
+            e.currentTarget.style.boxShadow = '0 26px 55px rgba(214, 51, 108, 0.4)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 20px 45px rgba(166, 30, 77, 0.3)';
+            e.currentTarget.style.boxShadow = '0 20px 45px rgba(214, 51, 108, 0.3)';
           }}
         >
           <div>
@@ -117,8 +117,8 @@ const Resume = () => {
             width: '56px',
             height: '56px',
             borderRadius: '50%',
-            background: '#fff0f6',
-            color: '#a61e4d',
+            background: 'var(--blush)',
+            color: 'var(--berry)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -151,7 +151,7 @@ const Resume = () => {
                 background: 'rgba(255, 255, 255, 0.6)',
                 backdropFilter: 'blur(15px)',
                 padding: '1.5rem',
-                boxShadow: '0 10px 30px rgba(166, 30, 77, 0.08)',
+                boxShadow: '0 10px 30px rgba(214, 51, 108, 0.08)',
                 border: '1px solid rgba(255, 255, 255, 0.4)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -159,10 +159,10 @@ const Resume = () => {
                 minHeight: '130px',
               }}
             >
-              <span style={{ fontSize: '2.2rem', fontWeight: '700', color: '#a61e4d', fontFamily: "'Fraunces', serif" }}>
+              <span style={{ fontSize: '2.2rem', fontWeight: '700', color: 'var(--berry)', fontFamily: "var(--font-display)" }}>
                 {stat.value}
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#a61e4d', opacity: 0.7, fontWeight: '500' }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--berry)', opacity: 0.7, fontWeight: '500' }}>
                 {stat.label}
               </span>
             </motion.div>
@@ -209,18 +209,18 @@ const Resume = () => {
                 backdropFilter: 'blur(10px)',
                 padding: '1.5rem 2rem',
                 borderRadius: '20px',
-                border: '1px dashed rgba(166, 30, 77, 0.25)',
+                border: '1px dashed rgba(214, 51, 108, 0.25)',
               }}
             >
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '0.5rem', marginBottom: '0.3rem' }}>
-                <h4 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#a61e4d' }}>{edu.title}</h4>
-                <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#a61e4d', opacity: 0.55 }}>{edu.date}</span>
+                <h4 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--berry)' }}>{edu.title}</h4>
+                <span style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--berry)', opacity: 0.55 }}>{edu.date}</span>
               </div>
-              <p style={{ color: '#a61e4d', opacity: 0.75, fontSize: '0.95rem', marginBottom: edu.detail ? '0.3rem' : 0 }}>
+              <p style={{ color: 'var(--berry)', opacity: 0.75, fontSize: '0.95rem', marginBottom: edu.detail ? '0.3rem' : 0 }}>
                 {edu.school}
               </p>
               {edu.detail && (
-                <p style={{ color: '#a61e4d', opacity: 0.65, fontSize: '0.9rem' }}>{edu.detail}</p>
+                <p style={{ color: 'var(--berry)', opacity: 0.65, fontSize: '0.9rem' }}>{edu.detail}</p>
               )}
             </motion.div>
           ))}
@@ -231,7 +231,7 @@ const Resume = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '0.6rem',
-          color: '#a61e4d',
+          color: 'var(--berry)',
           opacity: 0.7,
           fontSize: '0.95rem',
         }}>
