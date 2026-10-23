@@ -198,80 +198,103 @@ h4 {
 }
 
 /* ==========================================================
-   BOTONES PERSONALIZADOS
-   - Efecto "caramelo" 3D: sombra sólida abajo que se aplasta al hacer clic
-   - Brillo que cruza el botón al pasar el mouse
-   - Burbuja con flecha que gira (se oculta si el botón ya trae un ícono)
-   - Borde interior "cosido" estilo listón
+   BOTONES DE CUADROS (VICHY) ROJO Y BLANCO
+   - Marco de cuadritos rojo/blanco tipo mantel de picnic
+   - Centro blanco con puntadas rojas, como un parche cosido
+   - Los cuadritos se deslizan al pasar el mouse
+   - Efecto 3D: se hunden al hacer clic
    ========================================================== */
+:root {
+  --red: #e11d48;
+  --red-deep: #9f1239;
+  --gingham:
+    repeating-linear-gradient(0deg, rgba(225, 29, 72, 0.6) 0 5px, transparent 5px 10px),
+    repeating-linear-gradient(90deg, rgba(225, 29, 72, 0.6) 0 5px, transparent 5px 10px),
+    linear-gradient(#fff, #fff);
+}
+
 .btn-primary,
 .btn-secondary,
 .btn-light,
 .btn-outline-light {
   --btn-depth: 5px;
-  --btn-edge: #8a1046;
+  --btn-edge: var(--red-deep);
+  --frame: 10px;
   position: relative;
   isolation: isolate;
-  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  padding: 0.9rem 0.95rem 0.9rem 1.9rem;
+  padding: 0.55rem 0.6rem 0.55rem 1.5rem;
   border-radius: 999px;
-  border: none;
   font-family: var(--font-body);
   font-weight: 800;
   font-size: 0.98rem;
   letter-spacing: 0.015em;
   white-space: nowrap;
+  color: var(--red-deep);
   transform: translateY(0);
   transition:
     transform 0.18s cubic-bezier(0.3, 0.7, 0.4, 1.5),
     box-shadow 0.18s ease,
-    background-position 0.6s ease,
+    background-position 0.7s ease,
     color 0.25s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Botones con ícono propio (WhatsApp, avión de papel…): padding simétrico */
+/* Con ícono propio (WhatsApp, avión de papel…): padding simétrico, sin burbuja */
 .btn-primary:has(> svg),
 .btn-secondary:has(> svg),
 .btn-light:has(> svg),
 .btn-outline-light:has(> svg) {
-  padding: 0.95rem 1.9rem;
+  padding: 0.6rem 1.5rem;
 }
 
-/* Borde "cosido" (puntadas) */
+/* ---------- Primario y claro: marco de cuadritos + centro blanco ---------- */
+.btn-primary,
+.btn-light {
+  border: var(--frame) solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--gingham);
+  background-origin: border-box;
+  background-clip: padding-box, border-box, border-box, border-box;
+  box-shadow:
+    0 var(--btn-depth) 0 var(--btn-edge),
+    0 calc(var(--btn-depth) + 10px) 22px rgba(159, 18, 57, 0.28);
+}
+
+/* Puntadas rojas en el centro blanco */
 .btn-primary::before,
 .btn-secondary::before,
 .btn-light::before,
 .btn-outline-light::before {
   content: '';
   position: absolute;
-  inset: 4px;
+  inset: 3px;
   border-radius: inherit;
-  border: 1.5px dashed rgba(255, 255, 255, 0.55);
+  border: 1.5px dashed rgba(225, 29, 72, 0.6);
   pointer-events: none;
   z-index: -1;
 }
 
-/* Burbuja con flecha */
+/* Burbuja roja con flecha */
 .btn-primary::after,
 .btn-secondary::after,
 .btn-light::after,
 .btn-outline-light::after {
   content: '';
   flex-shrink: 0;
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6336c' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  background-color: var(--red);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 1rem;
-  box-shadow: 0 3px 8px rgba(110, 15, 58, 0.25);
+  background-size: 0.95rem;
+  box-shadow: 0 3px 0 var(--red-deep);
   transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
@@ -282,6 +305,13 @@ h4 {
   display: none;
 }
 
+.btn-primary > svg,
+.btn-secondary > svg,
+.btn-light > svg,
+.btn-outline-light > svg {
+  color: var(--red);
+}
+
 .btn-primary:hover::after,
 .btn-secondary:hover::after,
 .btn-light:hover::after,
@@ -289,155 +319,78 @@ h4 {
   transform: rotate(-45deg) scale(1.08);
 }
 
-/* ---------- Primario: caramelo rosa ---------- */
-.btn-primary {
-  color: #fff;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 48%),
-    linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%),
-    var(--grad-primary);
-  background-size: 100% 100%, 250% 100%, 100% 100%;
-  background-position: 0 0, 150% 0, 0 0;
-  background-repeat: no-repeat;
-  text-shadow: 0 1px 1px rgba(110, 15, 58, 0.35);
-  box-shadow:
-    inset 0 -3px 0 rgba(110, 15, 58, 0.25),
-    0 var(--btn-depth) 0 var(--btn-edge),
-    0 calc(var(--btn-depth) + 10px) 24px rgba(236, 72, 153, 0.4);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  background-position: 0 0, -50% 0, 0 0;
-  box-shadow:
-    inset 0 -3px 0 rgba(110, 15, 58, 0.25),
-    0 calc(var(--btn-depth) + 2px) 0 var(--btn-edge),
-    0 calc(var(--btn-depth) + 16px) 30px rgba(236, 72, 153, 0.5);
-}
-
-/* ---------- Secundario: listón blanco con puntadas rosas ---------- */
-.btn-secondary {
-  --btn-edge: #ffb6d5;
-  color: var(--berry);
-  background:
-    linear-gradient(110deg, transparent 35%, rgba(255, 196, 221, 0.7) 50%, transparent 65%),
-    #fff;
-  background-size: 250% 100%, 100% 100%;
-  background-position: 150% 0, 0 0;
-  background-repeat: no-repeat;
-  box-shadow:
-    inset 0 0 0 1.5px rgba(236, 72, 153, 0.35),
-    0 var(--btn-depth) 0 var(--btn-edge),
-    0 calc(var(--btn-depth) + 10px) 22px rgba(214, 51, 108, 0.15);
-}
-
-.btn-secondary::before,
-.btn-light::before {
-  border-color: rgba(236, 72, 153, 0.45);
-}
-
-.btn-secondary::after {
-  background-color: var(--blush);
-  box-shadow: inset 0 0 0 1.5px rgba(236, 72, 153, 0.3);
-}
-
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  background-position: -50% 0, 0 0;
-  box-shadow:
-    inset 0 0 0 1.5px var(--pink),
-    0 calc(var(--btn-depth) + 2px) 0 var(--btn-edge),
-    0 calc(var(--btn-depth) + 16px) 28px rgba(214, 51, 108, 0.22);
-}
-
-/* ---------- Claro: para fondos rosas ---------- */
-.btn-light {
-  --btn-edge: #ffc4dd;
-  color: var(--berry);
-  background:
-    linear-gradient(110deg, transparent 35%, rgba(255, 196, 221, 0.8) 50%, transparent 65%),
-    #fff;
-  background-size: 250% 100%, 100% 100%;
-  background-position: 150% 0, 0 0;
-  background-repeat: no-repeat;
-  box-shadow:
-    0 var(--btn-depth) 0 var(--btn-edge),
-    0 calc(var(--btn-depth) + 10px) 24px rgba(110, 15, 58, 0.3);
-}
-
-.btn-light::after {
-  background-color: var(--pink);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
-}
-
+/* Al pasar el mouse los cuadritos se deslizan */
+.btn-primary:hover,
 .btn-light:hover {
   transform: translateY(-2px);
-  background-position: -50% 0, 0 0;
+  color: var(--red);
+  background-position: 0 0, 0 10px, 10px 0, 0 0;
   box-shadow:
     0 calc(var(--btn-depth) + 2px) 0 var(--btn-edge),
-    0 calc(var(--btn-depth) + 16px) 30px rgba(110, 15, 58, 0.35);
+    0 calc(var(--btn-depth) + 16px) 28px rgba(159, 18, 57, 0.35);
 }
 
-/* ---------- Contorno claro: vidrio sobre fondos rosas ---------- */
+/* ---------- Secundario y contorno: blanco con borde rojo y burbuja de cuadritos ---------- */
+.btn-secondary,
 .btn-outline-light {
-  --btn-edge: rgba(110, 15, 58, 0.35);
-  color: #fff;
-  background:
-    linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%),
-    rgba(255, 255, 255, 0.14);
-  background-size: 250% 100%, 100% 100%;
-  background-position: 150% 0, 0 0;
-  background-repeat: no-repeat;
-  backdrop-filter: blur(8px);
+  border: 2px solid var(--red);
+  background: #fff;
   box-shadow:
-    inset 0 0 0 1.5px rgba(255, 255, 255, 0.7),
-    0 var(--btn-depth) 0 var(--btn-edge);
+    0 var(--btn-depth) 0 var(--btn-edge),
+    0 calc(var(--btn-depth) + 10px) 22px rgba(159, 18, 57, 0.18);
 }
 
+.btn-secondary::after,
 .btn-outline-light::after {
-  background-color: rgba(255, 255, 255, 0.25);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
-  box-shadow: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239f1239' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 0.95rem no-repeat,
+    radial-gradient(circle, #fff 0 38%, transparent 40%),
+    repeating-linear-gradient(0deg, rgba(225, 29, 72, 0.6) 0 4px, transparent 4px 8px),
+    repeating-linear-gradient(90deg, rgba(225, 29, 72, 0.6) 0 4px, transparent 4px 8px),
+    #fff;
+  box-shadow: 0 0 0 1.5px var(--red), 0 3px 0 var(--red-deep);
 }
 
+.btn-secondary:hover,
 .btn-outline-light:hover {
   transform: translateY(-2px);
-  background-position: -50% 0, 0 0;
+  color: var(--red);
   box-shadow:
-    inset 0 0 0 1.5px #fff,
-    0 calc(var(--btn-depth) + 2px) 0 var(--btn-edge);
+    0 calc(var(--btn-depth) + 2px) 0 var(--btn-edge),
+    0 calc(var(--btn-depth) + 16px) 28px rgba(159, 18, 57, 0.25);
 }
 
-/* Al presionar: el botón se "hunde" */
+/* Al presionar: el botón se hunde */
 .btn-primary:active,
 .btn-secondary:active,
 .btn-light:active,
 .btn-outline-light:active {
   transform: translateY(var(--btn-depth));
-  box-shadow: 0 0 0 var(--btn-edge), 0 4px 10px rgba(110, 15, 58, 0.2);
+  box-shadow: 0 0 0 var(--btn-edge), 0 4px 10px rgba(159, 18, 57, 0.2);
   transition-duration: 0.06s;
 }
 
 .btn-primary:disabled {
-  filter: saturate(0.7);
+  opacity: 0.7;
   transform: none;
 }
 
 /* Botón compacto del menú */
 .btn-primary.nav-cta {
   --btn-depth: 3px;
+  --frame: 6px;
   font-size: 0.88rem;
-  padding: 0.5rem 0.55rem 0.5rem 1.2rem;
+  padding: 0.3rem 0.35rem 0.3rem 1rem;
 }
 
 .btn-primary.nav-cta::after {
-  width: 1.7rem;
-  height: 1.7rem;
-  background-size: 0.85rem;
+  width: 1.65rem;
+  height: 1.65rem;
+  background-size: 0.8rem;
 }
 
 .btn-primary.nav-cta::before {
-  inset: 3px;
+  inset: 2px;
 }
 
 /* ==========================================================
