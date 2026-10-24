@@ -1018,3 +1018,5 @@ a.contact-method:hover { transform: translateY(-4px); }
   .spin, .float { animation: none; }
   * { transition: none !important; }
 }
+
+.contact-method .cm-icon.wa { background: #25d366 !important; color: #fff !important; }

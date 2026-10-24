@@ -82,7 +82,7 @@ const Contact = () => {
           <aside className="contact-aside" data-aos="fade-up" data-aos-delay="150">
             {wa && (
               <a href={wa} target="_blank" rel="noreferrer" className="contact-method">
-                <span className="cm-icon" style={{ background: '#25d366' }}><FaWhatsapp size={22} /></span>
+                <span className="cm-icon wa"><FaWhatsapp size={22} /></span>
                 <span>
                   <span className="cm-label">WhatsApp</span>
                   <span className="cm-value" style={{ display: 'block' }}>Escríbeme directo</span>
