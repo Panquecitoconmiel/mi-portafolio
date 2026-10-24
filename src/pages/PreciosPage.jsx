@@ -2,6 +2,6 @@
 import React from 'react';
 import Pricing from '../components/Pricing';
 
-const PreciosPage = () => <Pricing index="05" />;
+const PreciosPage = () => <Pricing />;
 
 export default PreciosPage;

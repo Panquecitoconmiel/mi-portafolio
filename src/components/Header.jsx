@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header className="site-header">
-      <div className="header-inner" style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div className="header-inner">
         <Link to="/" className="brand" aria-label="Ir al inicio">
           <span className="brand-logo">
             <img src="/assets/lolosdev.svg" alt="Logo Lolos Dev" />
@@ -33,7 +33,6 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Botón hamburguesa (visible solo en pantallas chicas vía CSS) */}
         <button
           className={`hamburger${menuOpen ? ' active' : ''}`}
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -56,8 +55,8 @@ const Header = () => {
               {item.label}
             </NavLink>
           ))}
-          <Link to="/contacto" className="btn-primary nav-cta">
-            Contáctame
+          <Link to="/contacto" className="btn-secondary nav-cta">
+            Contacto
           </Link>
         </nav>
       </div>
