@@ -3,25 +3,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   FaRocket, FaGem, FaShoppingBag, FaCode, FaMobileAlt, FaGamepad, FaLeaf,
-  FaExternalLinkAlt, FaGithub, FaDownload,
+  FaExternalLinkAlt, FaGithub, FaDownload, FaArrowRight, FaClock,
 } from 'react-icons/fa';
 import Hero from '../components/Hero';
-import Carousel from '../components/Carousel';
 import { Flower, Heart } from '../components/Decor';
 import { plans } from '../data/precios';
 import { projectsData } from '../data/proyectos';
 
 const planIcons = {
-  rocket: <FaRocket size={38} />,
-  gem: <FaGem size={38} />,
-  cart: <FaShoppingBag size={38} />,
-  code: <FaCode size={38} />,
+  rocket: <FaRocket size={30} />,
+  gem: <FaGem size={30} />,
+  cart: <FaShoppingBag size={30} />,
+  code: <FaCode size={30} />,
 };
 
 const projectIcons = {
-  mobile: <FaMobileAlt size={38} />,
-  game: <FaGamepad size={38} />,
-  leaf: <FaLeaf size={38} />,
+  mobile: <FaMobileAlt size={30} />,
+  game: <FaGamepad size={30} />,
+  leaf: <FaLeaf size={30} />,
 };
 
 const tiles = [
@@ -67,21 +66,37 @@ const Home = () => {
             <p className="section-lead">Páginas web a tu medida, con precios claros y sin sorpresas.</p>
           </div>
 
-          <Carousel label="Paquetes de páginas web">
+          <div className="package-grid">
             {plans.map((plan, i) => (
-              <Link key={plan.id} to={`/contacto?plan=${plan.id}`} className="product-card" data-aos="fade-up" data-aos-delay={i * 80}>
-                <div className={`product-arch c${(i % 4) + 1}`}>
-                  <span className="big-icon">{planIcons[plan.icon]}</span>
+              <Link
+                key={plan.id}
+                to={`/contacto?plan=${plan.id}`}
+                className={`package-card${plan.featured ? ' featured' : ''}`}
+                data-aos="fade-up"
+                data-aos-delay={i * 80}
+              >
+                {plan.featured && <span className="package-badge">Más elegido</span>}
+                <div className={`package-media c${(i % 4) + 1}`}>
+                  <span className="package-icon">{planIcons[plan.icon]}</span>
                 </div>
-                <div className="product-label">
-                  <strong>{plan.name}</strong>
-                  <span className="price">desde ${plan.price}</span>
+                <div className="package-body">
+                  <h3>{plan.name}</h3>
+                  <p className="package-desc">{plan.description}</p>
+                  <p className="package-note"><FaClock size={11} /> {plan.note}</p>
+                  <div className="package-foot">
+                    <div className="package-price">
+                      <small>Desde</small>
+                      <strong>${plan.price}</strong>
+                      <small>MXN</small>
+                    </div>
+                    <span className="package-go" aria-hidden="true"><FaArrowRight size={14} /></span>
+                  </div>
                 </div>
               </Link>
             ))}
-          </Carousel>
+          </div>
 
-          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+          <div style={{ textAlign: 'center', marginTop: '2.6rem' }}>
             <Link to="/precios" className="btn-secondary btn-sm">Ver todo</Link>
           </div>
         </div>
@@ -97,22 +112,27 @@ const Home = () => {
             <p className="section-lead">Algunas cosas que he construido con mucho cariño.</p>
           </div>
 
-          <Carousel light label="Proyectos destacados">
+          <div className="package-grid three">
             {projectsData.map((p, i) => (
-              <article key={p.id} className="review-card" data-aos="fade-up" data-aos-delay={i * 80}>
-                <div className={`product-arch c${((i + 1) % 4) + 1}`}>
-                  <span className="big-icon">{projectIcons[p.icon]}</span>
+              <article key={p.id} className="package-card on-sage" data-aos="fade-up" data-aos-delay={i * 80}>
+                <div className={`package-media c${((i + 1) % 4) + 1}`}>
+                  <span className="package-icon">{projectIcons[p.icon]}</span>
                 </div>
-                <div className="review-body">
+                <div className="package-body">
                   <h3>{p.title}</h3>
-                  <p>{p.short}</p>
-                  <div className="review-links">
+                  <p className="package-desc">{p.short}</p>
+                  <div className="package-tags">
+                    {p.tech.slice(0, 3).map((t) => (
+                      <span key={t} className="tag-chip">{t}</span>
+                    ))}
+                  </div>
+                  <div className="package-foot links">
                     <a href={p.demo} target="_blank" rel="noreferrer">
                       <FaExternalLinkAlt size={11} /> {p.isExternal ? 'Ver sitio' : 'Demo'}
                     </a>
                     {p.repo && (
                       <a href={p.repo} target="_blank" rel="noreferrer">
-                        <FaGithub size={12} /> Código
+                        <FaGithub size={13} /> Código
                       </a>
                     )}
                     {p.download && (
@@ -124,9 +144,9 @@ const Home = () => {
                 </div>
               </article>
             ))}
-          </Carousel>
+          </div>
 
-          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+          <div style={{ textAlign: 'center', marginTop: '2.6rem' }}>
             <Link to="/proyectos" className="btn-light btn-sm">
               Ver más <Heart size={14} color="#ec8598" />
             </Link>
