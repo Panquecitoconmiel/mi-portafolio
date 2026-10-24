@@ -1020,3 +1020,9 @@ a.contact-method:hover { transform: translateY(-4px); }
 }
 
 .contact-method .cm-icon.wa { background: #25d366 !important; color: #fff !important; }
+
+/* Opciones de envío del formulario: correo y WhatsApp */
+.send-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.send-options > * { width: 100%; }
+.btn-primary.btn-wa { background: #25d366; --edge: #1a9e55; }
+@media (max-width: 600px) { .send-options { grid-template-columns: 1fr; } }
