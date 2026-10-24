@@ -35,7 +35,7 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
         >
           <div className="hero-arch">
-            <img src="/assets/yo.jpg" alt="Michelle Mora" />
+            <img src="/assets/yo.jpeg" alt="Michelle Mora" />
           </div>
           <Flower size={86} className="deco spin" style={{ top: '-18px', right: '-22px' }} />
           <Flower size={64} className="deco spin" style={{ bottom: '-20px', right: '30px' }} />
