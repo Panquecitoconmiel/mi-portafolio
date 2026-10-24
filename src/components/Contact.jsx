@@ -1,7 +1,7 @@
 // src/components/Contact.jsx
 import React, { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { FaUser, FaEnvelope, FaPaperPlane, FaWhatsapp, FaClock, FaMapMarkerAlt, FaLayerGroup, FaPhone } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaWhatsapp, FaClock, FaMapMarkerAlt, FaLayerGroup, FaPhone } from 'react-icons/fa';
 import { MdOutlineCheckCircle, MdErrorOutline } from 'react-icons/md';
 import emailjs from '@emailjs/browser';
 import { plans, planById } from '../data/precios';
@@ -16,7 +16,6 @@ const Contact = () => {
   const [isSending, setIsSending] = useState(false);
   const [messageStatus, setMessageStatus] = useState('');
   const [statusType, setStatusType] = useState('');
-  const [fallbackWa, setFallbackWa] = useState(null);
 
   const selected = planById(plan);
   const wa = whatsappLink(
@@ -25,26 +24,30 @@ const Contact = () => {
       : 'Hola Michelle, quiero cotizar una página web ✨'
   );
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setIsSending(true);
-    setMessageStatus('');
-    setStatusType('');
-    setFallbackWa(null);
-
+  // Reúne los datos del formulario en un solo objeto
+  const buildParams = () => {
     const data = new FormData(form.current);
     const servicio = selected ? `${selected.name} (desde $${selected.price} MXN)` : 'Otro / no estoy segur@';
     const telefono = data.get('user_phone') || 'No proporcionado';
 
     // El servicio y teléfono se agregan al mensaje para que lleguen
     // aunque la plantilla de EmailJS solo tenga nombre, correo y mensaje.
-    const params = {
+    return {
       user_name: data.get('user_name'),
       user_email: data.get('user_email'),
       user_phone: telefono,
       plan: servicio,
       message: `Servicio de interés: ${servicio}\nTeléfono / WhatsApp: ${telefono}\n\n${data.get('message')}`,
     };
+  };
+
+  // Opción 1: enviar por correo (EmailJS)
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setMessageStatus('');
+    setStatusType('');
+    const params = buildParams();
 
     emailjs
       .send('service_b688zfe', 'template_e4o4bid', params, 'SXN0-kx2b9qIMXOLQ')
@@ -56,18 +59,24 @@ const Contact = () => {
       })
       .catch((error) => {
         setStatusType('error');
-        // Si el correo falla, ofrecemos WhatsApp con el mensaje ya escrito
-        const waMsg = `Hola Michelle, soy ${params.user_name} (${params.user_email}).\n${params.message}`;
-        const waLink = whatsappLink(waMsg);
-        setFallbackWa(waLink);
         setMessageStatus(
-          waLink
-            ? 'No se pudo enviar por correo. Envíamelo por WhatsApp, ya va escrito 👇'
+          whatsappLink()
+            ? 'No se pudo enviar por correo. Usa el botón de WhatsApp, tu mensaje ya va escrito.'
             : 'Error al enviar. Intenta de nuevo más tarde.'
         );
         console.error(error?.text || error);
       })
       .finally(() => setIsSending(false));
+  };
+
+  // Opción 2: enviar por WhatsApp con el mensaje ya escrito
+  const sendWhatsApp = () => {
+    if (!form.current.reportValidity()) return;
+    const params = buildParams();
+    const link = whatsappLink(
+      `Hola Michelle, soy ${params.user_name} (${params.user_email}).\n${params.message}`
+    );
+    if (link) window.open(link, '_blank', 'noopener');
   };
 
   return (
@@ -177,14 +186,21 @@ const Contact = () => {
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isSending}
-                className="btn-primary"
-                style={{ width: '100%', fontSize: '1.05rem', opacity: isSending ? 0.7 : 1 }}
-              >
-                <FaPaperPlane /> {isSending ? 'Enviando...' : 'Enviar mensaje'}
-              </button>
+              <div className="send-options">
+                <button
+                  type="submit"
+                  disabled={isSending}
+                  className="btn-primary"
+                  style={{ opacity: isSending ? 0.7 : 1 }}
+                >
+                  <FaEnvelope /> {isSending ? 'Enviando...' : 'Enviar por correo'}
+                </button>
+                {whatsappLink() && (
+                  <button type="button" className="btn-primary btn-wa" onClick={sendWhatsApp}>
+                    <FaWhatsapp size={18} /> Enviar por WhatsApp
+                  </button>
+                )}
+              </div>
 
               {messageStatus && (
                 <p
@@ -207,17 +223,6 @@ const Contact = () => {
                   {statusType === 'success' ? <MdOutlineCheckCircle size={22} /> : <MdErrorOutline size={22} />}
                   {messageStatus}
                 </p>
-              )}
-              {fallbackWa && (
-                <a
-                  href={fallbackWa}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary"
-                  style={{ width: '100%', marginTop: '0.9rem', background: '#25d366', '--edge': '#1a9e55' }}
-                >
-                  <FaWhatsapp size={18} /> Enviar por WhatsApp
-                </a>
               )}
             </form>
           </div>
