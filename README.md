@@ -2,7 +2,7 @@
 
 Portafolio personal construido con **React + Vite**, con navegación real entre páginas mediante **React Router** (no es un link page de una sola sección: cada apartado vive en su propia ruta, con URL propia, botón atrás/adelante del navegador funcional y estado de carga independiente).
 
-🔗 Demo: https://mi-portafolio.vercel.app
+🔗 Demo: https://michellemora.pages.dev
 
 ## Rutas / Páginas
 
@@ -60,7 +60,7 @@ npm run preview
 
 ## Despliegue
 
-El proyecto incluye `vercel.json` con un rewrite a `index.html` para que las rutas de React Router (como `/proyectos` o `/contacto`) funcionen correctamente al recargar la página o entrar directo por URL — necesario en cualquier Single Page Application con rutas del lado del cliente.
+El sitio está publicado en **Cloudflare Pages** (preset React (Vite), comando `npm run build`, carpeta `dist`, variable `NODE_VERSION=22`). Cloudflare Pages sirve `index.html` para cualquier ruta desconocida, así que las rutas de React Router (como `/proyectos` o `/contacto`) funcionan al recargar o entrar directo por URL. Cada `git push` a `main` publica una nueva versión.
 
 ## Stack
 
