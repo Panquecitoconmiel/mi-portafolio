@@ -16,6 +16,7 @@ const Contact = () => {
   const [isSending, setIsSending] = useState(false);
   const [messageStatus, setMessageStatus] = useState('');
   const [statusType, setStatusType] = useState('');
+  const [fallbackWa, setFallbackWa] = useState(null);
 
   const selected = planById(plan);
   const wa = whatsappLink(
@@ -29,6 +30,7 @@ const Contact = () => {
     setIsSending(true);
     setMessageStatus('');
     setStatusType('');
+    setFallbackWa(null);
 
     const data = new FormData(form.current);
     const servicio = selected ? `${selected.name} (desde $${selected.price} MXN)` : 'Otro / no estoy segur@';
@@ -54,7 +56,15 @@ const Contact = () => {
       })
       .catch((error) => {
         setStatusType('error');
-        setMessageStatus('Error al enviar. Intenta de nuevo más tarde.');
+        // Si el correo falla, ofrecemos WhatsApp con el mensaje ya escrito
+        const waMsg = `Hola Michelle, soy ${params.user_name} (${params.user_email}).\n${params.message}`;
+        const waLink = whatsappLink(waMsg);
+        setFallbackWa(waLink);
+        setMessageStatus(
+          waLink
+            ? 'No se pudo enviar por correo. Envíamelo por WhatsApp, ya va escrito 👇'
+            : 'Error al enviar. Intenta de nuevo más tarde.'
+        );
         console.error(error?.text || error);
       })
       .finally(() => setIsSending(false));
@@ -82,7 +92,7 @@ const Contact = () => {
           <aside className="contact-aside" data-aos="fade-up" data-aos-delay="150">
             {wa && (
               <a href={wa} target="_blank" rel="noreferrer" className="contact-method">
-                <span className="cm-icon" style={{ background: '#25d366' }}><FaWhatsapp size={22} /></span>
+                <span className="cm-icon wa"><FaWhatsapp size={22} /></span>
                 <span>
                   <span className="cm-label">WhatsApp</span>
                   <span className="cm-value" style={{ display: 'block' }}>Escríbeme directo</span>
@@ -197,6 +207,17 @@ const Contact = () => {
                   {statusType === 'success' ? <MdOutlineCheckCircle size={22} /> : <MdErrorOutline size={22} />}
                   {messageStatus}
                 </p>
+              )}
+              {fallbackWa && (
+                <a
+                  href={fallbackWa}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary"
+                  style={{ width: '100%', marginTop: '0.9rem', background: '#25d366', '--edge': '#1a9e55' }}
+                >
+                  <FaWhatsapp size={18} /> Enviar por WhatsApp
+                </a>
               )}
             </form>
           </div>

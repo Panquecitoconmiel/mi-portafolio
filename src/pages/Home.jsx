@@ -1,87 +1,138 @@
 // src/pages/Home.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaBriefcase, FaCode, FaFolderOpen, FaFileAlt } from 'react-icons/fa';
+import {
+  FaRocket, FaGem, FaShoppingBag, FaCode, FaMobileAlt, FaGamepad, FaLeaf,
+  FaExternalLinkAlt, FaGithub, FaDownload,
+} from 'react-icons/fa';
 import Hero from '../components/Hero';
-import Marquee from '../components/Marquee';
-import Pricing from '../components/Pricing';
+import Carousel from '../components/Carousel';
+import { Flower, Heart } from '../components/Decor';
+import { plans } from '../data/precios';
+import { projectsData } from '../data/proyectos';
 
-const marqueeItems = [
-  'React', 'Laravel', 'JWT & Roles', 'Angular', 'Ionic', 'Firebase',
-  'APIs REST', 'Landing Pages', 'Tiendas en línea', 'Diseño UI', 'Figma', 'Git',
-];
+const planIcons = {
+  rocket: <FaRocket size={38} />,
+  gem: <FaGem size={38} />,
+  cart: <FaShoppingBag size={38} />,
+  code: <FaCode size={38} />,
+};
 
-const quickLinks = [
-  {
-    to: '/experiencia',
-    icon: <FaBriefcase size={22} />,
-    title: 'Experiencia',
-    text: 'Mi trayectoria en desarrollo y otros roles profesionales.',
-  },
-  {
-    to: '/habilidades',
-    icon: <FaCode size={22} />,
-    title: 'Habilidades',
-    text: 'Tecnologías y herramientas que domino.',
-  },
-  {
-    to: '/proyectos',
-    icon: <FaFolderOpen size={22} />,
-    title: 'Proyectos',
-    text: 'Aplicaciones y sitios que he desarrollado.',
-  },
-  {
-    to: '/cv',
-    icon: <FaFileAlt size={22} />,
-    title: 'CV',
-    text: 'Descarga mi currículum actualizado en PDF.',
-  },
+const projectIcons = {
+  mobile: <FaMobileAlt size={38} />,
+  game: <FaGamepad size={38} />,
+  leaf: <FaLeaf size={38} />,
+};
+
+const tiles = [
+  { value: '9.7', label: 'Promedio' },
+  { value: '15+', label: 'Tecnologías' },
+  { value: '4', label: 'Paquetes' },
+  { value: '24h', label: 'Respuesta' },
 ];
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <div className="star-band" aria-hidden="true" />
-      <Marquee items={marqueeItems} />
-      <section style={{ padding: '4rem 0 5rem' }}>
-        <div className="container">
-          <div className="eyebrow" data-aos="fade-up">Un vistazo rápido</div>
-          <div className="section-head" data-aos="fade-up">
-            <span className="index-num">00</span>
-            <h2>
-              Explora mi <span className="gradient-text">portafolio</span>
-            </h2>
+
+      {/* Agenda abierta */}
+      <section className="pink-section wavy" style={{ '--wave-color': 'var(--pink-100)' }}>
+        <div className="container center-head" data-aos="fade-up">
+          <h2 className="title-xl">Agenda abierta</h2>
+          <p className="section-lead" style={{ color: 'var(--sage-700)', fontWeight: 800 }}>
+            Estoy tomando nuevos proyectos este mes ✿
+          </p>
+          <div className="tiles">
+            {tiles.map((t, i) => (
+              <React.Fragment key={t.label}>
+                {i > 0 && <span className="tile-sep" aria-hidden="true">:</span>}
+                <div className="tile">
+                  <div className="tile-box">{t.value}</div>
+                  <span>{t.label}</span>
+                </div>
+              </React.Fragment>
+            ))}
           </div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-              gap: '1.8rem',
-              marginTop: '2.5rem',
-            }}
-          >
-            {quickLinks.map((item, index) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="quick-link-card sticker-card"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <span className="quick-link-icon">{item.icon}</span>
-                <h3 style={{ fontSize: '1.4rem' }}>
-                  {item.title}
-                </h3>
-                <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>
-                  {item.text}
-                </p>
+          <Link to="/contacto" className="btn-primary">Agenda tu proyecto</Link>
+        </div>
+      </section>
+
+      {/* Paquetes tipo "productos" */}
+      <section className="wavy" style={{ '--wave-color': 'var(--cream)' }}>
+        <div className="container">
+          <div className="center-head" data-aos="fade-up">
+            <span className="eyebrow">Servicios</span>
+            <h2 className="title-xl">Mis paquetes</h2>
+            <p className="section-lead">Páginas web a tu medida, con precios claros y sin sorpresas.</p>
+          </div>
+
+          <Carousel label="Paquetes de páginas web">
+            {plans.map((plan, i) => (
+              <Link key={plan.id} to={`/contacto?plan=${plan.id}`} className="product-card" data-aos="fade-up" data-aos-delay={i * 80}>
+                <div className={`product-arch c${(i % 4) + 1}`}>
+                  <span className="big-icon">{planIcons[plan.icon]}</span>
+                </div>
+                <div className="product-label">
+                  <strong>{plan.name}</strong>
+                  <span className="price">desde ${plan.price}</span>
+                </div>
               </Link>
             ))}
+          </Carousel>
+
+          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <Link to="/precios" className="btn-secondary btn-sm">Ver todo</Link>
           </div>
         </div>
       </section>
-      <Pricing compact index="01" />
+
+      {/* Proyectos destacados */}
+      <section className="sage-section wavy" style={{ '--wave-color': 'var(--sage-400)' }}>
+        <Flower size={110} color="#f9d0d7" center="#fffbec" className="deco spin hide-mobile" style={{ left: '-30px', bottom: '70px' }} />
+        <div className="container">
+          <div className="center-head" data-aos="fade-up">
+            <span className="eyebrow">Portafolio</span>
+            <h2 className="title-xl">Proyectos destacados</h2>
+            <p className="section-lead">Algunas cosas que he construido con mucho cariño.</p>
+          </div>
+
+          <Carousel light label="Proyectos destacados">
+            {projectsData.map((p, i) => (
+              <article key={p.id} className="review-card" data-aos="fade-up" data-aos-delay={i * 80}>
+                <div className={`product-arch c${((i + 1) % 4) + 1}`}>
+                  <span className="big-icon">{projectIcons[p.icon]}</span>
+                </div>
+                <div className="review-body">
+                  <h3>{p.title}</h3>
+                  <p>{p.short}</p>
+                  <div className="review-links">
+                    <a href={p.demo} target="_blank" rel="noreferrer">
+                      <FaExternalLinkAlt size={11} /> {p.isExternal ? 'Ver sitio' : 'Demo'}
+                    </a>
+                    {p.repo && (
+                      <a href={p.repo} target="_blank" rel="noreferrer">
+                        <FaGithub size={12} /> Código
+                      </a>
+                    )}
+                    {p.download && (
+                      <a href={p.download} target="_blank" rel="noreferrer">
+                        <FaDownload size={11} /> APK
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </Carousel>
+
+          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <Link to="/proyectos" className="btn-light btn-sm">
+              Ver más <Heart size={14} color="#ec8598" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
