@@ -49,11 +49,11 @@ const skillCategories = [
     title: 'Administración & Ofimática',
     skills: [
       { name: 'Excel avanzado', icon: <FaFileExcel size={38} color="#207245" /> },
-      { name: 'Bases de datos', icon: <FaDatabase size={38} color="#a61e4d" /> },
+      { name: 'Bases de datos', icon: <FaDatabase size={38} color="var(--berry)" /> },
       { name: 'Windows', icon: <FaWindows size={38} color="#0078D4" /> },
-      { name: 'Seguridad informática', icon: <FaShieldAlt size={38} color="#a61e4d" /> },
-      { name: 'Sistemas POS / ERP', icon: <FaCashRegister size={38} color="#a61e4d" /> },
-      { name: 'Informes e inventarios', icon: <FaClipboardList size={38} color="#a61e4d" /> },
+      { name: 'Seguridad informática', icon: <FaShieldAlt size={38} color="var(--berry)" /> },
+      { name: 'Sistemas POS / ERP', icon: <FaCashRegister size={38} color="var(--berry)" /> },
+      { name: 'Informes e inventarios', icon: <FaClipboardList size={38} color="var(--berry)" /> },
     ]
   },
   {
@@ -77,12 +77,12 @@ const Skills = () => {
   };
 
   return (
-    <section style={{ padding: '4rem 0', background: 'rgba(255, 240, 246, 0.3)' }}>
+    <section style={{ background: 'var(--section-bg)' }}>
       <div className="container">
         <div className="eyebrow" data-aos="fade-up">Lo que sé usar</div>
         <div className="section-head" data-aos="fade-up">
           <span className="index-num">02</span>
-          <h2 style={{ fontSize: '2.6rem', fontWeight: '700' }}>
+          <h2>
             Tecnologías <span className="gradient-text">que domino</span>
           </h2>
         </div>
@@ -91,46 +91,22 @@ const Skills = () => {
           {skillCategories.map((category, catIndex) => {
             const isOpen = openCategories.includes(catIndex);
             return (
-              <div 
-                key={catIndex} 
-                style={{
-                  background: 'rgba(255,255,255,0.6)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: '20px',
-                  boxShadow: '0 10px 30px rgba(26,26,26,0.08)',
-                  overflow: 'hidden',
-                  border: '1px solid rgba(255,255,255,0.4)'
-                }}
-                data-aos="fade-up"
-              >
-                {/* Header clickeable */}
+              <div key={catIndex} className="patch" style={{ padding: 0 }} data-aos="fade-up">
                 <button
+                  className="skill-toggle"
                   onClick={() => toggleCategory(catIndex)}
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '1.3rem 2rem',
-                    background: 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '1.3rem',
-                    fontWeight: '700',
-                    color: '#a61e4d',
-                    fontFamily: 'inherit'
-                  }}
+                  aria-expanded={isOpen}
                 >
                   {category.title}
-                  <motion.div
+                  <motion.span
+                    className="chev"
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <FaChevronDown color="#a61e4d" />
-                  </motion.div>
+                    <FaChevronDown size={14} />
+                  </motion.span>
                 </button>
 
-                {/* Contenido desplegable */}
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
@@ -141,41 +117,18 @@ const Skills = () => {
                       transition={{ duration: 0.35, ease: 'easeInOut' }}
                       style={{ overflow: 'hidden' }}
                     >
-                      <div style={{ 
-                        display: 'flex', 
-                        flexWrap: 'wrap', 
-                        gap: '1.5rem', 
-                        padding: '0.5rem 2rem 2rem' 
-                      }}>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '0.3rem 2rem 2rem' }}>
                         {category.skills.map((skill, index) => (
                           <motion.div
                             key={index}
+                            className="skill-tile"
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.06 }}
-                            style={{ 
-                              display: 'flex', 
-                              flexDirection: 'column', 
-                              alignItems: 'center', 
-                              gap: '0.5rem',
-                              background: 'rgba(255,255,255,0.7)',
-                              padding: '1.2rem 1.6rem',
-                              borderRadius: '16px',
-                              boxShadow: '0 6px 18px rgba(26,26,26,0.06)',
-                              transition: '0.3s',
-                              minWidth: '90px',
-                              cursor: 'default'
-                            }}
-                            whileHover={{ 
-                              y: -6,
-                              boxShadow: '0 15px 30px rgba(26,26,26,0.15)',
-                              background: 'rgba(255,255,255,1)'
-                            }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                            whileHover={{ y: -6, rotate: index % 2 ? 2 : -2 }}
                           >
                             {skill.icon}
-                            <span style={{ fontWeight: '600', color: '#a61e4d', fontSize: '0.9rem' }}>
-                              {skill.name}
-                            </span>
+                            <span>{skill.name}</span>
                           </motion.div>
                         ))}
                       </div>

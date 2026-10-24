@@ -2,18 +2,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Sparkle, Daisy, Flower, Cassette, FlipPhone, Bow, C } from './Decor';
 
 const Hero = () => {
   return (
-    <section style={{ 
-      minHeight: '80vh', 
-      display: 'flex', 
-      alignItems: 'center', 
-      position: 'relative',
-      background: 'linear-gradient(135deg, #fff0f6 0%, #ffb3d1 100%)',
-    }}>
-      <div className="shape shape-1"></div>
-      <div className="shape shape-2"></div>
+    <section className="hero-section">
+      <div className="hero-decor" aria-hidden="true">
+        <Flower size={130} className="deco spin" style={{ top: '7%', left: '3%' }} />
+        <Daisy size={70} className="deco float" style={{ bottom: '12%', left: '6%' }} />
+        <Cassette size={150} className="deco float-slow hide-mobile" style={{ bottom: '5%', left: '47%', rotate: '-12deg' }} />
+        <FlipPhone size={120} className="deco float hide-mobile" style={{ top: '10%', right: '4%', rotate: '18deg' }} />
+        <Flower size={90} className="deco spin hide-mobile" style={{ bottom: '8%', right: '3%' }} />
+        <Sparkle size={28} className="deco twinkle" style={{ top: '18%', left: '30%' }} />
+        <Sparkle size={18} color={C.sky} className="deco twinkle" style={{ top: '62%', left: '48%' }} />
+        <Sparkle size={22} color={C.lime} className="deco twinkle hide-mobile" style={{ top: '30%', right: '28%' }} />
+      </div>
       
       <div className="container hero-grid">
         <div className="hero-eyebrow-area">
@@ -26,35 +29,38 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 style={{ fontSize: '4.2rem', fontWeight: '800', margin: '0.5rem 0', color: '#a61e4d', lineHeight: '1.1' }}>
+          <h1 className="hero-title">
             Michelle <span className="gradient-text">Mora</span>
-            <span className="blink-cursor" aria-hidden="true">_</span>
+            <span className="title-sparkles" aria-hidden="true">
+              <Sparkle size={34} />
+              <Sparkle size={20} />
+            </span>
           </h1>
         </motion.div>
 
         <div className="hero-role-area">
-          <h2 className="hero-role-code" style={{ fontSize: '1.3rem', fontWeight: '500', color: '#a61e4d', opacity: 0.85, marginBottom: '1.5rem', fontFamily: "'Space Mono', monospace", lineHeight: '1.8' }}>
+          <h2 className="hero-role-code" style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--berry)', opacity: 0.85, marginBottom: '1.5rem', fontFamily: 'var(--font-mono)', lineHeight: '1.8' }}>
             <span style={{ opacity: 0.5 }}>const</span> rol <span style={{ opacity: 0.5 }}>=</span>{' '}
             <span style={{ fontWeight: '700' }}>'Desarrolladora Frontend React'</span>;
             <br />
             <span style={{ opacity: 0.5 }}>{'// '}Ingeniera en Desarrollo de Software</span>
           </h2>
-          <p className="hero-role-plain" style={{ fontSize: '1.05rem', fontWeight: '600', color: '#a61e4d', opacity: 0.85, marginBottom: '1.5rem' }}>
+          <p className="hero-role-plain" style={{ fontSize: '1.05rem', fontWeight: '600', color: 'var(--berry)', opacity: 0.85, marginBottom: '1.5rem' }}>
             Desarrolladora Frontend React · Ingeniera en Desarrollo de Software
           </p>
         </div>
 
         <div className="hero-desc-area">
-          <p style={{ fontSize: '1.2rem', color: '#a61e4d', opacity: 0.8, marginBottom: '2.5rem' }}>
-            Apasionada por crear interfaces intuitivas y experiencias web memorables.
-            Con experiencia en <strong>React, Laravel, Ionic, Angular, Firebase y JWT</strong>.
-            Transformo ideas en código limpio, funcional y visualmente atractivo.
+          <p style={{ fontSize: '1.15rem', marginBottom: '2.5rem', maxWidth: '560px' }}>
+            Diseño y desarrollo páginas web y sistemas que se ven increíbles y funcionan
+            todavía mejor. Con experiencia en <strong>React, Laravel, Ionic, Angular, Firebase y JWT</strong>,
+            transformo ideas en experiencias digitales elegantes y profesionales.
           </p>
         </div>
 
         <div className="hero-actions-area" style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-          <Link to="/proyectos" className="btn-primary">Ver proyectos</Link>
-          <Link to="/contacto" className="btn-secondary">Contáctame</Link>
+          <Link to="/precios" className="btn-primary">Ver precios</Link>
+          <Link to="/proyectos" className="btn-secondary">Ver proyectos</Link>
         </div>
 
         <motion.div
@@ -64,16 +70,8 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.3)',
-            backdropFilter: 'blur(10px)',
-            borderRadius: '50%',
-            padding: '8px',
-            boxShadow: '0 30px 60px rgba(166, 30, 77, 0.2)',
-            border: '3px dashed rgba(166, 30, 77, 0.25)',
-            position: 'relative',
-            overflow: 'hidden',
-          }}>
+          <Bow className="photo-bow" />
+          <div className="photo-frame">
             <img
               src="/assets/yo.jpg"
               alt="Michelle Mora"
