@@ -1,16 +1,16 @@
 // src/views/Precios.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaCheck, FaClock, FaWhatsapp } from 'react-icons/fa';
+import { FaCheck, FaClock, FaWhatsapp, FaGift } from 'react-icons/fa';
 import { plans, extras } from '../data/precios';
 import { whatsappLink } from '../data/contacto';
 
 const Precios = () => {
-  const wa = whatsappLink('Hola Michelle, quiero cotizar una página web ✨');
+  const wa = whatsappLink('Hola Michelle, quiero cotizar una página web');
 
   return (
     <div className="prices-view">
-      <p className="view-intro">Paquetes claros, sin letras chiquitas. Elige uno o pídeme una cotización a tu medida ✿</p>
+      <p className="view-intro">Paquetes claros, sin letras chiquitas. Elige uno o pídeme una cotización a tu medida.</p>
 
       <div className="plan-grid">
         {plans.map((plan) => (
@@ -34,7 +34,7 @@ const Precios = () => {
         ))}
       </div>
 
-      <h3 className="view-section">✿ extras</h3>
+      <h3 className="view-section"><FaGift /> extras</h3>
       <div className="extras">
         {extras.map((e) => (
           <div key={e.name} className="extra">

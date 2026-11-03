@@ -2,7 +2,7 @@
 
 Portafolio personal construido con **React + Vite**, con navegación real entre páginas mediante **React Router** (no es un link page de una sola sección: cada apartado vive en su propia ruta, con URL propia, botón atrás/adelante del navegador funcional y estado de carga independiente).
 
-🔗 Demo: https://michellemora.pages.dev
+Demo: https://michellemora.pages.dev
 
 ## Rutas / Páginas
 
