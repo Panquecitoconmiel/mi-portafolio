@@ -14,6 +14,30 @@ export const about = {
   ],
 };
 
+// Mi historia (línea de tiempo en "Sobre mí")
+export const story = [
+  {
+    year: '2019',
+    title: 'Mi primer contacto con la tecnología',
+    text: 'Entré al bachillerato tecnológico y ahí descubrí que me encantaba crear cosas con código.',
+  },
+  {
+    year: '2022',
+    title: 'Primeros proyectos freelance',
+    text: 'Empecé a hacer páginas web por mi cuenta mientras trabajaba en atención a clientes y ventas. Ahí aprendí a escuchar lo que de verdad necesita cada negocio.',
+  },
+  {
+    year: '2022 – 2026',
+    title: 'TSU e Ingeniería en Software',
+    text: 'Estudié TSU y después Ingeniería en Desarrollo y Gestión de Software, donde me gradué con 9.7 de promedio, y trabajé en proyectos reales con React, Laravel y Firebase.',
+  },
+  {
+    year: 'Hoy',
+    title: 'LolosDev',
+    text: 'Ayudo a emprendedores y negocios a tener una página bonita, rápida y profesional, y desarrollo sistemas como KEVER, explicándolo todo sin tecnicismos.',
+  },
+];
+
 export const devExperiences = [
   {
     id: 1,
