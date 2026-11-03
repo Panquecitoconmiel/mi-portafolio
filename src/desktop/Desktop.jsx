@@ -86,8 +86,8 @@ const Desktop = () => {
       {/* Barra superior */}
       <header className="menubar">
         <Link to="/" className="mb-brand" aria-label="Ir al inicio">
-          <img src="/assets/lolosdev.svg" alt="" />
-          <span>Lolos<b>Dev</b></span>
+          <img className="mb-bunny" src="/assets/logo/conejito.png" alt="" />
+          <span className="mb-word" role="img" aria-label="LolosDev" />
         </Link>
         <div className="mb-right">
           <span className="mb-status hide-sm" aria-hidden="true">
