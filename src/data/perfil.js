@@ -6,7 +6,7 @@ export const cvPdf = '/assets/Michelle_Mora_CV.pdf';
 export const about = {
   name: 'Michelle Mora',
   role: 'Ingeniera de software · Desarrolladora web',
-  photo: '/assets/yo.jpeg',
+  photo: '/assets/michelle.jpg',
   location: 'CDMX · Trabajo remoto en todo México',
   bio: [
     'Hola, soy Michelle. Diseño y desarrollo páginas web y sistemas que se ven bonitos y funcionan todavía mejor.',

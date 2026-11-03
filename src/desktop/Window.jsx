@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
 
-const Window = ({ title, isHome, wide, children }) => {
+const Window = ({ title, isHome, children }) => {
   const navigate = useNavigate();
   const body = useRef(null);
   const close = () => navigate('/');
@@ -13,12 +13,14 @@ const Window = ({ title, isHome, wide, children }) => {
   // Al abrir una ventana, su contenido empieza arriba
   useEffect(() => {
     body.current?.scrollTo(0, 0);
-    if (!isHome && window.innerWidth < 900) window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Con una ventana abierta, la página de fondo no se desplaza
+    document.body.classList.toggle('window-open', !isHome);
+    return () => document.body.classList.remove('window-open');
   }, [isHome]);
 
   return (
     <motion.section
-      className={`window${wide ? ' wide' : ''}${isHome ? ' home' : ''}`}
+      className={`window${isHome ? ' home' : ' max'}`}
       initial={{ opacity: 0, scale: 0.94, y: 18 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -39,7 +41,7 @@ const Window = ({ title, isHome, wide, children }) => {
         <span className="win-title">{title}</span>
       </div>
       <div className="window-body" ref={body}>
-        {children}
+        <div className="window-content">{children}</div>
       </div>
     </motion.section>
   );
