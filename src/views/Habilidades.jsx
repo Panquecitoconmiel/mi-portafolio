@@ -4,7 +4,7 @@ import { skillCategories } from '../data/habilidades';
 
 const Habilidades = () => (
   <div className="skills-view">
-    <p className="view-intro">Tecnologías y herramientas con las que trabajo todos los días ✿</p>
+    <p className="view-intro">Tecnologías y herramientas con las que trabajo todos los días.</p>
     {skillCategories.map((cat) => (
       <section key={cat.title} className="skill-group">
         <h3 className="view-section">{cat.title.toLowerCase()}</h3>

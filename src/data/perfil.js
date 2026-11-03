@@ -9,7 +9,7 @@ export const about = {
   photo: '/assets/yo.jpeg',
   location: 'CDMX · Trabajo remoto en todo México',
   bio: [
-    'Hola, soy Michelle 🎀 Diseño y desarrollo páginas web y sistemas que se ven bonitos y funcionan todavía mejor.',
+    'Hola, soy Michelle. Diseño y desarrollo páginas web y sistemas que se ven bonitos y funcionan todavía mejor.',
     'Soy egresada de Ingeniería en Desarrollo y Gestión de Software (promedio 9.7). Trabajo con React, Laravel, Ionic, Angular y Firebase, y me encanta convertir ideas en experiencias digitales claras y profesionales.',
   ],
 };

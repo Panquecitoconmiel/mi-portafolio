@@ -9,7 +9,7 @@ export const WHATSAPP_NUMBER = '527841418048';
 // Si lo dejas vacío, solo se muestra el formulario de contacto.
 export const EMAIL = '';
 
-export const whatsappLink = (mensaje = 'Hola Michelle, me interesa una página web ✨') =>
+export const whatsappLink = (mensaje = 'Hola Michelle, me interesa una página web') =>
   WHATSAPP_NUMBER
     ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`
     : null;

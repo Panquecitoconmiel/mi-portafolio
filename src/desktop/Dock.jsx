@@ -23,7 +23,7 @@ const Dock = () => (
         </a>
       ))}
     </nav>
-    <p className="copyright">© {new Date().getFullYear()} Michelle Mora · hecho con React y mucho café con leche ☕</p>
+    <p className="copyright">© {new Date().getFullYear()} Michelle Mora · hecho con React y mucho café con leche</p>
   </footer>
 );
 

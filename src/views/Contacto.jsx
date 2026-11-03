@@ -20,8 +20,8 @@ const Contacto = () => {
   const selected = planById(plan);
   const wa = whatsappLink(
     selected
-      ? `Hola Michelle, me interesa el paquete "${selected.name}" ✨`
-      : 'Hola Michelle, quiero cotizar una página web ✨'
+      ? `Hola Michelle, me interesa el paquete "${selected.name}"`
+      : 'Hola Michelle, quiero cotizar una página web'
   );
 
   // Reúne los datos del formulario en un solo objeto
@@ -82,7 +82,7 @@ const Contacto = () => {
   return (
     <div className="contact-view">
       <p className="view-intro">
-        ¿Tienes un proyecto en mente? Cuéntame qué necesitas y te envío una propuesta sin compromiso ✿
+        ¿Tienes un proyecto en mente? Cuéntame qué necesitas y te envío una propuesta sin compromiso.
       </p>
 
       <div className="contact-cards">

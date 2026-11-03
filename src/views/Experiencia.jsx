@@ -1,5 +1,6 @@
 // src/views/Experiencia.jsx
 import React from 'react';
+import { FaLaptopCode, FaStore } from 'react-icons/fa';
 import { devExperiences, otherExperiences } from '../data/perfil';
 
 // Convierte la descripción (con viñetas "•" o "-") en una lista
@@ -11,7 +12,7 @@ const toBullets = (text) =>
 
 const Experiencia = () => (
   <div className="exp-view">
-    <h3 className="view-section">💻 desarrollo</h3>
+    <h3 className="view-section"><FaLaptopCode /> desarrollo</h3>
     <ol className="timeline">
       {devExperiences.map((exp) => (
         <li key={exp.id} className="tl-item">
@@ -32,7 +33,7 @@ const Experiencia = () => (
       ))}
     </ol>
 
-    <h3 className="view-section">🛍️ otra experiencia</h3>
+    <h3 className="view-section"><FaStore /> otra experiencia</h3>
     <div className="other-list">
       {otherExperiences.map((exp) => (
         <div key={exp.id} className="other-item">
