@@ -1119,3 +1119,44 @@ body.window-open { overflow: hidden; }
 @media (min-width: 761px) {
   .about-photo img { max-height: calc(100dvh - var(--menubar-h) - 150px); }
 }
+
+/* ==========================================================
+   LA MELODY SIEMPRE A LA VISTA
+   Tiene su propio rincón a la derecha; las ventanas no lo cubren.
+   ========================================================== */
+:root { --mascot-w: clamp(170px, 17vw, 250px); }
+
+@media (min-width: 901px) {
+  .melody-spot {
+    right: 1.5vw;
+    width: var(--mascot-w);
+    z-index: 2;
+  }
+
+  .melody { height: clamp(140px, 27vh, 250px); max-width: 100%; object-fit: contain; }
+
+  /* La maceta va a la izquierda de la Melody */
+  .room-plant { right: calc(var(--mascot-w) + 3vw); }
+
+  /* La ventana de inicio se centra en el espacio libre, sin tapar a la Melody */
+  .window-area { padding-right: calc(var(--mascot-w) + 3vw); }
+
+  /* Las ventanas abiertas ocupan todo menos el rincón de la Melody */
+  .window.max { right: calc(var(--mascot-w) + 3vw); }
+}
+
+/* Laptops angostas: sin maceta para dar espacio */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .room-plant { display: none; }
+}
+
+/* Celular: con una ventana abierta, el cuarto se queda abajo con la Melody */
+@media (max-width: 900px) {
+  .desktop.has-window .room { position: fixed; }
+  .desktop.has-window .floor { height: 112px; }
+  .desktop.has-window .wall { bottom: 112px; }
+  .desktop.has-window .melody-spot { position: fixed; left: 50%; transform: translateX(-50%); bottom: 26px; z-index: 41; width: 150px; }
+  .desktop.has-window .melody { height: 104px; }
+  .desktop.has-window .room-plant { position: fixed; bottom: 34px; right: 8%; height: 78px; }
+  .window.max { bottom: 136px; }
+}
