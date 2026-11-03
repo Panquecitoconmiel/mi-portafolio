@@ -3,12 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaDownload, FaPaperPlane, FaRoute } from 'react-icons/fa';
 import { about, stats, highlights, cvPdf, story } from '../data/perfil';
+import BunnyFrame from '../desktop/BunnyFrame';
 
 const SobreMi = () => (
   <>
   <div className="about-view">
     <div className="about-photo">
-      <img src={about.photo} alt={about.name} />
+      <BunnyFrame src={about.photo} alt={about.name} />
       <span className="about-tag">LolosDev</span>
     </div>
 

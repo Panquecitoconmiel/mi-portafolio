@@ -1560,3 +1560,278 @@ body.window-open { overflow: hidden; }
   .gallery-arrow.big { width: 36px; height: 36px; }
   .lightbox-window .gallery-thumb { width: 64px; height: 42px; }
 }
+
+/* ==========================================================
+   INICIO MÁS IMPACTANTE
+   ========================================================== */
+.window.home { width: min(100%, 660px); }
+
+.hero { text-align: center; padding: 0.3rem 0 0.2rem; }
+
+.hero-headline {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-top: 0.2rem;
+}
+
+.rotator {
+  display: inline-grid;
+  vertical-align: bottom;
+  overflow: hidden;
+  padding: 0 0.12em;
+  color: var(--pink);
+}
+
+.rotator-word { display: inline-block; white-space: nowrap; }
+
+.hero-headline mark {
+  background: linear-gradient(transparent 58%, var(--butter) 58%, var(--butter) 92%, transparent 92%);
+  color: inherit;
+  padding: 0 0.1em;
+}
+
+:root[data-theme='dark'] .hero-headline mark {
+  background: linear-gradient(transparent 58%, rgba(236, 133, 152, 0.45) 58%, rgba(236, 133, 152, 0.45) 92%, transparent 92%);
+}
+
+.hero-sub {
+  max-width: 470px;
+  margin: 0.8rem auto 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.hero-sub strong { color: var(--text); }
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem 0.9rem;
+  margin-top: 1.2rem;
+}
+
+.btn-lg { padding: 0.75rem 1.4rem; font-size: 1rem; border-radius: 14px; }
+.btn-pink.btn-lg { background: var(--pink); color: #fff; }
+.btn-pink.btn-lg:hover svg { transform: translateX(3px); }
+.btn-lg svg { transition: transform 0.2s ease; }
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--pink-soft);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+.btn-link:hover { color: var(--pink); }
+
+.hero-proof {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.3rem;
+  padding-top: 1rem;
+  border-top: 2px dashed var(--pink-soft);
+}
+
+.hero-proof li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 0.3rem 0.75rem 0.3rem 0.35rem;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+}
+
+.hero-proof strong { color: var(--text); font-size: 0.85rem; }
+
+.proof-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  background: var(--pink-soft);
+  color: #5a3b44;
+}
+
+.hero-proof li:nth-child(2) .proof-icon { background: var(--butter); }
+.hero-proof li:nth-child(3) .proof-icon { background: var(--sage); }
+
+/* Pantallas bajitas: compacto pero completo */
+@media (min-width: 901px) and (max-height: 700px) {
+  .hero-headline { font-size: clamp(1.6rem, 3.4vw, 2.3rem); }
+  .hero-sub { font-size: 0.86rem; margin-top: 0.5rem; }
+  .hero-ctas { margin-top: 0.8rem; }
+  .btn-lg { padding: 0.55rem 1.05rem; font-size: 0.9rem; }
+  .hero-proof { margin-top: 0.8rem; padding-top: 0.7rem; }
+  .hero .status-pill { margin-bottom: 0.4rem; }
+}
+
+@media (min-width: 901px) and (max-height: 600px) {
+  .hero-proof { display: none; }
+}
+
+@media (min-width: 901px) { .room-plant { right: calc(var(--mascot-w) + 0.2vw); height: clamp(90px, 16vh, 150px); } }
+
+/* ==========================================================
+   FOTO EN CORAZÓN CON CONEJITOS QUE BRINCAN (Sobre mí)
+   ========================================================== */
+.about-photo img { max-height: none; }
+
+.bunny-frame {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border-radius: 28px;
+  border: 3px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.55), transparent 62%),
+    #f9c9d4;
+  box-shadow: 8px 8px 0 var(--pink-soft);
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+:root[data-theme='dark'] .bunny-frame { background: radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.18), transparent 62%), #b98aa0; }
+
+/* Corazón con la foto */
+.bf-heart {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  width: 46%;
+  aspect-ratio: 1 / 0.95;
+  transform: translate(-50%, -50%);
+  animation: heartbeat 3.2s ease-in-out infinite;
+}
+
+.bf-heart img,
+.bf-heart-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: url(#heart-clip);
+}
+
+.bf-heart-line { background: var(--line); transform: scale(1.06); }
+
+.bf-heart img {
+  object-fit: cover;
+  object-position: 50% 22%;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  aspect-ratio: auto !important;
+  background: #fff;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  12% { transform: translate(-50%, -50%) scale(1.04); }
+  24% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Conejitos alrededor */
+.bf-bunny {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  width: 26%;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--a))
+    translateX(34cqw)
+    rotate(90deg)
+    scaleX(var(--flip));
+}
+
+.bf-bunny-hop {
+  animation: hop 1.8s ease-in-out infinite;
+  animation-delay: var(--d);
+  transform-origin: 50% 90%;
+}
+
+.bunny-svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.bunny-ear {
+  transform-box: fill-box;
+  transform-origin: 85% 85%;
+  animation: ear 1.8s ease-in-out infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes hop {
+  0%, 55%, 100% { transform: translateY(0) scale(1, 1); }
+  10% { transform: translateY(0) scale(1.06, 0.92); }
+  28% { transform: translateY(-14%) scale(0.96, 1.05); }
+  45% { transform: translateY(0) scale(1.05, 0.94); }
+}
+
+@keyframes ear {
+  0%, 55%, 100% { transform: rotate(0deg); }
+  28% { transform: rotate(-14deg); }
+}
+
+/* Luna y estrellitas */
+.bf-moon { position: absolute; left: 6%; top: 5%; width: 12%; animation: bob 5s ease-in-out infinite; }
+.bf-star { position: absolute; width: 6%; animation: twinkle 2.4s ease-in-out infinite; }
+.bf-star.s1 { right: 9%; top: 7%; }
+.bf-star.s2 { left: 5%; bottom: 8%; width: 5%; animation-delay: 0.7s; }
+.bf-star.s3 { right: 6%; bottom: 10%; width: 7%; animation-delay: 1.3s; }
+.bf-star.s4 { left: 46%; top: 3%; width: 4%; animation-delay: 1.8s; }
+
+/* La etiqueta LolosDev sobre el marco */
+.about-photo .about-tag { z-index: 3; bottom: 18px; }
+
+.about-photo { width: 100%; }
+@media (max-width: 760px) { .about-photo { max-width: 300px; } }
+
+/* ==========================================================
+   FOTO EN CÍRCULO (reemplaza al corazón)
+   ========================================================== */
+.bunny-frame { border-radius: 50%; }
+
+.bf-heart {
+  top: 50%;
+  width: 44%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  box-shadow: 0 0 0 6px #fff, 0 0 0 9px var(--line);
+  overflow: hidden;
+  background: #fff;
+}
+
+.bf-heart-line { display: none; }
+.bf-heart img { clip-path: none; border-radius: 50% !important; }
+
+.bf-bunny { top: 50%; width: 23%; }
+.bf-moon { left: 18%; top: 11%; width: 10%; }
+.bf-star.s1 { right: 20%; top: 12%; }
+.bf-star.s2 { left: 13%; bottom: 22%; }
+.bf-star.s3 { right: 14%; bottom: 22%; }
+.bf-star.s4 { left: 48%; top: 4%; }
+
+.about-photo .about-tag { bottom: 6%; left: 0; }
