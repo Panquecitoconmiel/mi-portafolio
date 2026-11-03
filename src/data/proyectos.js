@@ -8,7 +8,13 @@ export const projectsData = [
     short: 'Conecta el inventario de SICAR con canales de venta en línea.',
     status: 'En desarrollo',
     featured: true,
-    image: '/assets/proyectos/kever.webp',
+    // Capturas del álbum (agrega más aquí: { src, caption })
+    images: [
+      { src: '/assets/proyectos/kever.webp', caption: 'Inicio del panel: SICAR como fuente maestra y canales de venta' },
+      { src: '/assets/proyectos/kever-sicar.webp', caption: 'Conexión con SICAR V4 y flujo hacia Mercado Libre y Shopify' },
+      { src: '/assets/proyectos/kever-canales.webp', caption: 'Canales de venta: Mercado Libre en proceso y Shopify próximamente' },
+      { src: '/assets/proyectos/kever-menu.webp', caption: 'Menú lateral con carteles, catálogo, productos, categorías, tags y clientes' },
+    ],
     description: `Sistema administrativo para una tienda que usa el inventario de SICAR V4 como fuente maestra (productos, existencias, precios y categorías) y lo lleva a sus canales de venta. Prepara borradores para Mercado Libre comparándolos con los más vendidos, y está diseñado para conectar una o varias tiendas de Shopify.`,
     highlights: [
       'Sincronización con SICAR V4',

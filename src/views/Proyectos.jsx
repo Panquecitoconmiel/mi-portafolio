@@ -4,6 +4,7 @@ import {
   FaExternalLinkAlt, FaGithub, FaDownload, FaMobileAlt, FaGamepad, FaLeaf, FaStore, FaCheck,
 } from 'react-icons/fa';
 import { projectsData } from '../data/proyectos';
+import Gallery from '../desktop/Gallery';
 
 const icons = { mobile: <FaMobileAlt />, game: <FaGamepad />, leaf: <FaLeaf />, store: <FaStore /> };
 
@@ -35,10 +36,7 @@ const Proyectos = () => (
     {projectsData.map((p, i) =>
       p.featured ? (
         <article key={p.id} className="project-featured">
-          <figure className="project-shot">
-            <div className="shot-bar" aria-hidden="true"><i /><i /><i /></div>
-            <img src={p.image} alt={`Captura de ${p.title}`} loading="lazy" />
-          </figure>
+          <Gallery images={p.images} title={p.title} />
           <div className="project-info">
             {p.status && <span className="project-status"><i /> {p.status}</span>}
             <h4>{p.title}</h4>

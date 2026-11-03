@@ -1394,3 +1394,162 @@ body.window-open { overflow: hidden; }
 @media (max-width: 820px) {
   .project-featured { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================
+   ÁLBUM DE CAPTURAS (carrusel + vista a pantalla completa)
+   ========================================================== */
+.gallery { min-width: 0; }
+.gallery-main { position: relative; }
+.shot-bar { align-items: center; }
+.shot-count { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; }
+
+.gallery-stage {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: #fff;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.gallery-stage img { width: 100%; height: 100%; object-fit: contain; display: block; background: #fff; }
+
+.gallery-zoom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--win);
+  color: var(--text);
+  border: 2px solid var(--line);
+  box-shadow: 0 2px 0 var(--line);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-stage:hover .gallery-zoom,
+.gallery-stage:focus-visible .gallery-zoom { opacity: 1; transform: translateY(0); }
+@media (pointer: coarse) { .gallery-zoom { opacity: 1; transform: none; } }
+
+.gallery-arrow {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--win);
+  color: var(--text);
+  box-shadow: 0 2px 0 var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.gallery-arrow:hover { background: var(--pink-soft); color: #5a3b44; transform: translateY(-50%) scale(1.08); }
+.gallery-arrow.prev { left: 8px; }
+.gallery-arrow.next { right: 8px; }
+.gallery-arrow.big { width: 44px; height: 44px; font-size: 1.1rem; top: 50%; }
+
+.gallery-caption { font-size: 0.8rem; font-weight: 700; color: var(--muted); margin: 0.7rem 0 0; text-align: center; }
+
+.gallery-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+  overflow-x: auto;
+  padding: 4px 2px 6px;
+  scrollbar-width: thin;
+}
+
+.gallery-thumbs.center { justify-content: center; }
+
+.gallery-thumb {
+  flex: 0 0 auto;
+  width: 84px;
+  height: 54px;
+  padding: 0;
+  border-radius: 9px;
+  border: 2px solid var(--line);
+  overflow: hidden;
+  background: #fff;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-thumb:hover { opacity: 1; transform: translateY(-2px); }
+.gallery-thumb.active { opacity: 1; box-shadow: 0 0 0 3px var(--pink); }
+
+/* ---- Álbum a pantalla completa ---- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(58, 35, 48, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.6rem, 3vw, 2rem);
+}
+
+.lightbox-window {
+  width: min(100%, 1180px);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--win);
+  border: 2.5px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.lightbox-close {
+  margin-left: 0.8rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.lightbox-close:hover { background: var(--pink-soft); color: #5a3b44; }
+
+.lightbox-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-bottom: 2px solid var(--line);
+}
+
+.lightbox-stage img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 230px);
+  object-fit: contain;
+}
+
+.lightbox-caption { text-align: center; font-weight: 700; font-size: 0.9rem; padding: 0.7rem 1rem 0; }
+.lightbox-window .gallery-thumbs { padding: 0.2rem 1rem 0.9rem; }
