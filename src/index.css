@@ -1762,7 +1762,7 @@ body.window-open { overflow: hidden; }
   transform:
     translate(-50%, -50%)
     rotate(var(--a))
-    translateX(36cqw)
+    translateX(34cqw)
     rotate(90deg)
     scaleX(var(--flip));
 }
@@ -1807,3 +1807,31 @@ body.window-open { overflow: hidden; }
 
 .about-photo { width: 100%; }
 @media (max-width: 760px) { .about-photo { max-width: 300px; } }
+
+/* ==========================================================
+   FOTO EN CÍRCULO (reemplaza al corazón)
+   ========================================================== */
+.bunny-frame { border-radius: 50%; }
+
+.bf-heart {
+  top: 50%;
+  width: 44%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  box-shadow: 0 0 0 6px #fff, 0 0 0 9px var(--line);
+  overflow: hidden;
+  background: #fff;
+}
+
+.bf-heart-line { display: none; }
+.bf-heart img { clip-path: none; border-radius: 50% !important; }
+
+.bf-bunny { top: 50%; width: 23%; }
+.bf-moon { left: 18%; top: 11%; width: 10%; }
+.bf-star.s1 { right: 20%; top: 12%; }
+.bf-star.s2 { left: 13%; bottom: 22%; }
+.bf-star.s3 { right: 14%; bottom: 22%; }
+.bf-star.s4 { left: 48%; top: 4%; }
+
+.about-photo .about-tag { bottom: 6%; left: 0; }
