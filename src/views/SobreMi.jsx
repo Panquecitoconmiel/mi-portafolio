@@ -1,10 +1,11 @@
 // src/views/SobreMi.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaDownload, FaPaperPlane } from 'react-icons/fa';
-import { about, stats, highlights, cvPdf } from '../data/perfil';
+import { FaMapMarkerAlt, FaDownload, FaPaperPlane, FaRoute } from 'react-icons/fa';
+import { about, stats, highlights, cvPdf, story } from '../data/perfil';
 
 const SobreMi = () => (
+  <>
   <div className="about-view">
     <div className="about-photo">
       <img src={about.photo} alt={about.name} />
@@ -43,6 +44,20 @@ const SobreMi = () => (
       </div>
     </div>
   </div>
+
+  <section className="story">
+    <h3 className="view-section"><FaRoute /> mi historia</h3>
+    <ol className="story-line">
+      {story.map((st) => (
+        <li key={st.year} className="story-step">
+          <span className="story-year">{st.year}</span>
+          <h4>{st.title}</h4>
+          <p>{st.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+  </>
 );
 
 export default SobreMi;

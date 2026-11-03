@@ -3,6 +3,25 @@
 
 export const projectsData = [
   {
+    id: 4,
+    title: 'KEVER · Panel administrativo',
+    short: 'Conecta el inventario de SICAR con canales de venta en línea.',
+    status: 'En desarrollo',
+    featured: true,
+    image: '/assets/proyectos/kever.webp',
+    description: `Sistema administrativo para una tienda que usa el inventario de SICAR V4 como fuente maestra (productos, existencias, precios y categorías) y lo lleva a sus canales de venta. Prepara borradores para Mercado Libre comparándolos con los más vendidos, y está diseñado para conectar una o varias tiendas de Shopify.`,
+    highlights: [
+      'Sincronización con SICAR V4',
+      'Publicación en Mercado Libre (en proceso)',
+      'Conexión con Shopify (próximamente)',
+      'Generador de carteles de venta para redes',
+      'Catálogos por marca o categoría para compartir',
+      'Productos, categorías, tags y clientes',
+    ],
+    tech: ['SICAR V4', 'Mercado Libre', 'Shopify', 'Panel administrativo'],
+    icon: 'store',
+  },
+  {
     id: 1,
     title: 'Totomo',
     short: 'App móvil de notas con Firebase.',
