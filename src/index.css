@@ -1193,3 +1193,93 @@ body.window-open { overflow: hidden; }
 }
 
 .window.home { min-height: 0; }
+
+/* ==========================================================
+   HABILIDADES: tarjetas por categoría, bien organizadas
+   ========================================================== */
+.skill-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.skill-panel {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 4px 0 var(--line);
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.skill-panel.wide { grid-column: 1 / -1; }
+
+.skill-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 2px dashed var(--pink-soft);
+}
+
+.skill-panel-head h3 { font-size: 1.12rem; color: var(--text); flex: 1; }
+
+.skill-panel-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--pink-soft);
+  color: #5a3b44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.skill-panel:nth-child(3n+2) .skill-panel-icon { background: var(--sage); }
+.skill-panel:nth-child(3n+3) .skill-panel-icon { background: var(--butter); }
+
+.skill-count {
+  font-size: 0.72rem;
+  font-weight: 800;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--chip-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-panel .skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+  gap: 0.6rem;
+}
+
+.skill-panel .skill-item {
+  min-height: 86px;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.35rem;
+  border-width: 1.5px;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--line);
+  background: var(--win);
+}
+
+.skill-panel .skill-item:nth-child(3n+2) { background: var(--chip); }
+.skill-panel .skill-item:nth-child(3n+3) { background: var(--chip-2); }
+.skill-panel .skill-item:hover { transform: translateY(-3px); }
+.skill-panel .skill-icon svg { width: 26px; height: 26px; }
+.skill-name { font-size: 0.74rem; font-weight: 800; line-height: 1.2; }
+
+@media (max-width: 560px) {
+  .skill-panel .skill-grid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
+  .skill-panel .skill-item { min-height: 78px; }
+}
