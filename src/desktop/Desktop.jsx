@@ -87,7 +87,7 @@ const Desktop = () => {
       <header className="menubar">
         <Link to="/" className="mb-brand" aria-label="Ir al inicio">
           <img src="/assets/lolosdev.svg" alt="" />
-          <span>michelle<b>.os</b></span>
+          <span>Lolos<b>Dev</b></span>
         </Link>
         <div className="mb-right">
           <span className="mb-status hide-sm" aria-hidden="true">
@@ -141,7 +141,7 @@ const Desktop = () => {
       {/* Ventana activa */}
       <main className="window-area">
         <AnimatePresence mode="wait">
-          <Window key={path} title={title} isHome={isHome} wide={path === '/precios' || path === '/contacto'}>
+          <Window key={path} title={title} isHome={isHome}>
             <View />
           </Window>
         </AnimatePresence>

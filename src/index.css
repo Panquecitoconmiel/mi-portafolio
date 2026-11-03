@@ -983,3 +983,180 @@ a.contact-card:hover { transform: translateY(-2px); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ==========================================================
+   ESCRITORIO EN UNA SOLA PANTALLA + VENTANAS A PANTALLA COMPLETA
+   ========================================================== */
+@media (min-width: 901px) {
+  .desktop {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    grid-template-rows: var(--menubar-h) 1fr;
+    grid-template-areas:
+      'bar bar'
+      'icons win';
+  }
+
+  /* El dock flota sobre el piso, sin empujar el contenido */
+  .dock-wrap {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(6px, 1.6vh, 16px);
+    transform: translateX(-50%);
+    padding: 0;
+    gap: 0.35rem;
+  }
+
+  /* Íconos que se ajustan a la altura de la pantalla */
+  .icons {
+    grid-template-columns: repeat(2, clamp(84px, 13vh, 108px));
+    gap: clamp(0.2rem, 1.3vh, 1rem) 0.5rem;
+    padding-top: clamp(0.7rem, 2.2vh, 1.6rem);
+  }
+
+  .app-tile { width: clamp(50px, 9.5vh, 88px); height: clamp(50px, 9.5vh, 88px); }
+  .app-label { font-size: clamp(0.7rem, 1.45vh, 0.82rem); }
+
+  .window.home { margin-top: clamp(0.8rem, 6vh, 4rem); }
+}
+
+/* Pantallas bajitas (laptops): ventana de inicio más compacta */
+@media (min-width: 901px) and (max-height: 760px) {
+  .window.home .window-body { padding: 1.1rem 1.4rem 1.2rem; }
+  .home-view { padding: 0; }
+  .status-pill { margin-bottom: 0.6rem; }
+  .home-title { font-size: 2.1rem; }
+  .home-text { margin-top: 0.5rem; }
+  .home-view .home-actions { margin-top: 0.9rem; }
+  .home-hint { margin-top: 0.9rem; }
+}
+
+/* Ventana abierta = pantalla completa */
+.window.max {
+  position: fixed;
+  z-index: 40;
+  top: calc(var(--menubar-h) + 12px);
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: auto;
+  max-height: none;
+  margin: 0;
+}
+
+.window.max .window-body { flex: 1; padding: clamp(1.2rem, 3vw, 2.4rem); }
+.window-content { max-width: 1100px; margin: 0 auto; }
+
+body.window-open { overflow: hidden; }
+
+.window.max .plan-grid { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.window.max .extras { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.window.max .projects-view { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: start; }
+.window.max .exp-view,
+.window.max .contact-view,
+.window.max .cv-view { max-width: 900px; margin: 0 auto; }
+
+/* ---- Sobre mí: foto grande en arco + información ---- */
+.about-view {
+  display: grid;
+  grid-template-columns: minmax(240px, 380px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  text-align: left;
+}
+
+.about-photo { position: relative; }
+
+.about-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 999px 999px 26px 26px;
+  border: 3px solid var(--line);
+  box-shadow: 10px 10px 0 var(--pink-soft);
+  background: var(--pink-soft);
+}
+
+.about-tag {
+  position: absolute;
+  left: -12px;
+  bottom: 28px;
+  transform: rotate(-6deg);
+  font-family: var(--font-display);
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  background: var(--sage);
+  color: #5a3b44;
+  border: 2.5px solid var(--line);
+  box-shadow: 0 3px 0 var(--line);
+}
+
+.about-info .view-name { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.about-info .about-bio { margin: 1.1rem 0 0; max-width: 620px; }
+.about-info .chips { margin-top: 1.1rem; }
+.about-info .home-actions { justify-content: flex-start; }
+
+@media (max-width: 760px) {
+  .about-view { grid-template-columns: 1fr; text-align: center; }
+  .about-photo { max-width: 260px; margin: 0 auto; }
+  .about-info .about-bio { margin: 1rem auto 0; }
+  .about-info .chips, .about-info .home-actions { justify-content: center; }
+}
+
+@media (max-width: 900px) {
+  .window.max { top: calc(var(--menubar-h) + 8px); left: 8px; right: 8px; bottom: 8px; }
+}
+
+/* Con una ventana abierta, el dock se esconde (la ventana ocupa toda la pantalla) */
+.desktop.has-window .dock-wrap { display: none; }
+
+/* La foto de "Sobre mí" cabe en pantallas bajitas */
+@media (min-width: 761px) {
+  .about-photo img { max-height: calc(100dvh - var(--menubar-h) - 150px); }
+}
+
+/* ==========================================================
+   LA MELODY SIEMPRE A LA VISTA
+   Tiene su propio rincón a la derecha; las ventanas no lo cubren.
+   ========================================================== */
+:root { --mascot-w: clamp(170px, 17vw, 250px); }
+
+@media (min-width: 901px) {
+  .melody-spot {
+    right: 1.5vw;
+    width: var(--mascot-w);
+    z-index: 2;
+  }
+
+  .melody { height: clamp(140px, 27vh, 250px); max-width: 100%; object-fit: contain; }
+
+  /* La maceta va a la izquierda de la Melody */
+  .room-plant { right: calc(var(--mascot-w) + 3vw); }
+
+  /* La ventana de inicio se centra en el espacio libre, sin tapar a la Melody */
+  .window-area { padding-right: calc(var(--mascot-w) + 3vw); }
+
+  /* Las ventanas abiertas ocupan todo menos el rincón de la Melody */
+  .window.max { right: calc(var(--mascot-w) + 3vw); }
+}
+
+/* Laptops angostas: sin maceta para dar espacio */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .room-plant { display: none; }
+}
+
+/* Celular: con una ventana abierta, el cuarto se queda abajo con la Melody */
+@media (max-width: 900px) {
+  .desktop.has-window .room { position: fixed; }
+  .desktop.has-window .floor { height: 112px; }
+  .desktop.has-window .wall { bottom: 112px; }
+  .desktop.has-window .melody-spot { position: fixed; left: 50%; transform: translateX(-50%); bottom: 26px; z-index: 41; width: 150px; }
+  .desktop.has-window .melody { height: 104px; }
+  .desktop.has-window .room-plant { position: fixed; bottom: 34px; right: 8%; height: 78px; }
+  .window.max { bottom: 136px; }
+}
