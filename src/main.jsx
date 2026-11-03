@@ -10,16 +10,7 @@ import '@fontsource/dm-mono/400.css'
 import '@fontsource/dm-mono/500.css'
 import './index.css'
 import App from './App.jsx'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 
-// Inicializar AOS con configuración
-AOS.init({
-  duration: 800,
-  once: true,
-  offset: 100,
-  easing: 'ease-in-out'
-})
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
