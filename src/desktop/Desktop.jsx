@@ -16,6 +16,7 @@ import Experiencia from '../views/Experiencia';
 import Habilidades from '../views/Habilidades';
 import Proyectos from '../views/Proyectos';
 import Precios from '../views/Precios';
+import Plantillas from '../views/Plantillas';
 import CV from '../views/CV';
 import Contacto from '../views/Contacto';
 import NotFound from '../views/NotFound';
@@ -25,6 +26,7 @@ const views = {
   '/experiencia': Experiencia,
   '/habilidades': Habilidades,
   '/proyectos': Proyectos,
+  '/plantillas': Plantillas,
   '/precios': Precios,
   '/cv': CV,
   '/contacto': Contacto,
