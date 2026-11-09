@@ -2,19 +2,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaExternalLinkAlt, FaCheck, FaWhatsapp, FaStore, FaBirthdayCake } from 'react-icons/fa';
+import { GiCandleLight } from 'react-icons/gi';
+
+const previewIcons = { cake: <FaBirthdayCake />, candle: <GiCandleLight /> };
 import { templates } from '../data/plantillas';
 import { whatsappLink } from '../data/contacto';
 
 // Vista previa en vivo del sitio dentro de una mini ventana de navegador
-const LivePreview = ({ url, title }) => (
+const LivePreview = ({ url, title, icon, colors = {} }) => (
   <a href={url} target="_blank" rel="noreferrer" className="live-preview" aria-label={`Abrir demo de ${title}`}>
     <div className="lp-bar">
       <span className="lp-dots"><i /><i /><i /></span>
       <span className="lp-url">{url.replace('https://', '')}</span>
     </div>
     <div className="lp-screen">
-      <div className="lp-fallback" aria-hidden="true">
-        <FaBirthdayCake />
+      <div
+        className="lp-fallback"
+        aria-hidden="true"
+        style={{ '--lp-accent': colors.accent, '--lp-soft': colors.soft }}
+      >
+        {previewIcons[icon] || <FaStore />}
         <strong>{title}</strong>
         <span>toca para ver la demo</span>
       </div>
@@ -33,12 +40,12 @@ const Plantillas = () => (
     {templates.map((t) => {
       const wa = whatsappLink(`Hola Michelle, me interesa la plantilla "${t.name}" para mi negocio`);
       return (
-        <article key={t.id} className="template-card">
-          <LivePreview url={t.url} title={t.name} />
+        <article key={t.id} className="template-card" style={{ '--tpl': t.colors?.accent }}>
+          <LivePreview url={t.url} title={t.name} icon={t.icon} colors={t.colors} />
           <div className="template-info">
             <span className="project-status"><FaStore size={10} /> {t.category}</span>
             <h4>{t.name}</h4>
-            <p className="template-tagline">“{t.tagline}”</p>
+            {t.tagline && <p className="template-tagline">“{t.tagline}”</p>}
             <p>{t.description}</p>
             <ul className="project-highlights">
               {t.features.map((f) => (
