@@ -2059,3 +2059,11 @@ body.window-open { overflow: hidden; }
 .lp-fallback span { font-size: 0.78rem; font-weight: 700; color: #8a6d75; }
 .lp-screen iframe { z-index: 1; background: transparent; }
 .lp-cta { z-index: 2; }
+
+/* Varias plantillas: espacio entre tarjetas y color propio en el respaldo */
+.templates-view .template-card + .template-card { margin-top: 1.3rem; }
+.lp-fallback {
+  background: radial-gradient(circle at 50% 40%, #fff, var(--lp-soft, #fde3e3) 70%);
+  color: var(--lp-accent, #f08c8c);
+}
+.template-card .template-tagline { color: var(--tpl, var(--pink)); }
