@@ -2067,3 +2067,19 @@ body.window-open { overflow: hidden; }
   color: var(--lp-accent, #f08c8c);
 }
 .template-card .template-tagline { color: var(--tpl, var(--pink)); }
+
+/* Acceso de prueba en proyectos */
+.demo-login {
+  margin-top: 0.8rem; padding: 0.6rem 0.75rem; max-width: 22rem;
+  border: 2px dashed var(--pink-soft); border-radius: 14px;
+  background: color-mix(in srgb, var(--pink-soft) 14%, transparent);
+}
+.demo-title { margin: 0 0 0.35rem; font-weight: 800; font-size: 0.8rem; display: flex; align-items: center; gap: 0.35rem; color: var(--pink-deep); }
+.demo-field { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; margin-top: 0.2rem; min-width: 0; }
+.demo-label { width: 5.6rem; flex-shrink: 0; opacity: 0.75; }
+.demo-field code { font-family: 'DM Mono', monospace; overflow-wrap: anywhere; min-width: 0; flex: 1; }
+.demo-field button {
+  flex-shrink: 0; display: grid; place-items: center; width: 26px; height: 26px; cursor: pointer;
+  border: 1.5px solid var(--line); border-radius: 8px; background: var(--card); color: inherit;
+}
+.demo-field button:hover { background: var(--pink-soft); }

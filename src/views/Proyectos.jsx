@@ -1,7 +1,7 @@
 // src/views/Proyectos.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  FaExternalLinkAlt, FaGithub, FaDownload, FaMobileAlt, FaGamepad, FaLeaf, FaStore, FaCheck, FaPencilRuler,
+  FaExternalLinkAlt, FaGithub, FaDownload, FaMobileAlt, FaGamepad, FaLeaf, FaStore, FaCheck, FaPencilRuler, FaKey, FaCopy,
 } from 'react-icons/fa';
 import { projectsData } from '../data/proyectos';
 import Gallery from '../desktop/Gallery';
@@ -30,6 +30,38 @@ const Links = ({ p }) => {
     </div>
   );
 };
+
+// Acceso de prueba para que puedan probar el sistema completo
+const CopyField = ({ label, value }) => {
+  const [done, setDone] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setDone(true);
+      setTimeout(() => setDone(false), 1500);
+    } catch {
+      /* sin portapapeles: el texto se puede seleccionar a mano */
+    }
+  };
+  return (
+    <div className="demo-field">
+      <span className="demo-label">{label}</span>
+      <code>{value}</code>
+      <button type="button" onClick={copy} aria-label={`Copiar ${label}`} title="Copiar">
+        {done ? <FaCheck size={11} /> : <FaCopy size={11} />}
+      </button>
+    </div>
+  );
+};
+
+const DemoLogin = ({ login }) =>
+  login ? (
+    <div className="demo-login">
+      <p className="demo-title"><FaKey size={11} /> Acceso de prueba ({login.role})</p>
+      <CopyField label="correo" value={login.user} />
+      <CopyField label="contraseña" value={login.pass} />
+    </div>
+  ) : null;
 
 const Proyectos = () => (
   <div className="projects-view">
@@ -67,6 +99,7 @@ const Proyectos = () => (
                 <span key={t} className="chip">{t}</span>
               ))}
             </div>
+            <DemoLogin login={p.demoLogin} />
             <Links p={p} />
           </div>
         </article>

@@ -41,6 +41,8 @@ export const projectsData = [
     description: `Sistema web para una papelería: CRUD de productos con imágenes y filtros, punto de venta para empleados con cálculo de IVA e impresión de tickets, reportes y cortes de caja en PDF y CSV, chat interno y acceso por roles (administrador y empleado). Frontend en React con TypeScript y API en Laravel. Desarrollado con apoyo de IA (Claude Code).`,
     tech: ['React', 'TypeScript', 'Material UI', 'Laravel', 'Sanctum', 'Claude Code'],
     demo: 'https://paperhub-cjz.pages.dev/login',
+    // Usuario de prueba para que prueben todas las funciones
+    demoLogin: { role: 'administrador', user: 'admin@paperhub.com', pass: 'AdminPassword123' },
     repo: 'https://github.com/Panquecitoconmiel/PaperHub',
     icon: 'paper',
   },
