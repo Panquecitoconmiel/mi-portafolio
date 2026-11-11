@@ -1,12 +1,12 @@
 // src/views/Proyectos.jsx
 import React from 'react';
 import {
-  FaExternalLinkAlt, FaGithub, FaDownload, FaMobileAlt, FaGamepad, FaLeaf, FaStore, FaCheck,
+  FaExternalLinkAlt, FaGithub, FaDownload, FaMobileAlt, FaGamepad, FaLeaf, FaStore, FaCheck, FaPencilRuler,
 } from 'react-icons/fa';
 import { projectsData } from '../data/proyectos';
 import Gallery from '../desktop/Gallery';
 
-const icons = { mobile: <FaMobileAlt />, game: <FaGamepad />, leaf: <FaLeaf />, store: <FaStore /> };
+const icons = { mobile: <FaMobileAlt />, game: <FaGamepad />, leaf: <FaLeaf />, store: <FaStore />, paper: <FaPencilRuler /> };
 
 const Links = ({ p }) => {
   if (!p.demo && !p.repo && !p.download) return null;
