@@ -35,6 +35,16 @@ export const projectsData = [
     icon: 'store',
   },
   {
+    id: 5,
+    title: 'PaperHub',
+    short: 'Sistema de inventario y punto de venta para papelería.',
+    description: `Sistema web para una papelería: CRUD de productos con imágenes y filtros, punto de venta para empleados con cálculo de IVA e impresión de tickets, reportes y cortes de caja en PDF y CSV, chat interno y acceso por roles (administrador y empleado). Frontend en React con TypeScript y API en Laravel. Desarrollado con apoyo de IA (Claude Code).`,
+    tech: ['React', 'TypeScript', 'Material UI', 'Laravel', 'Sanctum', 'Claude Code'],
+    demo: 'https://paperhub-cjz.pages.dev/login',
+    repo: 'https://github.com/Panquecitoconmiel/PaperHub',
+    icon: 'paper',
+  },
+  {
     id: 1,
     title: 'Totomo',
     short: 'App móvil de notas con Firebase.',
