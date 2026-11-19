@@ -35,3 +35,34 @@ export const Plant = ({ className = '' }) => (
     <rect x="25" y="102" width="70" height="14" rx="6" fill="#f9d0d7" stroke="#5a3b44" strokeWidth="3" />
   </svg>
 );
+
+// Guirnalda navideña: tramos con esferas rojas y azules que se repiten a lo ancho
+const GarlandPiece = ({ first }) => (
+  <svg viewBox="0 0 160 70" width="160" height="70" aria-hidden="true">
+    <path d="M0,6 Q80,58 160,6" fill="none" stroke="#5f8f5a" strokeWidth="5" strokeLinecap="round" />
+    {[
+      [42, 22, first],
+      [118, 22, !first],
+    ].map(([x, y, red]) => (
+      <g key={x} transform={`translate(${x} ${y})`}>
+        <g className="bulb">
+          <rect x="-3" y="0" width="6" height="5" rx="1" fill="#e9d9a6" stroke="#2d3c5a" strokeWidth="1.2" />
+          <ellipse cx="0" cy="13" rx="7.5" ry="9" fill={red ? '#c23b35' : '#8fb0d3'} stroke="#2d3c5a" strokeWidth="1.6" />
+          <ellipse cx="-2.5" cy="10" rx="2" ry="3" fill="#fff" opacity="0.7" />
+        </g>
+      </g>
+    ))}
+    <g transform="translate(160 6)">
+      <path d="M0,0 L-11,-6 L-11,6 Z M0,0 L11,-6 L11,6 Z" fill="#c23b35" stroke="#2d3c5a" strokeWidth="1.4" strokeLinejoin="round" />
+      <circle r="3.2" fill="#c23b35" stroke="#2d3c5a" strokeWidth="1.4" />
+    </g>
+  </svg>
+);
+
+export const Garland = ({ className = '' }) => (
+  <div className={className} aria-hidden="true">
+    {Array.from({ length: 18 }, (_, i) => (
+      <GarlandPiece key={i} first={i % 2 === 0} />
+    ))}
+  </div>
+);
