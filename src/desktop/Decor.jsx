@@ -66,3 +66,38 @@ export const Garland = ({ className = '' }) => (
     ))}
   </div>
 );
+
+// Arbolito de Navidad con esferas y estrella
+export const XmasTree = ({ className = '' }) => (
+  <svg className={className} viewBox="0 0 120 170" aria-hidden="true">
+    <g stroke="#2d3c5a" strokeWidth="3" strokeLinejoin="round">
+      <rect x="51" y="140" width="18" height="18" rx="3" fill="#a0785a" />
+      <path d="M60 30 L100 82 H78 L108 120 H82 L114 146 H6 L38 120 H12 L42 82 H20 Z" fill="#5f8f5a" />
+      <rect x="38" y="152" width="44" height="14" rx="4" fill="#c23b35" />
+    </g>
+    <path d="M28 104 Q60 118 94 98 M22 136 Q62 148 102 128" stroke="#f5eedb" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="1 7" />
+    {[
+      [48, 74, '#c23b35'], [74, 70, '#8fb0d3'], [36, 110, '#8fb0d3'], [62, 100, '#f3c95a'],
+      [88, 112, '#c23b35'], [30, 140, '#f3c95a'], [58, 134, '#c23b35'], [90, 140, '#8fb0d3'],
+    ].map(([x, y, c]) => (
+      <circle key={`${x}-${y}`} className="tree-ball" cx={x} cy={y} r="5.5" fill={c} stroke="#2d3c5a" strokeWidth="1.6" />
+    ))}
+    <path className="tree-star" d="M60 6 L66 20 L81 21 L69 31 L73 46 L60 37 L47 46 L51 31 L39 21 L54 20 Z" fill="#f3c95a" stroke="#2d3c5a" strokeWidth="2.5" strokeLinejoin="round" />
+  </svg>
+);
+
+// Regalos envueltos
+export const Gifts = ({ className = '' }) => (
+  <svg className={className} viewBox="0 0 150 80" aria-hidden="true">
+    <g stroke="#2d3c5a" strokeWidth="2.6" strokeLinejoin="round">
+      <rect x="6" y="30" width="56" height="46" rx="4" fill="#c23b35" />
+      <rect x="29" y="30" width="10" height="46" fill="#f5eedb" />
+      <rect x="70" y="44" width="40" height="32" rx="4" fill="#8fb0d3" />
+      <rect x="85" y="44" width="10" height="32" fill="#c23b35" />
+      <rect x="114" y="54" width="30" height="22" rx="3" fill="#f5eedb" />
+      <rect x="125" y="54" width="8" height="22" fill="#8fb0d3" />
+      <path d="M34 30 C22 14 12 26 34 30 C46 14 56 26 34 30 Z" fill="#f5eedb" />
+      <path d="M90 44 C80 32 72 42 90 44 C100 32 108 42 90 44 Z" fill="#c23b35" />
+    </g>
+  </svg>
+);

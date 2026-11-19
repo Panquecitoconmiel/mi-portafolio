@@ -4,11 +4,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FaMoon, FaSun, FaWifi, FaBatteryThreeQuarters } from 'react-icons/fa';
+import { FaMoon, FaSun, FaWifi, FaBatteryThreeQuarters, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { apps, appByPath } from './apps';
 import Window from './Window';
 import Dock from './Dock';
-import { Plant, Sparkle, Garland } from './Decor';
+import { Plant, Sparkle, Garland, XmasTree, Gifts } from './Decor';
+import { playJingle, isSoundOn, setSoundOn } from './jingle';
 import { season } from '../season';
 
 import HomeView from '../views/HomeView';
@@ -59,6 +60,17 @@ const Desktop = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [theme, setTheme] = useState(getInitialTheme);
+  const [sound, setSound] = useState(isSoundOn);
+
+  // En Navidad, cada botón o enlace toca campanitas
+  useEffect(() => {
+    if (season !== 'navidad') return undefined;
+    const onClick = (e) => {
+      if (e.target.closest?.('a, button')) playJingle();
+    };
+    document.addEventListener('click', onClick, true);
+    return () => document.removeEventListener('click', onClick, true);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -97,6 +109,19 @@ const Desktop = () => {
             <FaWifi /> <FaBatteryThreeQuarters />
           </span>
           <Clock />
+          {season === 'navidad' && (
+            <button
+              className="mb-theme mb-sound"
+              onClick={() => {
+                setSoundOn(!sound);
+                setSound(!sound);
+              }}
+              aria-label={sound ? 'Silenciar campanitas' : 'Activar campanitas'}
+              title={sound ? 'Silenciar campanitas' : 'Activar campanitas'}
+            >
+              {sound ? <FaVolumeUp /> : <FaVolumeMute />}
+            </button>
+          )}
           <button
             className="mb-theme"
             onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
@@ -119,9 +144,10 @@ const Desktop = () => {
           <>
             <div className="xmas-snow" />
             <Garland className="xmas-garland" />
+            <Gifts className="xmas-gifts" />
           </>
         )}
-        <Plant className="room-plant" />
+        {season === 'navidad' ? <XmasTree className="room-plant xmas-tree" /> : <Plant className="room-plant" />}
         <div className="melody-spot">
           <div className="rug" />
           <img className="melody" src="/assets/melody/melody-sentada.png" alt="" />
