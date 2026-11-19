@@ -8,7 +8,8 @@ import { FaMoon, FaSun, FaWifi, FaBatteryThreeQuarters } from 'react-icons/fa';
 import { apps, appByPath } from './apps';
 import Window from './Window';
 import Dock from './Dock';
-import { Plant, Sparkle } from './Decor';
+import { Plant, Sparkle, Garland } from './Decor';
+import { season } from '../season';
 
 import HomeView from '../views/HomeView';
 import SobreMi from '../views/SobreMi';
@@ -114,6 +115,12 @@ const Desktop = () => {
         <Sparkle className="wall-sparkle s1" />
         <Sparkle className="wall-sparkle s2" />
         <Sparkle className="wall-sparkle s3" />
+        {season === 'navidad' && (
+          <>
+            <div className="xmas-snow" />
+            <Garland className="xmas-garland" />
+          </>
+        )}
         <Plant className="room-plant" />
         <div className="melody-spot">
           <div className="rug" />

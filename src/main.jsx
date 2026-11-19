@@ -9,6 +9,8 @@ import '@fontsource/nunito/800.css'
 import '@fontsource/dm-mono/400.css'
 import '@fontsource/dm-mono/500.css'
 import './index.css'
+import './navidad.css'
+import './season'
 import App from './App.jsx'
 
 
